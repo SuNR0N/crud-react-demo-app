@@ -1,0 +1,37 @@
+$font-path: 'assets/fonts';
+$font-family-roboto-light-filename: 'roboto-v18-latin-300';
+$font-family-roboto-regular-filename: 'roboto-v18-latin-regular';
+$font-family-roboto-bold-filename: 'roboto-v18-latin-700';
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-path}/#{$font-family-roboto-light-filename}.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}/#{$font-family-roboto-light-filename}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}/#{$font-family-roboto-light-filename}.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}/#{$font-family-roboto-light-filename}.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('#{$font-path}/#{$font-family-roboto-light-filename}.svg##{$font-family-roboto-light-filename}') format('svg'); /* Legacy iOS */
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-path}/#{$font-family-roboto-regular-filename}.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}/#{$font-family-roboto-regular-filename}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}/#{$font-family-roboto-regular-filename}.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}/#{$font-family-roboto-regular-filename}.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('#{$font-path}/#{$font-family-roboto-regular-filename}.svg##{$font-family-roboto-regular-filename}') format('svg'); /* Legacy iOS */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-path}/#{$font-family-roboto-bold-filename}.eot'); /* IE9 Compat Modes */
+    src: url('#{$font-path}/#{$font-family-roboto-bold-filename}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('#{$font-path}/#{$font-family-roboto-bold-filename}.woff') format('woff'), /* Pretty Modern Browsers */
+        url('#{$font-path}/#{$font-family-roboto-bold-filename}.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('#{$font-path}/#{$font-family-roboto-bold-filename}.svg##{$font-family-roboto-bold-filename}') format('svg'); /* Legacy iOS */
+    font-weight: 700;
+    font-style: normal;
+}

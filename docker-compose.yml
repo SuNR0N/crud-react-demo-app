@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    image: norberta/crud-server
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    env_file: .env.server
+  db:
+    image: norberta/crud-db
+    env_file: .env.db
