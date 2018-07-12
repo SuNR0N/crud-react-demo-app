@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { RouteConfig } from '../../config/RouteConfig';
+import { NavigationBar } from '../common/NavigationBar/NavigationBar';
 import { AuthorRoutes } from './author';
 import { BookRoutes } from './book';
 import { CategoryRoutes } from './category';
@@ -13,7 +14,7 @@ import { PublisherRoutes } from './publisher';
 
 export const MainPage: React.SFC = () => (
   <main>
-    <header>Header</header>
+    <NavigationBar/>
     <Switch>
       <Redirect
         from={RouteConfig.root}
