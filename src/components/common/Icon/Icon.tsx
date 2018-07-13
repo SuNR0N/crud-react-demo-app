@@ -6,8 +6,12 @@ import './Icon.css';
 const SpritePath = require('../../../assets/icons/sprite.svg');
 
 export type IconSymbol =
+  'edit-regular' |
+  'eye-regular' |
+  'plus-square-regular' |
   'github-brands' |
-  'react-brands';
+  'react-brands' |
+  'trash-alt-regular';
 
 export interface IProps {
   className?: string;
