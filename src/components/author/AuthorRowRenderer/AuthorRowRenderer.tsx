@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Button } from 'reactstrap';
 
+import { RouteConfig } from '../../../config/RouteConfig';
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
 import { Icon } from '../../common/Icon';
+import { RoutedIconButton } from '../../common/RoutedIconButton';
 
 export interface IProps {
   author: IAuthorDTO;
@@ -19,20 +21,18 @@ export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
       <td>{author.lastName}</td>
       <td>
         {author._links.self &&
-          <Button
-            outline={true}
+          <RoutedIconButton
             color="primary"
-          >
-            <Icon symbol="eye-regular"/>
-          </Button>
+            symbol="eye-regular"
+            route={RouteConfig.viewAuthor.replace(':id', String(author.id))}
+          />
         }
         {author._links.update &&
-          <Button
-            outline={true}
+          <RoutedIconButton
             color="secondary"
-          >
-            <Icon symbol="edit-regular"/>
-          </Button>
+            symbol="edit-regular"
+            route={RouteConfig.editAuthor.replace(':id', String(author.id))}
+          />
         }
         {author._links.delete &&
           <Button

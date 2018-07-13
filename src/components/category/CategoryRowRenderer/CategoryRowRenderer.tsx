@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button } from 'reactstrap';
 
+import { RoutedIconButton } from 'src/components/common/RoutedIconButton';
+import { RouteConfig } from '../../../config/RouteConfig';
 import { ICategoryDTO } from '../../../interfaces/dtos/CategoryDTO';
 import { Icon } from '../../common/Icon';
 
@@ -17,20 +19,18 @@ export const CategoryRowRenderer: React.SFC<IProps> = (props) => {
       <td>{category.name}</td>
       <td>
         {category._links.self &&
-          <Button
-            outline={true}
+          <RoutedIconButton
             color="primary"
-          >
-            <Icon symbol="eye-regular"/>
-          </Button>
+            symbol="eye-regular"
+            route={RouteConfig.viewCategory.replace(':id', String(category.id))}
+          />
         }
         {category._links.update &&
-          <Button
-            outline={true}
+          <RoutedIconButton
             color="secondary"
-          >
-            <Icon symbol="edit-regular"/>
-          </Button>
+            symbol="edit-regular"
+            route={RouteConfig.editCategory.replace(':id', String(category.id))}
+          />
         }
         {category._links.delete &&
           <Button
