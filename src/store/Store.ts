@@ -14,6 +14,9 @@ import { IRootState } from '../reducers/RootState';
 import { rootSaga } from '../sagas/RootSaga';
 
 const initialStoreState: IRootState = {
+  auth: {
+    profile: null,
+  },
   author: {
     ...initialAuthorState,
   },

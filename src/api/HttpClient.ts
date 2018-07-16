@@ -3,6 +3,7 @@ export class HttpClient {
   public static async request(url: string, options?: RequestInit) {
     let requestOptions: RequestInit = {
       ...options,
+      credentials: 'include',
     };
     if (typeof requestOptions.body === 'object') {
       const requestOptionsWithBody = HttpClient.prepareRequestWithBody(

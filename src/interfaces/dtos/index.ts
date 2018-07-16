@@ -6,5 +6,6 @@ export * from './NewBookDTO';
 export * from './NewCategoryDTO';
 export * from './NewPublisherDTO';
 export * from './PageableCollectionDTO';
+export * from './ProfileDTO';
 export * from './PublisherDTO';
 export * from './ResourceDTO';

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
-  Button,
   Collapse,
   Nav,
   Navbar,
@@ -11,20 +10,40 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import { RouteConfig } from '../../../config/RouteConfig';
+import { RouteConfig } from '../../../config';
+import { IProfileDTO } from '../../../interfaces/dtos/ProfileDTO';
 import { Icon } from '../Icon';
+import { ProfileConnected } from '../Profile';
+import { SignIn } from '../SignIn';
+
+export interface IDispatchProps {
+  loadProfile: () => any;
+}
+
+export interface IStateProps {
+  profile: IProfileDTO | null;
+}
+
+export interface IProps extends IDispatchProps, IStateProps {}
 
 export interface IState {
   isOpen: boolean;
 }
 
-export class NavigationBar extends React.Component<{}, IState> {
+export class NavigationBar extends React.Component<IProps, IState> {
   public state: IState = {
     isOpen: false,
   };
 
+  public componentDidMount() {
+    this.props.loadProfile();
+  }
+
   public render() {
     const {
+      props: {
+        profile,
+      },
       toggle,
       state: {
         isOpen,
@@ -86,10 +105,11 @@ export class NavigationBar extends React.Component<{}, IState> {
             </NavItem>
           </Nav>
           <Nav className="ml-auto">
-            <Button color="primary">
-              <Icon symbol="github-brands"/>
-              Sign in with GitHub
-            </Button>
+            {profile ? (
+              <ProfileConnected profile={profile}/>
+            ) : (
+              <SignIn/>
+            )}
           </Nav>
         </Collapse>
       </Navbar>

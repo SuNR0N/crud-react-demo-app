@@ -45,6 +45,9 @@ DATABASE_DB=
 # GITHUB_CLIENT_ID=g17hu8cl13n71d
 # GITHUB_CLIENT_SECRET=g17hu8cl13n753cr37
 
+# URL to redirect to after a successful authentication
+REDIRECT_URL=/
+
 # If you want to use a fake authentication
 NODE_ENV=test
 ```
