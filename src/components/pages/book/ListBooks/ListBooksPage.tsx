@@ -3,6 +3,8 @@ import {
   Table,
 } from 'reactstrap';
 
+import { IAction } from '../../../../actions/ActionHelpers';
+import { ActionTypes } from '../../../../actions/BookActions';
 import {
   IBookDTO,
   IPageableCollectionDTO,
@@ -10,7 +12,7 @@ import {
 import { BookRowRenderer } from '../../../book/BookRowRenderer';
 
 export interface IDispatchProps {
-  loadBooks: () => any;
+  loadBooks: () => IAction<ActionTypes.LOAD_BOOKS_REQUEST>;
 }
 
 export interface IStateProps {

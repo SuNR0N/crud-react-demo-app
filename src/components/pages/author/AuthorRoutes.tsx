@@ -8,7 +8,7 @@ import { RouteConfig } from '../../../config/RouteConfig';
 import { CreateAuthorPage } from './CreateAuthor';
 import { EditAuthorPage } from './EditAuthor';
 import { ListAuthorsPageConnected } from './ListAuthors';
-import { ViewAuthorPage } from './ViewAuthor';
+import { ViewAuthorPageConnected } from './ViewAuthor';
 
 export const AuthorRoutes: React.SFC = () => (
   <Switch>
@@ -22,7 +22,7 @@ export const AuthorRoutes: React.SFC = () => (
     />
     <Route
       path={RouteConfig.viewAuthor}
-      component={ViewAuthorPage}
+      component={ViewAuthorPageConnected}
     />
     <Route
       path={RouteConfig.authors}

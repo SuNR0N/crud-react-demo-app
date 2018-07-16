@@ -8,7 +8,7 @@ import { RouteConfig } from '../../../config/RouteConfig';
 import { CreateCategoryPage } from './CreateCategory';
 import { EditCategoryPage } from './EditCategory';
 import { ListCategoriesPageConnected } from './ListCategories';
-import { ViewCategoryPage } from './ViewCategory';
+import { ViewCategoryPageConnected } from './ViewCategory';
 
 export const CategoryRoutes: React.SFC = () => (
   <Switch>
@@ -22,7 +22,7 @@ export const CategoryRoutes: React.SFC = () => (
     />
     <Route
       path={RouteConfig.viewCategory}
-      component={ViewCategoryPage}
+      component={ViewCategoryPageConnected}
     />
     <Route
       path={RouteConfig.categories}

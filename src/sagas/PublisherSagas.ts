@@ -5,25 +5,34 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 
+import { IActionWithPayload } from '../actions/ActionHelpers';
 import {
   actions,
   ActionTypes,
 } from '../actions/PublisherActions';
 import { PublishersApi } from '../api/PublishersApi';
 
+function* loadPublisher(action: IActionWithPayload<ActionTypes.LOAD_PUBLISHER_REQUEST, number>) {
+  try {
+    const publisher = yield call(PublishersApi.getPublisher, action.payload);
+    yield put(actions.loadPublisherSucceeded(publisher));
+  } catch (error) {
+    yield put(actions.loadPublisherFailed(action.payload));
+  }
+}
+
 function* loadPublishers() {
   try {
     const publishers = yield call(PublishersApi.getPublishers);
     yield put(actions.loadPublishersSucceeded(publishers));
   } catch (error) {
-    // tslint:disable-next-line:no-console
-    console.log(error);
     yield put(actions.loadPublishersFailed());
   }
 }
 
 export function* publisherSagas() {
   yield all([
+    takeEvery(ActionTypes.LOAD_PUBLISHER_REQUEST, loadPublisher),
     takeEvery(ActionTypes.LOAD_PUBLISHERS_REQUEST, loadPublishers),
   ]);
 }
