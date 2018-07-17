@@ -6,8 +6,9 @@ import {
 import { HttpClient } from './HttpClient';
 
 export class PublishersApi {
-  public static async getPublishers(): Promise<IPublisherDTO[]> {
-    const response = await HttpClient.get(`${API_PREFIX}/publishers`);
+  public static async getPublishers(query?: string): Promise<IPublisherDTO[]> {
+    const queryString = query ? `?q=${query}` : '';
+    const response = await HttpClient.get(`${API_PREFIX}/publishers${queryString}`);
     return response.json();
   }
 

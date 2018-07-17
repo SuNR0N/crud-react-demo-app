@@ -6,8 +6,9 @@ import {
 import { HttpClient } from './HttpClient';
 
 export class CategoriesApi {
-  public static async getCategories(): Promise<ICategoryDTO[]> {
-    const response = await HttpClient.get(`${API_PREFIX}/categories`);
+  public static async getCategories(query?: string): Promise<ICategoryDTO[]> {
+    const queryString = query ? `?q=${query}` : '';
+    const response = await HttpClient.get(`${API_PREFIX}/categories${queryString}`);
     return response.json();
   }
 

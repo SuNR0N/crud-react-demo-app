@@ -21,9 +21,9 @@ function* loadPublisher(action: IActionWithPayload<ActionTypes.LOAD_PUBLISHER_RE
   }
 }
 
-function* loadPublishers() {
+function* loadPublishers(action: IActionWithPayload<ActionTypes.LOAD_PUBLISHERS_REQUEST, string | undefined>) {
   try {
-    const publishers = yield call(PublishersApi.getPublishers);
+    const publishers = yield call(PublishersApi.getPublishers, action.payload);
     yield put(actions.loadPublishersSucceeded(publishers));
   } catch (error) {
     yield put(actions.loadPublishersFailed());

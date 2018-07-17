@@ -21,9 +21,9 @@ function* loadCategory(action: IActionWithPayload<ActionTypes.LOAD_CATEGORY_REQU
   }
 }
 
-function* loadCategories() {
+function* loadCategories(action: IActionWithPayload<ActionTypes.LOAD_CATEGORIES_REQUEST, string | undefined>) {
   try {
-    const categories = yield call(CategoriesApi.getCategories);
+    const categories = yield call(CategoriesApi.getCategories, action.payload);
     yield put(actions.loadCategoriesSucceeded(categories));
   } catch (error) {
     yield put(actions.loadCategoriesFailed());

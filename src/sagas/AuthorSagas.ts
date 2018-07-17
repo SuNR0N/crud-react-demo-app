@@ -21,9 +21,9 @@ function* loadAuthor(action: IActionWithPayload<ActionTypes.LOAD_AUTHOR_REQUEST,
   }
 }
 
-function* loadAuthors() {
+function* loadAuthors(action: IActionWithPayload<ActionTypes.LOAD_AUTHORS_REQUEST, string | undefined>) {
   try {
-    const authors = yield call(AuthorsApi.getAuthors);
+    const authors = yield call(AuthorsApi.getAuthors, action.payload);
     yield put(actions.loadAuthorsSucceeded(authors));
   } catch (error) {
     yield put(actions.loadAuthorsFailed());

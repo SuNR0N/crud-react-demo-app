@@ -7,8 +7,9 @@ import {
 import { HttpClient } from './HttpClient';
 
 export class BooksApi {
-  public static async getBooks(): Promise<IPageableCollectionDTO<IBookDTO>> {
-    const response = await HttpClient.get(`${API_PREFIX}/books`);
+  public static async getBooks(query?: string): Promise<IPageableCollectionDTO<IBookDTO>> {
+    const queryString = query ? `?q=${query}` : '';
+    const response = await HttpClient.get(`${API_PREFIX}/books${queryString}`);
     return response.json();
   }
 

@@ -10,11 +10,12 @@ import {
 } from './ListPublishersPage';
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
+  loggedIn: !!state.auth.profile,
   publishers: state.publisher.publishers,
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  loadPublishers: () => dispatch(actions.loadPublishers())
+  searchPublishers: (query?: string) => dispatch(actions.loadPublishers(query)),
 })
 
 export const ListPublishersPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListPublishersPage);

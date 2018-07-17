@@ -11,10 +11,11 @@ import {
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
   categories: state.category.categories,
+  loggedIn: !!state.auth.profile,
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  loadCategories: () => dispatch(actions.loadCategories())
+  searchCategories: (query?: string) => dispatch(actions.loadCategories(query))
 })
 
 export const ListCategoriesPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListCategoriesPage);

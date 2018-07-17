@@ -6,8 +6,9 @@ import {
 import { HttpClient } from './HttpClient';
 
 export class AuthorsApi {
-  public static async getAuthors(): Promise<IAuthorDTO[]> {
-    const response = await HttpClient.get(`${API_PREFIX}/authors`);
+  public static async getAuthors(query?: string): Promise<IAuthorDTO[]> {
+    const queryString = query ? `?q=${query}` : '';
+    const response = await HttpClient.get(`${API_PREFIX}/authors${queryString}`);
     return response.json();
   }
 

@@ -26,6 +26,8 @@ const initialStoreState: IRootState = {
   category: {
     ...initialCategoryState,
   },
+  form: {
+  },
   publisher: {
     ...initialPublisherState,
   },

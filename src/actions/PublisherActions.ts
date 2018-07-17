@@ -20,7 +20,7 @@ export const actions = {
   loadPublisher: (id: number) => createAction(ActionTypes.LOAD_PUBLISHER_REQUEST, id),
   loadPublisherFailed: (id: number) => createAction(ActionTypes.LOAD_PUBLISHER_FAILURE, id),
   loadPublisherSucceeded: (publisher: IPublisherDTO) => createAction(ActionTypes.LOAD_PUBLISHER_SUCCESS, publisher),
-  loadPublishers: () => createAction(ActionTypes.LOAD_PUBLISHERS_REQUEST),
+  loadPublishers: (query?: string) => createAction(ActionTypes.LOAD_PUBLISHERS_REQUEST, query),
   loadPublishersFailed: () => createAction(ActionTypes.LOAD_PUBLISHERS_FAILURE),
   loadPublishersSucceeded: (publishers: IPublisherDTO[]) => createAction(ActionTypes.LOAD_PUBLISHERS_SUCCESS, publishers),
 }

@@ -20,23 +20,20 @@ export const CategoryRowRenderer: React.SFC<IProps> = (props) => {
       <td>
         {category._links.self &&
           <RoutedIconButton
-            color="primary"
+            color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewCategory.replace(':id', String(category.id))}
           />
         }
         {category._links.update &&
           <RoutedIconButton
-            color="secondary"
+            color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editCategory.replace(':id', String(category.id))}
           />
         }
         {category._links.delete &&
-          <Button
-            outline={true}
-            color="danger"
-          >
+          <Button color="outline-danger">
             <Icon symbol="trash-alt-regular"/>
           </Button>
         }

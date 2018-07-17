@@ -17,7 +17,7 @@ export enum ActionTypes {
 
 export const actions = {
   createCategory: (category: INewCategoryDTO) => createAction(ActionTypes.CREATE_CATEGORY, category),
-  loadCategories: () => createAction(ActionTypes.LOAD_CATEGORIES_REQUEST),
+  loadCategories: (query?: string) => createAction(ActionTypes.LOAD_CATEGORIES_REQUEST, query),
   loadCategoriesFailed: () => createAction(ActionTypes.LOAD_CATEGORIES_FAILURE),
   loadCategoriesSucceeded: (categories: ICategoryDTO[]) => createAction(ActionTypes.LOAD_CATEGORIES_SUCCESS, categories),
   loadCategory: (id: number) => createAction(ActionTypes.LOAD_CATEGORY_REQUEST, id),

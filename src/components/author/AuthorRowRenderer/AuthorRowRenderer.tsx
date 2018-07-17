@@ -22,23 +22,20 @@ export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
       <td>
         {author._links.self &&
           <RoutedIconButton
-            color="primary"
+            color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewAuthor.replace(':id', String(author.id))}
           />
         }
         {author._links.update &&
           <RoutedIconButton
-            color="secondary"
+            color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editAuthor.replace(':id', String(author.id))}
           />
         }
         {author._links.delete &&
-          <Button
-            outline={true}
-            color="danger"
-          >
+          <Button color="outline-danger">
             <Icon symbol="trash-alt-regular"/>
           </Button>
         }

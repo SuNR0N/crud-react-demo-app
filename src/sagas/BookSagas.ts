@@ -21,9 +21,9 @@ function* loadBook(action: IActionWithPayload<ActionTypes.LOAD_BOOK_REQUEST, num
   }
 }
 
-function* loadBooks() {
+function* loadBooks(action: IActionWithPayload<ActionTypes.LOAD_BOOKS_REQUEST, string | undefined>) {
   try {
-    const books = yield call(BooksApi.getBooks);
+    const books = yield call(BooksApi.getBooks, action.payload);
     yield put(actions.loadBooksSucceeded(books));
   } catch (error) {
     yield put(actions.loadBooksFailed());

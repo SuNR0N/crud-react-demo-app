@@ -21,7 +21,7 @@ export const actions = {
   loadBook: (id: number) => createAction(ActionTypes.LOAD_BOOK_REQUEST, id),
   loadBookFailed: (id: number) => createAction(ActionTypes.LOAD_BOOK_FAILURE, id),
   loadBookSucceeded: (book: IBookDTO) => createAction(ActionTypes.LOAD_BOOK_SUCCESS, book),
-  loadBooks: () => createAction(ActionTypes.LOAD_BOOKS_REQUEST),
+  loadBooks: (query?: string) => createAction(ActionTypes.LOAD_BOOKS_REQUEST, query),
   loadBooksFailed: () => createAction(ActionTypes.LOAD_BOOKS_FAILURE),
   loadBooksSucceeded: (books: IPageableCollectionDTO<IBookDTO>) => createAction(ActionTypes.LOAD_BOOKS_SUCCESS, books),
 }

@@ -3,36 +3,49 @@ import {
   RouteComponentProps,
   withRouter,
 } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import {
+  Button,
+  ButtonProps,
+} from 'reactstrap';
 
 import {
   Icon,
   IconSymbol,
 } from '../Icon';
 
-export interface IProps extends RouteComponentProps<any> {
-  color: string;
+export interface IProps extends ButtonProps, RouteComponentProps<any> {
   route: string;
   symbol: IconSymbol;
 }
 
 const IconButton: React.SFC<IProps> = (props) => {
   const {
+    children,
+    className,
     color,
+    disabled,
     history,
     route,
     symbol,
   } = props;
 
   const navigateToRoute = () => history.push(route);
+  let classes = `icon-button`;
+  if (className) {
+    classes = `${classes} ${className}`;
+  }
 
   return (
     <Button
-      onClick={navigateToRoute}
-      outline={true}
+      className={classes}
       color={color}
+      disabled={disabled}
+      onClick={navigateToRoute}
     >
       <Icon symbol={symbol}/>
+      {children &&
+        <span>{children}</span>
+      }
     </Button>
   )
 };

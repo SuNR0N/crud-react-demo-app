@@ -20,23 +20,20 @@ export const PublisherRowRenderer: React.SFC<IProps> = (props) => {
       <td>
         {publisher._links.self &&
           <RoutedIconButton
-            color="primary"
+            color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewPublisher.replace(':id', String(publisher.id))}
           />
         }
         {publisher._links.update &&
           <RoutedIconButton
-            color="secondary"
+            color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editPublisher.replace(':id', String(publisher.id))}
           />
         }
         {publisher._links.delete &&
-          <Button
-            outline={true}
-            color="danger"
-          >
+          <Button color="outline-danger">
             <Icon symbol="trash-alt-regular"/>
           </Button>
         }

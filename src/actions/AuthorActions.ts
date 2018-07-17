@@ -20,7 +20,7 @@ export const actions = {
   loadAuthor: (id: number) => createAction(ActionTypes.LOAD_AUTHOR_REQUEST, id),
   loadAuthorFailed: (id: number) => createAction(ActionTypes.LOAD_AUTHOR_FAILURE, id),
   loadAuthorSucceeded: (author: IAuthorDTO) => createAction(ActionTypes.LOAD_AUTHOR_SUCCESS, author),
-  loadAuthors: () => createAction(ActionTypes.LOAD_AUTHORS_REQUEST),
+  loadAuthors: (query?: string) => createAction(ActionTypes.LOAD_AUTHORS_REQUEST, query),
   loadAuthorsFailed: () => createAction(ActionTypes.LOAD_AUTHORS_FAILURE),
   loadAuthorsSucceeded: (authors: IAuthorDTO[]) => createAction(ActionTypes.LOAD_AUTHORS_SUCCESS, authors),
 }

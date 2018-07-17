@@ -11,6 +11,7 @@ export interface IRootState {
   author: IAuthorState,
   book: IBookState,
   category: ICategoryState,
+  form: any,
   publisher: IPublisherState,
   router: RouterState,
 }

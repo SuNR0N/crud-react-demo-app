@@ -24,23 +24,20 @@ export const BookRowRenderer: React.SFC<IProps> = (props) => {
       <td>
         {book._links.self &&
           <RoutedIconButton
-            color="primary"
+            color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewBook.replace(':id', String(book.id))}
           />
         }
         {book._links.update &&
           <RoutedIconButton
-            color="secondary"
+            color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editBook.replace(':id', String(book.id))}
           />
         }
         {book._links.delete &&
-          <Button
-            outline={true}
-            color="danger"
-          >
+          <Button color="outline-danger">
             <Icon symbol="trash-alt-regular"/>
           </Button>
         }

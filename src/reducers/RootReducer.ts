@@ -1,5 +1,6 @@
 import { routerReducer as router } from 'react-router-redux';
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form'
 
 import { reducer as author } from './AuthorReducer';
 import { reducer as auth } from './AuthReducer';
@@ -13,6 +14,7 @@ export const rootReducer = combineReducers<IRootState>({
   author,
   book,
   category,
+  form,
   publisher,
   router,
 })
