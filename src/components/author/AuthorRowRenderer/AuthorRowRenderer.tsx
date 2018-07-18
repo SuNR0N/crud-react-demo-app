@@ -1,17 +1,20 @@
 import * as React from 'react';
-import { Button } from 'reactstrap';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
-import { Icon } from '../../common/Icon';
-import { RoutedIconButton } from '../../common/RoutedIconButton';
+import { IconButton} from '../../common/IconButton';
+import { RoutedButton } from '../../common/RoutedButton';
 
 export interface IProps {
   author: IAuthorDTO;
+  onDelete?: (author: IAuthorDTO) => void;
 }
 
 export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
-  const { author } = props;
+  const {
+    author,
+    onDelete,
+  } = props;
 
   return (
     <tr>
@@ -21,23 +24,28 @@ export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
       <td>{author.lastName}</td>
       <td>
         {author._links.self &&
-          <RoutedIconButton
+          <RoutedButton
+            className="btn-sm"
             color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewAuthor.replace(':id', String(author.id))}
           />
         }
         {author._links.update &&
-          <RoutedIconButton
+          <RoutedButton
+            className="btn-sm"
             color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editAuthor.replace(':id', String(author.id))}
           />
         }
         {author._links.delete &&
-          <Button color="outline-danger">
-            <Icon symbol="trash-alt-regular"/>
-          </Button>
+          <IconButton
+            className="btn-sm"
+            color="outline-danger"
+            onClick={onDelete ? () => onDelete(author) : undefined}
+            symbol="trash-alt-regular"
+          />
         }
       </td>
     </tr>

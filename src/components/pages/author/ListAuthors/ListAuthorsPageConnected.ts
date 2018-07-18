@@ -2,6 +2,10 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { actions } from '../../../../actions/AuthorActions';
+import {
+  IAuthorDTO,
+  IHATEOASLink,
+} from '../../../../interfaces';
 import { IRootState } from '../../../../reducers/RootState';
 import {
   IDispatchProps,
@@ -15,7 +19,8 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
-  searchAuthors: (query?: string) => dispatch(actions.loadAuthors(query))
+  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteAuthor(author, link, route)),
+  searchAuthors: (query?: string) => dispatch(actions.loadAuthors(query)),
 })
 
 export const ListAuthorsPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListAuthorsPage);

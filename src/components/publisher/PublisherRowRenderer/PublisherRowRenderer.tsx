@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IPublisherDTO } from '../../../interfaces/dtos/PublisherDTO';
 import { Icon } from '../../common/Icon';
-import { RoutedIconButton } from '../../common/RoutedIconButton';
+import { RoutedButton } from '../../common/RoutedButton';
 
 export interface IProps {
   publisher: IPublisherDTO;
@@ -19,14 +19,14 @@ export const PublisherRowRenderer: React.SFC<IProps> = (props) => {
       <td>{publisher.name}</td>
       <td>
         {publisher._links.self &&
-          <RoutedIconButton
+          <RoutedButton
             color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewPublisher.replace(':id', String(publisher.id))}
           />
         }
         {publisher._links.update &&
-          <RoutedIconButton
+          <RoutedButton
             color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editPublisher.replace(':id', String(publisher.id))}

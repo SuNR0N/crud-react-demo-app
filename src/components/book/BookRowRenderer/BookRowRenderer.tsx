@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Button } from 'reactstrap';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IBookDTO } from '../../../interfaces/dtos/BookDTO';
-import { Icon } from '../../common/Icon';
-import { RoutedIconButton } from '../../common/RoutedIconButton';
+import { IconButton } from '../../common/IconButton';
+import { RoutedButton } from '../../common/RoutedButton';
 
 export interface IProps {
   book: IBookDTO;
@@ -23,23 +22,24 @@ export const BookRowRenderer: React.SFC<IProps> = (props) => {
       <td>{book.publicationDate}</td>
       <td>
         {book._links.self &&
-          <RoutedIconButton
+          <RoutedButton
             color="outline-primary"
             symbol="eye-regular"
             route={RouteConfig.viewBook.replace(':id', String(book.id))}
           />
         }
         {book._links.update &&
-          <RoutedIconButton
+          <RoutedButton
             color="outline-secondary"
             symbol="edit-regular"
             route={RouteConfig.editBook.replace(':id', String(book.id))}
           />
         }
         {book._links.delete &&
-          <Button color="outline-danger">
-            <Icon symbol="trash-alt-regular"/>
-          </Button>
+          <IconButton
+            color="outline-danger"
+            symbol="trash-alt-regular"
+          />
         }
       </td>
     </tr>

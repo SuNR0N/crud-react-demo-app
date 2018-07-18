@@ -16,8 +16,11 @@ export const initialState = {
 
 export const reducer = (state = initialState, action: Actions): IState => {
   switch (action.type) {
-    case ActionTypes.CREATE_AUTHOR:
-      return state;
+    case ActionTypes.DELETE_AUTHOR_SUCCESS:
+      return {
+        ...state,
+        authors: state.authors.filter((author) => author.id !== action.payload),
+      }
     case ActionTypes.LOAD_AUTHOR_SUCCESS:
       return {
         ...state,
@@ -27,6 +30,11 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         authors: action.payload,
+      }
+    case ActionTypes.UPDATE_AUTHOR_SUCCESS:
+      return {
+        ...state,
+        currentAuthor: action.payload,
       }
     default:
       return state;

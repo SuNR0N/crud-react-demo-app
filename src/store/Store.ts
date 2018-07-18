@@ -1,3 +1,5 @@
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'react-router-redux';
 import {
   applyMiddleware,
   createStore,
@@ -36,6 +38,8 @@ const initialStoreState: IRootState = {
   },
 }
 
+export const history = createBrowserHistory();
+
 const sagaMiddleware = createSagaMiddleware();
 
 export function configureStore(initialState: IRootState = initialStoreState) {
@@ -43,6 +47,7 @@ export function configureStore(initialState: IRootState = initialStoreState) {
     rootReducer,
     initialState,
     applyMiddleware(
+      routerMiddleware(history),
       sagaMiddleware,
       reduxImmutableStateInvariant()
     )
@@ -50,4 +55,4 @@ export function configureStore(initialState: IRootState = initialStoreState) {
 }
 
 export const store = configureStore();
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);

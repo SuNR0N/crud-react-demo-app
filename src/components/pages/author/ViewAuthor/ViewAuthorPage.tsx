@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import {
+  Button,
   Col,
   Form,
   FormGroup,
@@ -10,9 +11,16 @@ import {
 
 import { IAction } from '../../../../actions/ActionHelpers';
 import { ActionTypes } from '../../../../actions/AuthorActions';
-import { IAuthorDTO } from '../../../../interfaces/dtos/AuthorDTO';
+import { RouteConfig } from '../../../../config/RouteConfig';
+import {
+  IAuthorDTO,
+  IHATEOASLink,
+} from '../../../../interfaces';
+import { ConfirmationModal } from '../../../common/ConfirmationModal';
+import { RoutedButton } from '../../../common/RoutedButton';
 
 export interface IDispatchProps {
+  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => IAction<ActionTypes.DELETE_AUTHOR_REQUEST>;
   loadAuthor: (id: number) => IAction<ActionTypes.LOAD_AUTHOR_REQUEST>;
 }
 
@@ -24,95 +32,155 @@ export interface IStateProps {
   author: IAuthorDTO;
 }
 
+export interface IState {
+  isModalOpen: boolean;
+}
+
 export interface IProps extends IDispatchProps, RouteComponentProps<IRouteProps>, IStateProps {}
 
-export class ViewAuthorPage extends React.Component<IProps> {
+export class ViewAuthorPage extends React.Component<IProps, IState> {
+  public state: IState = {
+    isModalOpen: false,
+  };
+  
   public componentDidMount() {
     this.props.loadAuthor(this.props.match.params.id);
   }
 
   public render() {
     const {
+      closeModal,
+      deleteAuthor,
       props: {
         author,
+      },
+      showConfirmationModal,
+      state: {
+        isModalOpen,
       },
     } = this;
 
     return (
-      <Form>
-        <FormGroup row={true}>
-          <Label
-            id="labelId"
-            for="id"
-            sm={2}
-          >
-            ID
-          </Label>
-          <Col sm={10}>
-            <Input
-              aria-labelledby="labelId"
-              id="id"
-              plaintext={true}
+      <div className="container-fluid">
+        <h2>View Author</h2>
+        <Form>
+          <FormGroup row={true}>
+            <Label
+              id="labelId"
+              for="id"
+              sm={2}
             >
-              {author.id}
-            </Input>
-          </Col>
-        </FormGroup>
-        <FormGroup row={true}>
-          <Label
-            id="labelFirstName"
-            for="firstName"
-            sm={2}
-          >
-            First Name
-          </Label>
-          <Col sm={10}>
-            <Input
-              aria-labelledby="labelFirstName"
-              id="firstName"
-              plaintext={true}
+              ID
+            </Label>
+            <Col sm={10}>
+              <Input
+                aria-labelledby="labelId"
+                id="id"
+                plaintext={true}
+              >
+                {author.id}
+              </Input>
+            </Col>
+          </FormGroup>
+          <FormGroup row={true}>
+            <Label
+              id="labelFirstName"
+              for="firstName"
+              sm={2}
             >
-              {author.firstName}
-            </Input>
-          </Col>
-        </FormGroup>
-        <FormGroup row={true}>
-          <Label
-            id="labelMiddleName"
-            for="middleName"
-            sm={2}
-          >
-            Middle Name
-          </Label>
-          <Col sm={10}>
-            <Input
-              aria-labelledby="labelMiddleName"
-              id="middleName"
-              plaintext={true}
+              First Name
+            </Label>
+            <Col sm={10}>
+              <Input
+                aria-labelledby="labelFirstName"
+                id="firstName"
+                plaintext={true}
+              >
+                {author.firstName}
+              </Input>
+            </Col>
+          </FormGroup>
+          <FormGroup row={true}>
+            <Label
+              id="labelMiddleName"
+              for="middleName"
+              sm={2}
             >
-              {author.middleName}
-            </Input>
-          </Col>
-        </FormGroup>
-        <FormGroup row={true}>
-          <Label
-            id="labelLastName"
-            for="lastName"
-            sm={2}
-          >
-            Last Name
-          </Label>
-          <Col sm={10}>
-            <Input
-              aria-labelledby="labelLastName"
-              id="lastName"
-              plaintext={true}
+              Middle Name
+            </Label>
+            <Col sm={10}>
+              <Input
+                aria-labelledby="labelMiddleName"
+                id="middleName"
+                plaintext={true}
+              >
+                {author.middleName}
+              </Input>
+            </Col>
+          </FormGroup>
+          <FormGroup row={true}>
+            <Label
+              id="labelLastName"
+              for="lastName"
+              sm={2}
             >
-              {author.lastName}
-            </Input>
-          </Col>
-        </FormGroup>
-      </Form>
+              Last Name
+            </Label>
+            <Col sm={10}>
+              <Input
+                aria-labelledby="labelLastName"
+                id="lastName"
+                plaintext={true}
+              >
+                {author.lastName}
+              </Input>
+            </Col>
+          </FormGroup>
+        </Form>
+        <div className="d-flex justify-content-center">
+          {author._links && author._links.update &&
+            <RoutedButton
+              color="outline-secondary"
+              route={RouteConfig.editAuthor.replace(':id', String(author.id))}
+            >
+              Edit
+            </RoutedButton>
+          }
+          {author._links && author._links.delete &&
+            <Button
+              color="outline-danger"
+              onClick={showConfirmationModal}
+            >
+              Delete
+            </Button>
+          }
+        </div>
+        <ConfirmationModal
+          htmlContent={`Are you sure you want to delete <strong>${author.fullName}</strong> <i>(ID: ${author.id})</i> ?`}
+          onConfirm={deleteAuthor}
+          isOpen={isModalOpen}
+          toggle={closeModal}
+        />
+      </div>
     )
+  }
+
+  private closeModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  }
+
+  private deleteAuthor = () => {
+    if (this.props.author._links.delete) {
+      this.props.deleteAuthor(this.props.author, this.props.author._links.delete, RouteConfig.authors);
+    }
+    this.closeModal();
+  }
+
+  private showConfirmationModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
   }
 }

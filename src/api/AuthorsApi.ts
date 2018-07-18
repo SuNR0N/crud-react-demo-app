@@ -17,7 +17,14 @@ export class AuthorsApi {
     return response.json();
   }
 
-  public static async createAuthor(author: INewAuthorDTO): Promise<void> {
-    await HttpClient.post(`${API_PREFIX}/authors`, author);
+  public static async createAuthor(author: INewAuthorDTO): Promise<number> {
+    const locationRegExp = /\/(\d{1,})$/;
+    const response = await HttpClient.post(`${API_PREFIX}/authors`, author);
+    const locationHeaderValue = response.headers.get('Location');
+    const locationRegExpExec = locationRegExp.exec(locationHeaderValue!);
+    if (!locationRegExpExec) {
+      throw new Error('Invalid location header');
+    }
+    return parseInt(locationRegExpExec[1], 10);
   }
 }

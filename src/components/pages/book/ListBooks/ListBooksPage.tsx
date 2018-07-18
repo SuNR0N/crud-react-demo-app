@@ -9,7 +9,7 @@ import {
   IPageableCollectionDTO,
 } from '../../../../interfaces/dtos';
 import { BookRowRenderer } from '../../../book/BookRowRenderer';
-import { RoutedIconButton } from '../../../common/RoutedIconButton';
+import { RoutedButton } from '../../../common/RoutedButton';
 import { SearchField } from '../../../common/SearchField';
 
 export interface IDispatchProps {
@@ -47,14 +47,14 @@ export class ListBooksPage extends React.Component<IProps> {
               placeholder="Search books..."
             />
           </div>
-          <RoutedIconButton
+          <RoutedButton
             color="primary"
             disabled={!loggedIn}
             route={RouteConfig.createBook}
             symbol="plus-square-regular"
           >
             Create New Book
-          </RoutedIconButton>
+          </RoutedButton>
         </div>
         <Table
           striped={true}

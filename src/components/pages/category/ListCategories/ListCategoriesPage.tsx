@@ -6,7 +6,7 @@ import { ActionTypes } from '../../../../actions/CategoryActions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import { ICategoryDTO } from '../../../../interfaces/dtos/CategoryDTO';
 import { CategoryRowRenderer } from '../../../category/CategoryRowRenderer';
-import { RoutedIconButton } from '../../../common/RoutedIconButton';
+import { RoutedButton } from '../../../common/RoutedButton';
 import { SearchField } from '../../../common/SearchField';
 
 export interface IDispatchProps {
@@ -44,14 +44,14 @@ export class ListCategoriesPage extends React.Component<IProps> {
               placeholder="Search categories..."
             />
           </div>
-          <RoutedIconButton
+          <RoutedButton
             color="primary"
             disabled={!loggedIn}
             route={RouteConfig.createCategory}
             symbol="plus-square-regular"
           >
             Create New Category
-          </RoutedIconButton>
+          </RoutedButton>
         </div>
         <Table
           striped={true}

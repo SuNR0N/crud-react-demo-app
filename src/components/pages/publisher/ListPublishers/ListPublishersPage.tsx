@@ -5,7 +5,7 @@ import { IAction } from '../../../../actions/ActionHelpers';
 import { ActionTypes } from '../../../../actions/PublisherActions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import { IPublisherDTO } from '../../../../interfaces/dtos/PublisherDTO';
-import { RoutedIconButton } from '../../../common/RoutedIconButton';
+import { RoutedButton } from '../../../common/RoutedButton';
 import { SearchField } from '../../../common/SearchField';
 import { PublisherRowRenderer } from '../../../publisher/PublisherRowRenderer';
 
@@ -44,14 +44,14 @@ export class ListPublishersPage extends React.Component<IProps> {
               placeholder="Search publishers..."
             />
           </div>
-          <RoutedIconButton
+          <RoutedButton
             color="primary"
             disabled={!loggedIn}
             route={RouteConfig.createPublisher}
             symbol="plus-square-regular"
           >
             Create New Publisher
-          </RoutedIconButton>
+          </RoutedButton>
         </div>
         <Table
           striped={true}
