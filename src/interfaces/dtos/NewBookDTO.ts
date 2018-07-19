@@ -1,9 +1,6 @@
-export interface INewBookDTO {
-  authors?: number[];
-  categories?: number[];
-  isbn10?: string;
+import { IBookUpdateDTO } from './BookUpdateDTO';
+
+export interface INewBookDTO extends IBookUpdateDTO {
   isbn13: string;
-  publicationDate?: string;
-  publishers?: number[];
   title: string;
 }

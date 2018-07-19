@@ -1,6 +1,7 @@
 export * from './AuthorDTO';
 export * from './AuthorUpdateDTO';
 export * from './BookDTO';
+export * from './BookUpdateDTO';
 export * from './CategoryDTO';
 export * from './NewAuthorDTO';
 export * from './NewBookDTO';

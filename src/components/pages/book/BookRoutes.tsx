@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 
 import { RouteConfig } from '../../../config/RouteConfig';
-import { CreateBookPage } from './CreateBook';
+import { CreateBookPageConnected } from './CreateBook';
 import { EditBookPage } from './EditBook';
 import { ListBooksPageConnected } from './ListBooks';
 import { ViewBookPageConnected } from './ViewBook';
@@ -18,7 +18,7 @@ export const BookRoutes: React.SFC = () => (
     />
     <Route
       path={RouteConfig.createBook}
-      component={CreateBookPage}
+      component={CreateBookPageConnected}
     />
     <Route
       path={RouteConfig.viewBook}

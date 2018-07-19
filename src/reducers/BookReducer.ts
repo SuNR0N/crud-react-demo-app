@@ -24,8 +24,14 @@ export const initialState = {
 
 export const reducer = (state = initialState, action: Actions): IState => {
   switch (action.type) {
-    case ActionTypes.CREATE_BOOK:
-      return state;
+    case ActionTypes.DELETE_BOOK_SUCCESS:
+      return {
+        ...state,
+        books: {
+          ...state.books,
+          content: state.books.content.filter((book) => book.id !== action.payload),
+        }
+      }
     case ActionTypes.LOAD_BOOK_SUCCESS:
       return {
         ...state,
@@ -35,6 +41,11 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         books: action.payload,
+      }
+    case ActionTypes.UPDATE_BOOK_SUCCESS:
+      return {
+        ...state,
+        currentBook: action.payload,
       }
     default:
       return state;

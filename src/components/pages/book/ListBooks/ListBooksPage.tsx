@@ -6,17 +6,20 @@ import {
   IAction,
 } from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
+import { IHATEOASLink } from '../../../../interfaces';
 import {
   IBookDTO,
   IPageableCollectionDTO,
 } from '../../../../interfaces/dtos';
 import { BookRowRenderer } from '../../../book/BookRowRenderer';
 import {
+  ConfirmationModal,
   RoutedButton,
   SearchField,
 } from '../../../common';
 
 export interface IDispatchProps {
+  deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => IAction<BookActionTypes.DELETE_BOOK_REQUEST>;
   searchBooks: (query?: string) => IAction<BookActionTypes.LOAD_BOOKS_REQUEST>;
 }
 
@@ -25,21 +28,36 @@ export interface IStateProps {
   booksCollection: IPageableCollectionDTO<IBookDTO>; 
 }
 
+export interface IState {
+  isModalOpen: boolean;
+  selectedBook: IBookDTO | null;
+}
+
 export interface IProps extends IDispatchProps, IStateProps {}
 
-export class ListBooksPage extends React.Component<IProps> {
+export class ListBooksPage extends React.Component<IProps, IState> {
+  public state: IState = {
+    isModalOpen: false,
+    selectedBook: null,
+  };
+  
   public componentDidMount() {
     this.props.searchBooks();
   }
 
   public render() {
     const {
+      bookRowRenderer,
+      closeModal,
+      deleteBook,
+      onSearchTextChange,
       props: {
         booksCollection,
         loggedIn,
       },
-      bookRowRenderer,
-      onSearchTextChange,
+      state: {
+        isModalOpen,
+      },
     } = this;
 
     return (
@@ -61,24 +79,35 @@ export class ListBooksPage extends React.Component<IProps> {
           </RoutedButton>
         </div>
         <Table
+          borderless={true}
           striped={true}
           responsive={true}
         >
           <thead className="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Author</th>
-              <th>Publisher</th>
-              <th>Publication Date</th>
-              <th>Actions</th>
+            <tr className="d-flex">
+              <th className="col-1">ID</th>
+              <th className="col-3">Title</th>
+              <th className="col-2">Category</th>
+              <th className="col-2">Author</th>
+              <th className="col-1">Publisher</th>
+              <th className="col-1">Publication Date</th>
+              <th className="col-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {booksCollection.content.map(bookRowRenderer)}
           </tbody>
         </Table>
+        <ConfirmationModal
+          htmlContent={
+            this.state.selectedBook ?
+            `Are you sure you want to delete <strong>${this.state.selectedBook.title}</strong> <i>(ID: ${this.state.selectedBook.id})</i> ?` :
+            undefined
+          }
+          onConfirm={deleteBook}
+          isOpen={isModalOpen}
+          toggle={closeModal}
+        />
       </div>
     );
   }
@@ -87,10 +116,32 @@ export class ListBooksPage extends React.Component<IProps> {
     <BookRowRenderer 
       book={book}
       key={book.id}
+      onDelete={this.showConfirmationModal}
     />
   )
 
+  private closeModal = () => {
+    this.setState({
+      isModalOpen: false,
+      selectedBook: null,
+    });
+  }
+
+  private deleteBook = () => {
+    if (this.state.selectedBook && this.state.selectedBook._links.delete) {
+      this.props.deleteBook(this.state.selectedBook, this.state.selectedBook._links.delete);
+    }
+    this.closeModal();
+  }
+
   private onSearchTextChange = (text: string) => {
     this.props.searchBooks(text);
+  }
+
+  private showConfirmationModal = (book: IBookDTO) => {
+    this.setState({
+      isModalOpen: true,
+      selectedBook: book,
+    });
   }
 }
