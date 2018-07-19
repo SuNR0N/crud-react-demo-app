@@ -2,11 +2,13 @@ import { routerReducer as router } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form'
 
-import { reducer as author } from './AuthorReducer';
-import { reducer as auth } from './AuthReducer';
-import { reducer as book } from './BookReducer';
-import { reducer as category } from './CategoryReducer';
-import { reducer as publisher } from './PublisherReducer';
+import {
+  auth,
+  author,
+  book,
+  category,
+  publisher,
+} from './';
 import { IRootState } from './RootState';
 
 export const rootReducer = combineReducers<IRootState>({

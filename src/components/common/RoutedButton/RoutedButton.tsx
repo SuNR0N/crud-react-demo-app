@@ -6,10 +6,10 @@ import {
 
 import {
   IconButton,
-  IProps as IconButtonProps,
+  IProps as IIconButtonProps,
 } from '../IconButton';
 
-export interface IProps extends IconButtonProps, RouteComponentProps<any> {
+export interface IProps extends IIconButtonProps, RouteComponentProps<any> {
   route: string;
 }
 

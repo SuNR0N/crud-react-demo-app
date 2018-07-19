@@ -16,8 +16,11 @@ export const initialState = {
 
 export const reducer = (state = initialState, action: Actions): IState => {
   switch (action.type) {
-    case ActionTypes.CREATE_PUBLISHER:
-      return state;
+    case ActionTypes.DELETE_PUBLISHER_SUCCESS:
+      return {
+        ...state,
+        publishers: state.publishers.filter((publisher) => publisher.id !== action.payload),
+      }
     case ActionTypes.LOAD_PUBLISHER_SUCCESS:
       return {
         ...state,
@@ -27,6 +30,11 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         publishers: action.payload,
+      }
+    case ActionTypes.UPDATE_PUBLISHER_SUCCESS:
+      return {
+        ...state,
+        currentPublisher: action.payload,
       }
     default:
       return state;

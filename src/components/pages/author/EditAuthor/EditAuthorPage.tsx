@@ -3,8 +3,10 @@ import { RouteComponentProps } from 'react-router';
 import { Button } from 'reactstrap';
 import { FormAction } from 'redux-form';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/AuthorActions';
+import {
+  AuthorActionTypes,
+  IAction,
+} from '../../../../actions';
 import {
   IAuthorDTO,
   IAuthorUpdateDTO,
@@ -14,10 +16,11 @@ import {
   EditAuthorForm,
   IFormData,
 } from '../../../author/EditAuthorForm';
+import { ActionBar } from '../../../common/ActionBar';
 
 export interface IDispatchProps {
-  loadAuthor: (id: number) => IAction<ActionTypes.LOAD_AUTHOR_REQUEST>;
-  saveAuthor: (author: IAuthorUpdateDTO, link: IHATEOASLink) => IAction<ActionTypes.UPDATE_AUTHOR_REQUEST>;
+  loadAuthor: (id: number) => IAction<AuthorActionTypes.LOAD_AUTHOR_REQUEST>;
+  saveAuthor: (author: IAuthorUpdateDTO, link: IHATEOASLink) => IAction<AuthorActionTypes.UPDATE_AUTHOR_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -59,7 +62,7 @@ export class EditAuthorPage extends React.Component<IProps> {
           initialValues={initialFormData}
           onSubmit={saveAuthor}
         />
-        <div className="d-flex justify-content-center">
+        <ActionBar>
           <Button
             color="outline-secondary"
             onClick={navigateBack}
@@ -73,7 +76,7 @@ export class EditAuthorPage extends React.Component<IProps> {
           >
             Save
           </Button>
-        </div>
+        </ActionBar>
       </div>
     );
   }

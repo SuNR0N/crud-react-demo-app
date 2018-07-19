@@ -1,19 +1,23 @@
 import * as React from 'react';
 import { Table } from 'reactstrap';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/BookActions';
-import { RouteConfig } from '../../../../config';
+import {
+  BookActionTypes,
+  IAction,
+} from '../../../../actions';
+import { RouteConfig } from '../../../../config/RouteConfig';
 import {
   IBookDTO,
   IPageableCollectionDTO,
 } from '../../../../interfaces/dtos';
 import { BookRowRenderer } from '../../../book/BookRowRenderer';
-import { RoutedButton } from '../../../common/RoutedButton';
-import { SearchField } from '../../../common/SearchField';
+import {
+  RoutedButton,
+  SearchField,
+} from '../../../common';
 
 export interface IDispatchProps {
-  searchBooks: (query?: string) => IAction<ActionTypes.LOAD_BOOKS_REQUEST>;
+  searchBooks: (query?: string) => IAction<BookActionTypes.LOAD_BOOKS_REQUEST>;
 }
 
 export interface IStateProps {

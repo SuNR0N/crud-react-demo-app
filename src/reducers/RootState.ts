@@ -1,10 +1,12 @@
 import { RouterState } from 'react-router-redux';
 
-import { IState as IAuthorState } from './AuthorReducer';
-import { IState as IAuthState } from './AuthReducer';
-import { IState as IBookState } from './BookReducer';
-import { IState as ICategoryState } from './CategoryReducer';
-import { IState as IPublisherState } from './PublisherReducer';
+import {
+  IAuthorState,
+  IAuthState,
+  IBookState,
+  ICategoryState,
+  IPublisherState,
+} from './';
 
 export interface IRootState {
   auth: IAuthState,

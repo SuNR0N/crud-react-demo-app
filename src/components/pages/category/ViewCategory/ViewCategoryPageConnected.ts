@@ -2,6 +2,10 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { actions } from '../../../../actions/CategoryActions';
+import {
+  ICategoryDTO,
+  IHATEOASLink,
+} from '../../../../interfaces';
 import { IRootState } from '../../../../reducers/RootState';
 import {
   IDispatchProps,
@@ -14,6 +18,7 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 });
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteCategory(category, link, route)),
   loadCategory: (id: number) => dispatch(actions.loadCategory(id))
 })
 

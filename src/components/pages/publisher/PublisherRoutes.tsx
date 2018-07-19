@@ -5,8 +5,8 @@ import {
 } from 'react-router-dom';
 
 import { RouteConfig } from '../../../config/RouteConfig';
-import { CreatePublisherPage } from './CreatePublisher';
-import { EditPublisherPage } from './EditPublisher';
+import { CreatePublisherPageConnected } from './CreatePublisher';
+import { EditPublisherPageConnected } from './EditPublisher';
 import { ListPublishersPageConnected } from './ListPublishers';
 import { ViewPublisherPageConnected } from './ViewPublisher';
 
@@ -14,11 +14,11 @@ export const PublisherRoutes: React.SFC = () => (
   <Switch>
     <Route
       path={RouteConfig.editPublisher}
-      component={EditPublisherPage}
+      component={EditPublisherPageConnected}
     />
     <Route
       path={RouteConfig.createPublisher}
-      component={CreatePublisherPage}
+      component={CreatePublisherPageConnected}
     />
     <Route
       path={RouteConfig.viewPublisher}

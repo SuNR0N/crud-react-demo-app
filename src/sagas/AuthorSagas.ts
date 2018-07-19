@@ -6,11 +6,11 @@ import {
   takeEvery,
 } from 'redux-saga/effects';
 
-import { IActionWithPayload } from '../actions/ActionHelpers';
 import {
-  actions,
-  ActionTypes,
-} from '../actions/AuthorActions';
+  AuthorActions,
+  AuthorActionTypes,
+  IActionWithPayload,
+} from '../actions';
 import {
   AuthorsApi,
   ResourceApi,
@@ -23,62 +23,62 @@ import {
   IResourceParams,
 } from '../interfaces';
 
-function* deleteAuthor(action: IActionWithPayload<ActionTypes.DELETE_AUTHOR_REQUEST, IResourceParams<IAuthorDTO>>) {
+function* deleteAuthor(action: IActionWithPayload<AuthorActionTypes.DELETE_AUTHOR_REQUEST, IResourceParams<IAuthorDTO>>) {
   try {
     yield call(ResourceApi.request, action.payload);
-    yield put(actions.deleteAuthorSucceeded(action.payload.data!.id));
+    yield put(AuthorActions.deleteAuthorSucceeded(action.payload.data!.id));
     if (action.payload.route) {
       yield put(push(action.payload.route));
     }
   } catch (error) {
-    yield put(actions.deleteAuthorFailed());
+    yield put(AuthorActions.deleteAuthorFailed());
   }
 }
 
-function* createAuthor(action: IActionWithPayload<ActionTypes.CREATE_AUTHOR_REQUEST, INewAuthorDTO>) {
+function* createAuthor(action: IActionWithPayload<AuthorActionTypes.CREATE_AUTHOR_REQUEST, INewAuthorDTO>) {
   try {
     const id = yield call(AuthorsApi.createAuthor, action.payload);
-    yield put(actions.createAuthorSucceeded(id));
+    yield put(AuthorActions.createAuthorSucceeded(id));
     yield put(push(RouteConfig.authors));
   } catch (error) {
-    yield put(actions.createAuthorFailed(action.payload));
+    yield put(AuthorActions.createAuthorFailed(action.payload));
   }
 }
 
-function* loadAuthor(action: IActionWithPayload<ActionTypes.LOAD_AUTHOR_REQUEST, number>) {
+function* loadAuthor(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHOR_REQUEST, number>) {
   try {
     const author = yield call(AuthorsApi.getAuthor, action.payload);
-    yield put(actions.loadAuthorSucceeded(author));
+    yield put(AuthorActions.loadAuthorSucceeded(author));
   } catch (error) {
-    yield put(actions.loadAuthorFailed(action.payload));
+    yield put(AuthorActions.loadAuthorFailed(action.payload));
   }
 }
 
-function* loadAuthors(action: IActionWithPayload<ActionTypes.LOAD_AUTHORS_REQUEST, string | undefined>) {
+function* loadAuthors(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHORS_REQUEST, string | undefined>) {
   try {
     const authors = yield call(AuthorsApi.getAuthors, action.payload);
-    yield put(actions.loadAuthorsSucceeded(authors));
+    yield put(AuthorActions.loadAuthorsSucceeded(authors));
   } catch (error) {
-    yield put(actions.loadAuthorsFailed());
+    yield put(AuthorActions.loadAuthorsFailed());
   }
 }
 
-function* updateAuthor(action: IActionWithPayload<ActionTypes.UPDATE_AUTHOR_REQUEST, IResourceParams<IAuthorUpdateDTO>>) {
+function* updateAuthor(action: IActionWithPayload<AuthorActionTypes.UPDATE_AUTHOR_REQUEST, IResourceParams<IAuthorUpdateDTO>>) {
   try {
     const author: IAuthorDTO = yield call(ResourceApi.request, action.payload);
-    yield put(actions.updateAuthorSucceeded(author));
+    yield put(AuthorActions.updateAuthorSucceeded(author));
     yield put(push(RouteConfig.viewAuthor.replace(':id', String(author.id))));
   } catch (error) {
-    yield put(actions.updateAuthorFailed(action.payload.data!));
+    yield put(AuthorActions.updateAuthorFailed(action.payload.data!));
   }
 }
 
 export function* authorSagas() {
   yield all([
-    takeEvery(ActionTypes.CREATE_AUTHOR_REQUEST, createAuthor),
-    takeEvery(ActionTypes.DELETE_AUTHOR_REQUEST, deleteAuthor),
-    takeEvery(ActionTypes.LOAD_AUTHOR_REQUEST, loadAuthor),
-    takeEvery(ActionTypes.LOAD_AUTHORS_REQUEST, loadAuthors),
-    takeEvery(ActionTypes.UPDATE_AUTHOR_REQUEST, updateAuthor),
+    takeEvery(AuthorActionTypes.CREATE_AUTHOR_REQUEST, createAuthor),
+    takeEvery(AuthorActionTypes.DELETE_AUTHOR_REQUEST, deleteAuthor),
+    takeEvery(AuthorActionTypes.LOAD_AUTHOR_REQUEST, loadAuthor),
+    takeEvery(AuthorActionTypes.LOAD_AUTHORS_REQUEST, loadAuthors),
+    takeEvery(AuthorActionTypes.UPDATE_AUTHOR_REQUEST, updateAuthor),
   ]);
 }

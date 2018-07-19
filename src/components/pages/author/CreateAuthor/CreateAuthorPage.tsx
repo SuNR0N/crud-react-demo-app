@@ -3,14 +3,17 @@ import { RouteComponentProps } from 'react-router';
 import { Button } from 'reactstrap';
 import { FormAction } from 'redux-form';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/AuthorActions';
+import {
+  AuthorActionTypes,
+  IAction,
+} from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import { INewAuthorDTO } from '../../../../interfaces/dtos/NewAuthorDTO';
 import { CreateAuthorForm, IFormData } from '../../../author/CreateAuthorForm';
+import { ActionBar } from '../../../common/ActionBar';
 
 export interface IDispatchProps {
-  saveAuthor: (author: INewAuthorDTO) => IAction<ActionTypes.CREATE_AUTHOR_REQUEST>;
+  saveAuthor: (author: INewAuthorDTO) => IAction<AuthorActionTypes.CREATE_AUTHOR_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -35,7 +38,13 @@ export class CreateAuthorPage extends React.Component<IProps> {
      <div className="container-fluid">
        <h2>Create New Author</h2>
        <CreateAuthorForm onSubmit={saveAuthor}/>
-       <div className="d-flex justify-content-center">
+       <ActionBar>
+         <Button
+           color="outline-secondary"
+           onClick={navigateToListAuthors}
+         >
+           Cancel
+         </Button>
          <Button
            color="outline-success"
            onClick={submitForm}
@@ -43,13 +52,7 @@ export class CreateAuthorPage extends React.Component<IProps> {
          >
            Save
          </Button>
-         <Button
-           color="outline-secondary"
-           onClick={navigateToListAuthors}
-         >
-           Cancel
-         </Button>
-       </div>
+       </ActionBar>
      </div>
    );
   }

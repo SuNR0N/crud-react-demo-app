@@ -10,11 +10,13 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import { RouteConfig } from '../../../config';
+import {
+  Icon,
+  ProfileConnected,
+  SignIn,
+} from '../';
+import { RouteConfig } from '../../../config/RouteConfig';
 import { IProfileDTO } from '../../../interfaces/dtos/ProfileDTO';
-import { Icon } from '../Icon';
-import { ProfileConnected } from '../Profile';
-import { SignIn } from '../SignIn';
 
 export interface IDispatchProps {
   loadProfile: () => any;

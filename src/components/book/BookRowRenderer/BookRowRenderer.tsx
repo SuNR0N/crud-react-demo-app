@@ -2,8 +2,10 @@ import * as React from 'react';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IBookDTO } from '../../../interfaces/dtos/BookDTO';
-import { IconButton } from '../../common/IconButton';
-import { RoutedButton } from '../../common/RoutedButton';
+import {
+  IconButton,
+  RoutedButton,
+} from '../../common';
 
 export interface IProps {
   book: IBookDTO;

@@ -24,7 +24,7 @@ export const RouteConfig: IRouteConfig = {
   categories: '/categories',
   createAuthor: '/authors/create',
   createBook: '/books/create',
-  createCategory: 'categories/create',
+  createCategory: '/categories/create',
   createPublisher: '/publishers/create',
   editAuthor: '/authors/:id/edit',
   editBook: '/books/:id/edit',

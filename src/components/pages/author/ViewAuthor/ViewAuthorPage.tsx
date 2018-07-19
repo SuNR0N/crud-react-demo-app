@@ -9,19 +9,24 @@ import {
   Label,
 } from 'reactstrap';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/AuthorActions';
+import {
+  AuthorActionTypes,
+  IAction,
+} from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import {
   IAuthorDTO,
   IHATEOASLink,
 } from '../../../../interfaces';
-import { ConfirmationModal } from '../../../common/ConfirmationModal';
-import { RoutedButton } from '../../../common/RoutedButton';
+import {
+  ActionBar,
+  ConfirmationModal,
+  RoutedButton,
+} from '../../../common';
 
 export interface IDispatchProps {
-  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => IAction<ActionTypes.DELETE_AUTHOR_REQUEST>;
-  loadAuthor: (id: number) => IAction<ActionTypes.LOAD_AUTHOR_REQUEST>;
+  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => IAction<AuthorActionTypes.DELETE_AUTHOR_REQUEST>;
+  loadAuthor: (id: number) => IAction<AuthorActionTypes.LOAD_AUTHOR_REQUEST>;
 }
 
 export interface IRouteProps {
@@ -137,7 +142,7 @@ export class ViewAuthorPage extends React.Component<IProps, IState> {
             </Col>
           </FormGroup>
         </Form>
-        <div className="d-flex justify-content-center">
+        <ActionBar>
           {author._links && author._links.update &&
             <RoutedButton
               color="outline-secondary"
@@ -154,7 +159,7 @@ export class ViewAuthorPage extends React.Component<IProps, IState> {
               Delete
             </Button>
           }
-        </div>
+        </ActionBar>
         <ConfirmationModal
           htmlContent={`Are you sure you want to delete <strong>${author.fullName}</strong> <i>(ID: ${author.id})</i> ?`}
           onConfirm={deleteAuthor}

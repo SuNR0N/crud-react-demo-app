@@ -2,8 +2,10 @@ import * as React from 'react';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
-import { IconButton} from '../../common/IconButton';
-import { RoutedButton } from '../../common/RoutedButton';
+import {
+  IconButton,
+  RoutedButton,
+} from '../../common';
 
 export interface IProps {
   author: IAuthorDTO;
@@ -17,12 +19,12 @@ export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
   } = props;
 
   return (
-    <tr>
-      <td>{author.id}</td>
-      <td>{author.firstName}</td>
-      <td>{author.middleName}</td>
-      <td>{author.lastName}</td>
-      <td>
+    <tr className="d-flex align-items-center">
+      <td className="col-1">{author.id}</td>
+      <td className="col-3">{author.firstName}</td>
+      <td className="col-3">{author.middleName}</td>
+      <td className="col-3">{author.lastName}</td>
+      <td className="col-2 d-flex justify-content-around">
         {author._links.self &&
           <RoutedButton
             className="btn-sm"

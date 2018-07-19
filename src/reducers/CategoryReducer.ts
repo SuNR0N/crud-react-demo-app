@@ -16,8 +16,11 @@ export const initialState = {
 
 export const reducer = (state = initialState, action: Actions): IState => {
   switch (action.type) {
-    case ActionTypes.CREATE_CATEGORY:
-      return state;
+    case ActionTypes.DELETE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categories: state.categories.filter((category) => category.id !== action.payload),
+      }
     case ActionTypes.LOAD_CATEGORY_SUCCESS:
       return {
         ...state,
@@ -27,6 +30,11 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         categories: action.payload,
+      }
+    case ActionTypes.UPDATE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        currentCategory: action.payload,
       }
     default:
       return state;

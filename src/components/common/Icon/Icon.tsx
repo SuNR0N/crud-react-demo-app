@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './Icon.css';
-
 // tslint:disable-next-line:no-var-requires
 const SpritePath = require('../../../assets/icons/sprite.svg');
 

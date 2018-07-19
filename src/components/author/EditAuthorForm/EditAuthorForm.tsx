@@ -13,8 +13,10 @@ import {
 
 import { EDIT_AUTHOR_FORM } from '../../../constants';
 import { validate } from '../../../validators/AuthorForms';
-import { ReadOnlyField } from '../../common/ReadOnlyField';
-import { TextField } from '../../common/TextField';
+import {
+  ReadOnlyField,
+  TextField,
+} from '../../common';
 import { IFormData as CreateAuthorFormData } from '../CreateAuthorForm';
 
 export enum FormDataNames {

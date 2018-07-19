@@ -8,12 +8,14 @@ import {
   Label,
 } from 'reactstrap';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/BookActions';
+import {
+  BookActionTypes,
+  IAction,
+} from '../../../../actions';
 import { IBookDTO } from '../../../../interfaces/dtos/BookDTO';
 
 export interface IDispatchProps {
-  loadBook: (id: number) => IAction<ActionTypes.LOAD_BOOK_REQUEST>;
+  loadBook: (id: number) => IAction<BookActionTypes.LOAD_BOOK_REQUEST>;
 }
 
 export interface IRouteProps {

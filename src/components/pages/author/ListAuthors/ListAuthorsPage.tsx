@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { Table } from 'reactstrap';
 
-import { IAction } from '../../../../actions/ActionHelpers';
-import { ActionTypes } from '../../../../actions/AuthorActions';
+import {
+  AuthorActionTypes,
+  IAction } from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import {
   IAuthorDTO,
   IHATEOASLink,
 } from '../../../../interfaces';
 import { AuthorRowRenderer } from '../../../author/AuthorRowRenderer';
-import { ConfirmationModal } from '../../../common/ConfirmationModal';
-import { RoutedButton } from '../../../common/RoutedButton';
-import { SearchField } from '../../../common/SearchField';
+import {
+  ConfirmationModal,
+  RoutedButton,
+  SearchField,
+} from '../../../common';
 
 export interface IDispatchProps {
-  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => IAction<ActionTypes.DELETE_AUTHOR_REQUEST>;
-  searchAuthors: (query?: string) => IAction<ActionTypes.LOAD_AUTHORS_REQUEST>;
+  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => IAction<AuthorActionTypes.DELETE_AUTHOR_REQUEST>;
+  searchAuthors: (query?: string) => IAction<AuthorActionTypes.LOAD_AUTHORS_REQUEST>;
 }
 
 export interface IStateProps {
@@ -74,16 +77,17 @@ export class ListAuthorsPage extends React.Component<IProps, IState> {
           </RoutedButton>
         </div>
         <Table
+          borderless={true}
           striped={true}
           responsive={true}
         >
           <thead className="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Middle Name</th>
-              <th>Last Name</th>
-              <th>Actions</th>
+            <tr className="d-flex">
+              <th className="col-1">ID</th>
+              <th className="col-3">First Name</th>
+              <th className="col-3">Middle Name</th>
+              <th className="col-3">Last Name</th>
+              <th className="col-2">Actions</th>
             </tr>
           </thead>
           <tbody>
