@@ -87,9 +87,21 @@ export class EditAuthorPage extends React.Component<IProps> {
 
   private saveAuthor = (values: IFormData) => {
     const author: IAuthorUpdateDTO = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      middleName: values.middleName,
+      ...(
+        this.props.initialFormData.firstName !== values.firstName ?
+        { firstName: values.firstName } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.lastName !== values.lastName ?
+        { lastName: values.lastName } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.middleName !== values.middleName ?
+        { middleName: values.middleName } :
+        {}
+      ),
     }
     this.props.saveAuthor(author, this.props.currentAuthor._links.update!);
   }

@@ -4,6 +4,7 @@ import * as React from 'react';
 const SpritePath = require('../../../assets/icons/sprite.svg');
 
 export type IconSymbol =
+  'calendar-alt-regular' |
   'edit-regular' |
   'eye-regular' |
   'plus-square-regular' |

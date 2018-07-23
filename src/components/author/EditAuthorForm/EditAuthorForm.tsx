@@ -54,6 +54,7 @@ const EditAuthorFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.firstName}
           sm={2}
         >
@@ -84,6 +85,7 @@ const EditAuthorFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.lastName}
           sm={2}
         >

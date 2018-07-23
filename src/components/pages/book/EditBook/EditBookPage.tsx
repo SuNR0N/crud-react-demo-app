@@ -108,13 +108,41 @@ export class EditBookPage extends React.Component<IProps> {
 
   private saveBook = (values: IFormData) => {
     const book: IBookUpdateDTO = {
-      authors: values.authors,
-      categories: values.authors,
-      isbn10: values.isbn10,
-      isbn13: values.isbn13,
-      publicationDate: values.publicationDate,
-      publishers: values.publishers,
-      title: values.title,
+      ...(
+        JSON.stringify(this.props.initialFormData.authors) !== JSON.stringify(values.authors) ?
+        { authors: values.authors } :
+        {}
+      ),
+      ...(
+        JSON.stringify(this.props.initialFormData.categories) !== JSON.stringify(values.categories) ?
+        { categories: values.categories } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.isbn10 !== values.isbn10 ?
+        { isbn10: values.isbn10 } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.isbn13 !== values.isbn13 ?
+        { isbn13: values.isbn13 } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.publicationDate !== values.publicationDate ?
+        { publicationDate: values.publicationDate } :
+        {}
+      ),
+      ...(
+        JSON.stringify(this.props.initialFormData.publishers) !== JSON.stringify(values.publishers) ?
+        { publishers: values.publishers } :
+        {}
+      ),
+      ...(
+        this.props.initialFormData.title !== values.title ?
+        { title: values.title } :
+        {}
+      ),
     }
     this.props.saveBook(book, this.props.currentBook._links.update!);
   }

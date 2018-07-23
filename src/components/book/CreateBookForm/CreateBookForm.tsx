@@ -24,8 +24,11 @@ import {
   IPublisherDTO,
 } from '../../../interfaces';
 import { validate } from '../../../validators/BookForms';
-import { Dropdown } from '../../common/Dropdown';
-import { TextField } from '../../common/TextField';
+import {
+  DatePicker,
+  Dropdown,
+  TextField,
+} from '../../common';
 
 export enum FormDataNames {
   authors = 'authors',
@@ -89,6 +92,10 @@ const renderCategoriesDropdown = ({ input }: WrappedFieldProps) => {
   );
 }
 
+const renderDatePicker = ({ input }: WrappedFieldProps) => (
+  <DatePicker {...input}/>
+);
+
 const renderPublishersDropdown = ({ input }: WrappedFieldProps) => {
   const getOptionLabel = (publisher: IPublisherDTO) => publisher.name;
   const getOptionValue = (publisher: IPublisherDTO) => publisher.id;
@@ -113,6 +120,7 @@ const CreateBookFormComponent: React.SFC<IProps> = (props) => {
     <Form onSubmit={handleSubmit}>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.title}
           sm={2}
         >
@@ -175,6 +183,7 @@ const CreateBookFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.isbn13}
           sm={2}
         >
@@ -199,7 +208,7 @@ const CreateBookFormComponent: React.SFC<IProps> = (props) => {
           <Field
             id={FormDataNames.publicationDate}
             name={FormDataNames.publicationDate}
-            component={TextField}
+            component={renderDatePicker}
           />
         </Col>
       </FormGroup>

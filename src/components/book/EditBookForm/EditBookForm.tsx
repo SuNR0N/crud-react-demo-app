@@ -1,3 +1,4 @@
+import { isMoment, Moment } from 'moment';
 import * as React from 'react';
 import {
   Col,
@@ -17,6 +18,7 @@ import {
   CategoriesApi,
   PublishersApi,
 } from '../../../api';
+import { DATE_FORMAT } from '../../../config';
 import { EDIT_BOOK_FORM } from '../../../constants';
 import {
   IAuthorDTO,
@@ -25,10 +27,11 @@ import {
 } from '../../../interfaces/dtos';
 import { validate } from '../../../validators/BookForms';
 import {
+  DatePicker,
+  Dropdown,
   ReadOnlyField,
   TextField,
 } from '../../common';
-import { Dropdown } from '../../common/Dropdown';
 import { IFormData as CreateBookFormData } from '../CreateBookForm';
 
 export enum FormDataNames {
@@ -53,6 +56,8 @@ export interface IOwnProps {
 }
 
 export interface IProps extends IFormData, InjectedFormProps<IFormData>, IOwnProps {}
+
+const dateNormalizer = (value: Moment) => isMoment(value) ? value.format(DATE_FORMAT) : null;
 
 const optionListNormalizer = (options: Array<IAuthorDTO | ICategoryDTO | IPublisherDTO>) => {
   return (Array.isArray(options) && options.length > 0) ? options.map((option) => {
@@ -95,6 +100,10 @@ const renderCategoriesDropdown = ({ input, ...custom }: WrappedFieldProps) => {
     />
   );
 }
+
+const renderDatePicker = ({ input }: WrappedFieldProps) => (
+  <DatePicker {...input}/>
+);
 
 const renderPublishersDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (publisher: IPublisherDTO) => publisher.name;
@@ -141,6 +150,7 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.title}
           sm={2}
         >
@@ -209,6 +219,7 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.isbn13}
           sm={2}
         >
@@ -233,7 +244,8 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
           <Field
             id={FormDataNames.publicationDate}
             name={FormDataNames.publicationDate}
-            component={TextField}
+            component={renderDatePicker}
+            normalize={dateNormalizer}
           />
         </Col>
       </FormGroup>

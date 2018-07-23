@@ -1,0 +1,14 @@
+.date-picker {
+  input {
+    &.form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .icon {
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}

@@ -1,5 +1,7 @@
 export { ActionBar } from './ActionBar';
 export { ConfirmationModal } from './ConfirmationModal';
+export { DatePicker } from './DatePicker';
+export { Dropdown } from './Dropdown';
 export { Icon } from './Icon';
 export { IconButton } from './IconButton';
 export { NavigationBarConnected } from './NavigationBar';

@@ -52,6 +52,7 @@ const EditPublisherFormComponent: React.SFC<IProps> = (props) => {
       </FormGroup>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.name}
           sm={2}
         >

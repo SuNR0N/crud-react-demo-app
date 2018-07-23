@@ -32,6 +32,7 @@ const CreateCategoryFormComponent: React.SFC<IProps> = (props) => {
     <Form onSubmit={handleSubmit}>
       <FormGroup row={true}>
         <Label
+          className="required"
           for={FormDataNames.name}
           sm={2}
         >

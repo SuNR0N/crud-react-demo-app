@@ -5,6 +5,11 @@
 @import 'bootstrap/scss/bootstrap.scss';
 
 /*------------------------------------*\
+  3RD PARTY
+\*------------------------------------*/
+@import 'react-datepicker/src/stylesheets/datepicker.scss';
+
+/*------------------------------------*\
   ABSTRACTS
 \*------------------------------------*/
 @import 'abstracts/variables';
@@ -23,6 +28,7 @@
   COMPONENTS
 \*------------------------------------*/
 @import 'components/action-bar';
+@import 'components/date-picker';
 @import 'components/icon-button';
 @import 'components/icon';
 @import 'components/profile';
