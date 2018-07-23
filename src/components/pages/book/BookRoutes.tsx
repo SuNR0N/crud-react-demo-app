@@ -6,7 +6,7 @@ import {
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { CreateBookPageConnected } from './CreateBook';
-import { EditBookPage } from './EditBook';
+import { EditBookPageConnected } from './EditBook';
 import { ListBooksPageConnected } from './ListBooks';
 import { ViewBookPageConnected } from './ViewBook';
 
@@ -14,7 +14,7 @@ export const BookRoutes: React.SFC = () => (
   <Switch>
     <Route
       path={RouteConfig.editBook}
-      component={EditBookPage}
+      component={EditBookPageConnected}
     />
     <Route
       path={RouteConfig.createBook}

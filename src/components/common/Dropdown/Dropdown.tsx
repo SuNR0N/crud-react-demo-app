@@ -3,6 +3,7 @@ import Async from 'react-select/lib/Async';
 import { WrappedFieldInputProps } from 'redux-form';
 
 export interface IProps extends WrappedFieldInputProps {
+  defaultOptions?: any[];
   getOptionLabel: (option: any) => string;
   getOptionValue: (option: any) => any;
   noOptionsMessage?: () => string;
@@ -24,6 +25,7 @@ export class Dropdown extends React.Component<IProps> {
 
   public render() {
     const {
+      defaultOptions = true,
       getOptionLabel,
       getOptionValue,
       noOptionsMessage,
@@ -32,11 +34,15 @@ export class Dropdown extends React.Component<IProps> {
       valueProperty = 'id',
       ...inputProps
     } = this.props;
+
+    const options = Array.isArray(defaultOptions) ?
+      defaultOptions :
+      (this.ref.current ? this.ref.current!.state.defaultOptions : []);
   
     const onBlur = () => inputProps.onBlur(inputProps.value);
     const transformedValue = transformValue(
       inputProps.value,
-      this.ref.current ? this.ref.current!.state.defaultOptions : [],
+      options,
       valueProperty
     );
 
@@ -45,7 +51,7 @@ export class Dropdown extends React.Component<IProps> {
         ref={this.ref}
         {...inputProps}
         cacheOptions={true}
-        defaultOptions={true}
+        defaultOptions={defaultOptions}
         getOptionLabel={getOptionLabel}
         getOptionValue={getOptionValue}
         isMulti={true}

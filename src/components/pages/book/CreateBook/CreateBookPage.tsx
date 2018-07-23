@@ -72,7 +72,7 @@ export class CreateBookPage extends React.Component<IProps> {
       isbn13: values.isbn13,
       publicationDate: values.publicationDate,
       publishers: values.publishers,
-      title: values.title
+      title: values.title,
     };
     this.props.saveBook(book);
   }

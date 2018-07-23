@@ -52,7 +52,7 @@ export interface IProps extends IFormData, InjectedFormProps<IFormData> {}
 const optionListNormalizer = (options: Array<IAuthorDTO | ICategoryDTO | IPublisherDTO>) => {
   return (Array.isArray(options) && options.length > 0) ? options.map((option) => {
     return (typeof option === 'object') ? option.id : option;
-  }) : null;
+  }) : [];
 };
 
 const renderAuthorsDropdown = ({ input }: WrappedFieldProps) => {

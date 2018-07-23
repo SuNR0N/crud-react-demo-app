@@ -9,14 +9,26 @@ import {
   Field,
   InjectedFormProps,
   reduxForm,
+  WrappedFieldProps,
 } from 'redux-form';
 
+import {
+  AuthorsApi,
+  CategoriesApi,
+  PublishersApi,
+} from '../../../api';
 import { EDIT_BOOK_FORM } from '../../../constants';
+import {
+  IAuthorDTO,
+  ICategoryDTO,
+  IPublisherDTO,
+} from '../../../interfaces/dtos';
 import { validate } from '../../../validators/BookForms';
 import {
   ReadOnlyField,
   TextField,
 } from '../../common';
+import { Dropdown } from '../../common/Dropdown';
 import { IFormData as CreateBookFormData } from '../CreateBookForm';
 
 export enum FormDataNames {
@@ -34,10 +46,81 @@ export interface IFormData extends CreateBookFormData {
   id: number;
 }
 
-export interface IProps extends IFormData, InjectedFormProps<IFormData> {}
+export interface IOwnProps {
+  defaultAuthorOptions?: IAuthorDTO[];
+  defaultCategoryOptions?: ICategoryDTO[];
+  defaultPublisherOptions?: IPublisherDTO[];
+}
+
+export interface IProps extends IFormData, InjectedFormProps<IFormData>, IOwnProps {}
+
+const optionListNormalizer = (options: Array<IAuthorDTO | ICategoryDTO | IPublisherDTO>) => {
+  return (Array.isArray(options) && options.length > 0) ? options.map((option) => {
+    return (typeof option === 'object') ? option.id : option;
+  }) : [];
+};
+
+const renderAuthorsDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+  const getOptionLabel = (author: IAuthorDTO) => author.fullName;
+  const getOptionValue = (author: IAuthorDTO) => author.id;
+  const noOptionsMessage = () => 'No author found';
+  const promiseOptions = (query?: string) => AuthorsApi.getAuthors(query);
+
+  return (
+    <Dropdown
+      {...input}
+      {...custom}
+      getOptionLabel={getOptionLabel}
+      getOptionValue={getOptionValue}
+      noOptionsMessage={noOptionsMessage}
+      promiseOptions={promiseOptions}
+    />
+  );
+}
+
+const renderCategoriesDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+  const getOptionLabel = (category: ICategoryDTO) => category.name;
+  const getOptionValue = (category: ICategoryDTO) => category.id;
+  const noOptionsMessage = () => 'No category found';
+  const promiseOptions = (query?: string) => CategoriesApi.getCategories(query);
+
+  return (
+    <Dropdown
+      {...input}
+      {...custom}
+      getOptionLabel={getOptionLabel}
+      getOptionValue={getOptionValue}
+      noOptionsMessage={noOptionsMessage}
+      promiseOptions={promiseOptions}
+    />
+  );
+}
+
+const renderPublishersDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+  const getOptionLabel = (publisher: IPublisherDTO) => publisher.name;
+  const getOptionValue = (publisher: IPublisherDTO) => publisher.id;
+  const noOptionsMessage = () => 'No publisher found';
+  const promiseOptions = (query?: string) => PublishersApi.getPublishers(query);
+
+  return (
+    <Dropdown
+      {...input}
+      {...custom}
+      getOptionLabel={getOptionLabel}
+      getOptionValue={getOptionValue}
+      noOptionsMessage={noOptionsMessage}
+      promiseOptions={promiseOptions}
+    />
+  );
+}
 
 const EditBookFormComponent: React.SFC<IProps> = (props) => {
-  const { handleSubmit } = props;
+  const {
+    defaultAuthorOptions,
+    defaultCategoryOptions,
+    defaultPublisherOptions,
+    handleSubmit,
+  } = props;
   
   return (
     <Form onSubmit={handleSubmit}>
@@ -82,7 +165,11 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
           <Field
             id={FormDataNames.categories}
             name={FormDataNames.categories}
-            component={TextField}
+            component={renderCategoriesDropdown}
+            normalize={optionListNormalizer}
+            {...{
+              defaultOptions: defaultCategoryOptions,
+            }}
           />
         </Col>
       </FormGroup>
@@ -97,7 +184,11 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
           <Field
             id={FormDataNames.authors}
             name={FormDataNames.authors}
-            component={TextField}
+            component={renderAuthorsDropdown}
+            normalize={optionListNormalizer}
+            {...{
+              defaultOptions: defaultAuthorOptions,
+            }}
           />
         </Col>
       </FormGroup>
@@ -157,7 +248,11 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
           <Field
             id={FormDataNames.publishers}
             name={FormDataNames.publishers}
-            component={TextField}
+            component={renderPublishersDropdown}
+            normalize={optionListNormalizer}
+            {...{
+              defaultOptions: defaultPublisherOptions,
+            }}
           />
         </Col>
       </FormGroup>
@@ -165,7 +260,7 @@ const EditBookFormComponent: React.SFC<IProps> = (props) => {
   );
 }
 
-export const EditBookForm = reduxForm<IFormData>({
+export const EditBookForm = reduxForm<IFormData, IOwnProps>({
   enableReinitialize: true,
   form: EDIT_BOOK_FORM,
   validate,
