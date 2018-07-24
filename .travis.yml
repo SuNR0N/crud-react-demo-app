@@ -9,5 +9,8 @@ cache:
 
 script:
   - yarn build-css
-  - yarn test:coverage --coverageReporters=text-lcov | coveralls
+  - yarn test:coverage --coverageReporters=text-lcov
   - yarn build
+
+after_script:
+    - yarn coveralls
