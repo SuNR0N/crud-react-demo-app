@@ -12,6 +12,5 @@ script:
   - yarn test:coverage
   - yarn build
 
-jobs:
-  include:
-    - script: cat coverage/lcov.info | node node_modules/.bin/coveralls
+after_script:
+  - cat coverage/lcov.info | yarn coveralls
