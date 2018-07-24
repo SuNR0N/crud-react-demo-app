@@ -1,5 +1,8 @@
 # CRUD React Demo Application
 
+[![Build Status](https://travis-ci.org/SuNR0N/crud-react-demo-app.svg?branch=master)](https://travis-ci.org/SuNR0N/crud-react-demo-app)
+[![Coverage Status](https://coveralls.io/repos/github/SuNR0N/crud-react-demo-app/badge.svg?branch=master)](https://coveralls.io/github/SuNR0N/crud-react-demo-app?branch=master)
+
 Table of Contents
 =================
 
