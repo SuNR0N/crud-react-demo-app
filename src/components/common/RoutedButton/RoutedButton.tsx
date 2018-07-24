@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   RouteComponentProps,
   withRouter,
@@ -13,7 +13,7 @@ export interface IProps extends IIconButtonProps, RouteComponentProps<any> {
   route: string;
 }
 
-const RoutedButtonComponent: React.SFC<IProps> = (props) => {
+const RoutedButtonComponent: SFC<IProps> = (props) => {
   const {
     route,
     history,

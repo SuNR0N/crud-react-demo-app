@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr';
 import { ConnectedRouter } from 'react-router-redux';
@@ -17,10 +17,10 @@ import {
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <React.Fragment>
+      <Fragment>
         <App />
         <ReduxToastr timeOut={TOASTR_TIMEOUT}/>
-      </React.Fragment>
+      </Fragment>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement

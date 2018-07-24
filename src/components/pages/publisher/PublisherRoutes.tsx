@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Route,
   Switch,
@@ -10,7 +10,7 @@ import { EditPublisherPageConnected } from './EditPublisher';
 import { ListPublishersPageConnected } from './ListPublishers';
 import { ViewPublisherPageConnected } from './ViewPublisher';
 
-export const PublisherRoutes: React.SFC = () => (
+export const PublisherRoutes: SFC = () => (
   <Switch>
     <Route
       path={RouteConfig.editPublisher}

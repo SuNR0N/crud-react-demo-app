@@ -1,5 +1,5 @@
-import * as moment from 'moment';
-import * as React from 'react';
+import moment from 'moment';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import {
   Button,
@@ -47,7 +47,7 @@ export interface IState {
 
 export interface IProps extends IDispatchProps, RouteComponentProps<IRouteProps>, IStateProps {}
 
-export class ViewBookPage extends React.Component<IProps, IState> {
+export class ViewBookPage extends Component<IProps, IState> {
   public state: IState = {
     isModalOpen: false,
   };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Col,
   Form,
@@ -113,7 +113,7 @@ const renderPublishersDropdown = ({ input }: WrappedFieldProps) => {
   );
 }
 
-const CreateBookFormComponent: React.SFC<IProps> = (props) => {
+const CreateBookFormComponent: SFC<IProps> = (props) => {
   const { handleSubmit } = props;
   
   return (

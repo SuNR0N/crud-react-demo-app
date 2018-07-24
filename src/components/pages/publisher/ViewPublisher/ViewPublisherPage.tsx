@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import {
   Button,
@@ -43,7 +43,7 @@ export interface IState {
 
 export interface IProps extends IDispatchProps, RouteComponentProps<IRouteProps>, IStateProps {}
 
-export class ViewPublisherPage extends React.Component<IProps, IState> {
+export class ViewPublisherPage extends Component<IProps, IState> {
   public state: IState = {
     isModalOpen: false,
   };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Redirect,
   Route,
@@ -12,7 +12,7 @@ import { BookRoutes } from './book';
 import { CategoryRoutes } from './category';
 import { PublisherRoutes } from './publisher';
 
-export const MainPage: React.SFC = () => (
+export const MainPage: SFC = () => (
   <main>
     <NavigationBarConnected/>
     <Switch>

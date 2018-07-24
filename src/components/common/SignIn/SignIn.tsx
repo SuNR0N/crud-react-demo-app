@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   DropdownItem,
   DropdownMenu,
@@ -9,7 +9,7 @@ import {
 import { GITHUB_OAUTH_URL } from '../../../config';
 import { Icon } from '../Icon';
 
-export const SignIn: React.SFC = () => {
+export const SignIn: SFC = () => {
   return (
     <UncontrolledDropdown
       nav={true}

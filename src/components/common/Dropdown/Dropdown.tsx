@@ -1,4 +1,7 @@
-import * as React from 'react';
+import React, {
+  Component,
+  createRef,
+} from 'react';
 import Async from 'react-select/lib/Async';
 import { WrappedFieldInputProps } from 'redux-form';
 
@@ -20,8 +23,8 @@ const transformValue = (values: any[], options: any[], valueProperty: string) =>
     .filter((option) => selectedValues.indexOf(option[valueProperty]) !== -1);
 }
 
-export class Dropdown extends React.Component<IProps> {
-  private ref = React.createRef<{ state: { defaultOptions: any[] } }>();
+export class Dropdown extends Component<IProps> {
+  private ref = createRef<{ state: { defaultOptions: any[] } }>();
 
   public render() {
     const {

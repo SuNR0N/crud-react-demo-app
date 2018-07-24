@@ -1,5 +1,5 @@
-import * as moment from 'moment';
-import * as React from 'react';
+import moment from 'moment';
+import React, { SFC } from 'react';
 
 import {
   DATE_FORMAT,
@@ -16,7 +16,7 @@ export interface IProps {
   onDelete?: (book: IBookDTO) => void;
 }
 
-export const BookRowRenderer: React.SFC<IProps> = (props) => {
+export const BookRowRenderer: SFC<IProps> = (props) => {
   const {
     book,
     onDelete,

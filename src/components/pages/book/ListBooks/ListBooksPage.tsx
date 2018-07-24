@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
 import {
@@ -37,7 +37,7 @@ export interface IState {
 
 export interface IProps extends IDispatchProps, IStateProps {}
 
-export class ListBooksPage extends React.Component<IProps, IState> {
+export class ListBooksPage extends Component<IProps, IState> {
   public state: IState = {
     isModalOpen: false,
     selectedBook: null,

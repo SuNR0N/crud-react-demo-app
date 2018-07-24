@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Col,
   Form,
@@ -32,7 +32,7 @@ export interface IFormData extends CreateAuthorFormData {
 
 export interface IProps extends IFormData, InjectedFormProps<IFormData> {}
 
-const EditAuthorFormComponent: React.SFC<IProps> = (props) => {
+const EditAuthorFormComponent: SFC<IProps> = (props) => {
   const { handleSubmit } = props;
   
   return (

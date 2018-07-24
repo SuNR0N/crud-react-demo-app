@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Button,
   ButtonProps,
@@ -13,7 +13,7 @@ export interface IProps extends ButtonProps {
   symbol?: IconSymbol;
 }
 
-export const IconButton: React.SFC<IProps> = (props) => {
+export const IconButton: SFC<IProps> = (props) => {
   const {
     symbol,
     ref,

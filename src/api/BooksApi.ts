@@ -3,7 +3,7 @@ import {
   IBookDTO,
   INewBookDTO,
   IPageableCollectionDTO,
-} from '../interfaces';
+} from '../interfaces/dtos';
 import { HttpClient } from './HttpClient';
 
 export class BooksApi {

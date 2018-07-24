@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { ICategoryDTO } from '../../../interfaces/dtos/CategoryDTO';
@@ -12,7 +12,7 @@ export interface IProps {
   onDelete?: (category: ICategoryDTO) => void;
 }
 
-export const CategoryRowRenderer: React.SFC<IProps> = (props) => {
+export const CategoryRowRenderer: SFC<IProps> = (props) => {
   const {
     category,
     onDelete,

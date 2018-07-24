@@ -1,5 +1,8 @@
 import { debounce } from 'lodash';
-import * as React from 'react';
+import React, {
+  ChangeEvent,
+  Component,
+} from 'react';
 import {
   Input,
   InputProps,
@@ -14,7 +17,7 @@ export interface IState {
   value: string;
 }
 
-export class SearchField extends React.Component<IProps, IState> {
+export class SearchField extends Component<IProps, IState> {
   public state: IState = {
     value: this.props.value ? String(this.props.value) : '',
   }
@@ -48,7 +51,7 @@ export class SearchField extends React.Component<IProps, IState> {
     this.props.onValueChange(value);
   };
 
-  private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  private handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { debouncedChange } = this;
     const value = event.target.value;
     this.setState(

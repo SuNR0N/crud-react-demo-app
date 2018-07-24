@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
 import './App.css';
 import { MainPage } from './pages/MainPage';
 
-export const App: React.SFC = () => (
+export const App: SFC = () => (
   <MainPage/>
 )

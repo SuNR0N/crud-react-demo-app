@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Route,
   Switch,
@@ -10,7 +10,7 @@ import { EditCategoryPageConnected } from './EditCategory';
 import { ListCategoriesPageConnected } from './ListCategories';
 import { ViewCategoryPageConnected } from './ViewCategory';
 
-export const CategoryRoutes: React.SFC = () => (
+export const CategoryRoutes: SFC = () => (
   <Switch>
     <Route
       path={RouteConfig.editCategory}

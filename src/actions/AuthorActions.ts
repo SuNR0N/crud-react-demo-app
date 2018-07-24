@@ -1,9 +1,9 @@
-import { IHATEOASLink } from '../interfaces';
 import {
   IAuthorDTO,
   IAuthorUpdateDTO,
+  IHATEOASLink,
   INewAuthorDTO,
-} from '../interfaces/dtos';
+} from '../interfaces';
 import { createAction } from './ActionHelpers';
 import { ActionsUnion } from './types';
 

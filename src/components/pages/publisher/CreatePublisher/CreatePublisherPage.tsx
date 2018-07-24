@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Button } from 'reactstrap';
 import { FormAction } from 'redux-form';
@@ -26,7 +26,7 @@ export interface IStateProps {
 
 export interface IProps extends IDispatchProps, IStateProps, RouteComponentProps<any> { }
 
-export class CreatePublisherPage extends React.Component<IProps> {
+export class CreatePublisherPage extends Component<IProps> {
   public render() {
     const {
       navigateToListPublishers,

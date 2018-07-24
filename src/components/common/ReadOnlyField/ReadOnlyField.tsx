@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import { Input } from 'reactstrap';
 import { WrappedFieldProps } from 'redux-form';
 
-export const ReadOnlyField: React.SFC<WrappedFieldProps> = ({
+export const ReadOnlyField: SFC<WrappedFieldProps> = ({
   input,
   meta,
   ...custom

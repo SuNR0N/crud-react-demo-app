@@ -1,5 +1,8 @@
-import { isMoment, Moment } from 'moment';
-import * as React from 'react';
+import {
+  isMoment,
+  Moment,
+} from 'moment';
+import React, { SFC } from 'react';
 import {
   Col,
   Form,
@@ -123,7 +126,7 @@ const renderPublishersDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   );
 }
 
-const EditBookFormComponent: React.SFC<IProps> = (props) => {
+const EditBookFormComponent: SFC<IProps> = (props) => {
   const {
     defaultAuthorOptions,
     defaultCategoryOptions,

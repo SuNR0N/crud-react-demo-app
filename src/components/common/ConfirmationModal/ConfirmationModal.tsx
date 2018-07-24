@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Button,
   Modal,
@@ -16,7 +16,7 @@ export interface IProps extends ModalProps {
   title?: string;
 }
 
-export const ConfirmationModal: React.SFC<IProps> = (props) => {
+export const ConfirmationModal: SFC<IProps> = (props) => {
   const {
     cancelButtonText = 'Cancel',
     confirmButtonText = 'Delete',

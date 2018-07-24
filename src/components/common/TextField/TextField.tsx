@@ -1,11 +1,14 @@
-import * as React from 'react';
+import React, {
+  Fragment,
+  SFC,
+} from 'react';
 import {
   FormFeedback,
   Input,
 } from 'reactstrap';
 import { WrappedFieldProps } from 'redux-form';
 
-export const TextField: React.SFC<WrappedFieldProps> = ({
+export const TextField: SFC<WrappedFieldProps> = ({
   input,
   meta: {
     touched,
@@ -13,7 +16,7 @@ export const TextField: React.SFC<WrappedFieldProps> = ({
   },
   ...custom
 }) => (
-  <React.Fragment>
+  <Fragment>
     <Input
       {...(touched ? { valid: !error } : {})}
       {...(touched ? { invalid: !!error } : {})}
@@ -23,5 +26,5 @@ export const TextField: React.SFC<WrappedFieldProps> = ({
     {error &&
       <FormFeedback>{error}</FormFeedback>
     }
-  </React.Fragment>
+  </Fragment>
 );

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Pagination as PaginationComponent,
   PaginationItem,
@@ -16,7 +16,7 @@ export interface IProps {
   pageSize?: number;
 }
 
-export const Pagination: React.SFC<IProps> = (props) => {
+export const Pagination: SFC<IProps> = (props) => {
   const {
     onPaginate,
     pageableCollection,

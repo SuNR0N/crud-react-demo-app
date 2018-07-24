@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
 import {
@@ -33,7 +33,7 @@ export interface IState {
 
 export interface IProps extends IDispatchProps, IStateProps {}
 
-export class ListAuthorsPage extends React.Component<IProps, IState> {
+export class ListAuthorsPage extends Component<IProps, IState> {
   public state: IState = {
     isModalOpen: false,
     selectedAuthor: null,

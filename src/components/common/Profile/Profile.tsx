@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   DropdownItem,
   DropdownMenu,
@@ -18,7 +18,7 @@ export interface IOwnProps {
 
 export interface IProps extends IDispatchProps, IOwnProps { }
 
-export const Profile: React.SFC<IProps> = (props) => {
+export const Profile: SFC<IProps> = (props) => {
   const {
     logout,
     profile,

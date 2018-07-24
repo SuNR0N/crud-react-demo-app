@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 import {
   Route,
   Switch,
@@ -10,7 +10,7 @@ import { EditAuthorPageConnected } from './EditAuthor';
 import { ListAuthorsPageConnected } from './ListAuthors';
 import { ViewAuthorPageConnected } from './ViewAuthor';
 
-export const AuthorRoutes: React.SFC = () => (
+export const AuthorRoutes: SFC = () => (
   <Switch>
     <Route
       path={RouteConfig.editAuthor}

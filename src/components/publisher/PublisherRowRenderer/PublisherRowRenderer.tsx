@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IPublisherDTO } from '../../../interfaces/dtos/PublisherDTO';
@@ -12,7 +12,7 @@ export interface IProps {
   onDelete?: (publisher: IPublisherDTO) => void;
 }
 
-export const PublisherRowRenderer: React.SFC<IProps> = (props) => {
+export const PublisherRowRenderer: SFC<IProps> = (props) => {
   const {
     onDelete,
     publisher,

@@ -1,5 +1,8 @@
-import * as moment from 'moment';
-import * as React from 'react';
+import moment from 'moment';
+import React, {
+  Component,
+  createRef,
+} from 'react';
 import ReactDatePicker from 'react-datepicker';
 import {
   InputGroup,
@@ -16,8 +19,8 @@ export interface IProps {
   value: any;
 }
 
-export class DatePicker extends React.Component<IProps> {
-  private datePickerRef = React.createRef<{ setOpen: (value: boolean) => void }>();
+export class DatePicker extends Component<IProps> {
+  private datePickerRef = createRef<{ setOpen: (value: boolean) => void }>();
   
   public render() {
     const {

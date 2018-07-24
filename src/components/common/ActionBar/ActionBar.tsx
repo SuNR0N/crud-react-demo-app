@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
-export const ActionBar: React.SFC = (props) => {
+export const ActionBar: SFC = (props) => {
   const { children } = props;
 
   return (

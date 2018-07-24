@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
@@ -32,7 +32,7 @@ export interface IState {
   isOpen: boolean;
 }
 
-export class NavigationBar extends React.Component<IProps, IState> {
+export class NavigationBar extends Component<IProps, IState> {
   public state: IState = {
     isOpen: false,
   };

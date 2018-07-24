@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
@@ -12,7 +12,7 @@ export interface IProps {
   onDelete?: (author: IAuthorDTO) => void;
 }
 
-export const AuthorRowRenderer: React.SFC<IProps> = (props) => {
+export const AuthorRowRenderer: SFC<IProps> = (props) => {
   const {
     author,
     onDelete,

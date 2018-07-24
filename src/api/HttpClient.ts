@@ -1,4 +1,4 @@
-import { HttpError } from "../errors";
+import { HttpError } from '../errors/HttpError';
 
 export class HttpClient {
   public static async request(url: string, options?: RequestInit) {

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
 
 // tslint:disable-next-line:no-var-requires
 const SpritePath = require('../../../assets/icons/sprite.svg');
@@ -21,7 +21,7 @@ export interface IProps {
   symbol: IconSymbol;
 }
 
-export const Icon: React.SFC<IProps> = (props) => {
+export const Icon: SFC<IProps> = (props) => {
   const {
     className = '',
     symbol,

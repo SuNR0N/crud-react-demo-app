@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Button } from 'reactstrap';
 import { FormAction } from 'redux-form';
@@ -36,7 +36,7 @@ export interface IStateProps {
 
 export interface IProps extends IDispatchProps, IStateProps, RouteComponentProps<IRouteProps> { }
 
-export class EditCategoryPage extends React.Component<IProps> {
+export class EditCategoryPage extends Component<IProps> {
   public componentDidMount() {
     const id = parseInt(this.props.match.params.id, 10);
     if (this.props.currentCategory.id !== id) {
