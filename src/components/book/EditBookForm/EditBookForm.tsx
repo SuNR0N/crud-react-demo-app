@@ -25,7 +25,7 @@ import {
   ICategoryDTO,
   IPublisherDTO,
 } from '../../../interfaces/dtos';
-import { validate } from '../../../validators/BookForms';
+import { validate } from '../../../validators/BookFormValidators';
 import {
   DatePicker,
   Dropdown,

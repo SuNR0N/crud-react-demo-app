@@ -12,7 +12,7 @@ import {
 } from 'redux-form';
 
 import { CREATE_CATEGORY_FORM } from '../../../constants';
-import { validate } from '../../../validators/CategoryForms';
+import { validate } from '../../../validators/CategoryFormValidators';
 import { TextField } from '../../common/TextField';
 
 export enum FormDataNames {

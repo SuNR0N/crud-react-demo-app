@@ -12,7 +12,7 @@ import {
 } from 'redux-form';
 
 import { EDIT_CATEGORY_FORM } from '../../../constants';
-import { validate } from '../../../validators/CategoryForms';
+import { validate } from '../../../validators/CategoryFormValidators';
 import {
   ReadOnlyField,
   TextField,

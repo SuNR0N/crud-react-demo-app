@@ -9,7 +9,7 @@ import {
   ICategoryState,
   IErrorState,
   IPublisherState,
-} from './';
+} from '.';
 
 export interface IRootState {
   auth: IAuthState,

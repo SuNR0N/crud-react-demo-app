@@ -14,7 +14,7 @@ import {
   Icon,
   ProfileConnected,
   SignIn,
-} from '../';
+} from '..';
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IProfileDTO } from '../../../interfaces/dtos/ProfileDTO';
 

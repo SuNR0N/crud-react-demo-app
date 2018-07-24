@@ -12,7 +12,7 @@ import {
 } from 'redux-form';
 
 import { CREATE_AUTHOR_FORM } from '../../../constants';
-import { validate } from '../../../validators/AuthorForms';
+import { validate } from '../../../validators/AuthorFormValidators';
 import { TextField } from '../../common/TextField';
 
 export enum FormDataNames {

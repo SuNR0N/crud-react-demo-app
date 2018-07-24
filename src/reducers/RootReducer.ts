@@ -10,7 +10,7 @@ import {
   category,
   error,
   publisher,
-} from './';
+} from '.';
 import { IRootState } from './RootState';
 
 export const rootReducer = combineReducers<IRootState>({
