@@ -1,6 +1,10 @@
+import * as moment from 'moment';
 import * as React from 'react';
 
-import { RouteConfig } from '../../../config/RouteConfig';
+import {
+  DATE_FORMAT,
+  RouteConfig,
+} from '../../../config';
 import { IBookDTO } from '../../../interfaces/dtos/BookDTO';
 import {
   IconButton,
@@ -25,7 +29,7 @@ export const BookRowRenderer: React.SFC<IProps> = (props) => {
       <td className="col-2">{book.categories.join(', ')}</td>
       <td className="col-2">{book.authors.join(', ')}</td>
       <td className="col-1">{book.publishers.join(', ')}</td>
-      <td className="col-1">{book.publicationDate}</td>
+      <td className="col-1">{moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT)}</td>
       <td className="col-2 d-flex justify-content-around">
         {book._links.self &&
           <RoutedButton

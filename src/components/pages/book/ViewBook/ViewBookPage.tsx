@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import {
@@ -13,7 +14,10 @@ import {
   BookActionTypes,
   IAction,
 } from '../../../../actions';
-import { RouteConfig } from '../../../../config/RouteConfig';
+import {
+  DATE_FORMAT,
+  RouteConfig,
+} from '../../../../config';
 import {
   IBookDTO,
   IHATEOASLink,
@@ -184,7 +188,7 @@ export class ViewBookPage extends React.Component<IProps, IState> {
                 id="publicationDate"
                 plaintext={true}
               >
-                {book.publicationDate}
+                {moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT)}
               </Input>
             </Col>
           </FormGroup>
