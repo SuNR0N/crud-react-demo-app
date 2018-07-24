@@ -8,6 +8,7 @@ cache:
    - node_modules
 
 script:
+  - yarn build-css
   - yarn test:coverage
   - yarn build
 
