@@ -20,7 +20,7 @@ import { ActionBar } from '../../../common/ActionBar';
 
 export interface IDispatchProps {
   loadCategory: (id: number) => IAction<CategoryActionTypes.LOAD_CATEGORY_REQUEST>;
-  saveCategory: (category: INewCategoryDTO, link: IHATEOASLink) => IAction<CategoryActionTypes.UPDATE_CATEGORY_REQUEST>;
+  saveCategory: (category: INewCategoryDTO, id: number, link: IHATEOASLink) => IAction<CategoryActionTypes.UPDATE_CATEGORY_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -89,6 +89,6 @@ export class EditCategoryPage extends React.Component<IProps> {
     const category: INewCategoryDTO = {
       name: values.name,
     }
-    this.props.saveCategory(category, this.props.currentCategory._links.update!);
+    this.props.saveCategory(category, this.props.currentCategory.id, this.props.currentCategory._links.update!);
   }
 }

@@ -20,7 +20,7 @@ import { ActionBar } from '../../../common/ActionBar';
 
 export interface IDispatchProps {
   loadAuthor: (id: number) => IAction<AuthorActionTypes.LOAD_AUTHOR_REQUEST>;
-  saveAuthor: (author: IAuthorUpdateDTO, link: IHATEOASLink) => IAction<AuthorActionTypes.UPDATE_AUTHOR_REQUEST>;
+  saveAuthor: (author: IAuthorUpdateDTO, id: number, link: IHATEOASLink) => IAction<AuthorActionTypes.UPDATE_AUTHOR_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -103,6 +103,6 @@ export class EditAuthorPage extends React.Component<IProps> {
         {}
       ),
     }
-    this.props.saveAuthor(author, this.props.currentAuthor._links.update!);
+    this.props.saveAuthor(author, this.props.currentAuthor.id, this.props.currentAuthor._links.update!);
   }
 }

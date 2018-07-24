@@ -1,3 +1,4 @@
+import { HttpError } from "../errors";
 
 export class HttpClient {
   public static async request(url: string, options?: RequestInit) {
@@ -20,7 +21,8 @@ export class HttpClient {
     try {
       const response = await fetch(request, requestOptions)
       if (!response.ok) {
-        throw new Error(response.statusText);
+        const message = await response.text();
+        throw new HttpError(response.status, response.statusText, message);
       }
       return response;
     } catch (error) {

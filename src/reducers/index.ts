@@ -19,6 +19,11 @@ export {
   reducer as category,
 } from './CategoryReducer';
 export {
+  initialState as initialErrorState,
+  IState as IErrorState,
+  reducer as error,
+} from './ErrorReducer';
+export {
   initialState as initialPublisherState,
   IState as IPublisherState,
   reducer as publisher,

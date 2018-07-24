@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import {
   all,
   call,
@@ -16,7 +17,8 @@ function* loadProfile() {
     const profile = yield call(AuthApi.getProfile);
     yield put(actions.loadProfileSucceeded(profile));
   } catch (error) {
-    yield put(actions.loadProfileFailed());
+    toastr.error('Profile Load Failed', error.message);
+    yield put(actions.loadProfileFailed(error.message));
   }
 }
 
@@ -26,7 +28,8 @@ function* logOut() {
     yield put(actions.logOutSucceeded());
     window.location.reload(true);
   } catch (error) {
-    yield put(actions.logOutFailed());
+    toastr.error('Log Out Failed', error.message);
+    yield put(actions.logOutFailed(error.message));
   }
 }
 

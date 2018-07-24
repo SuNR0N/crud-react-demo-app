@@ -20,7 +20,7 @@ import {
 
 export interface IDispatchProps {
   loadPublisher: (id: number) => IAction<PublisherActionTypes.LOAD_PUBLISHER_REQUEST>;
-  savePublisher: (publisher: INewPublisherDTO, link: IHATEOASLink) => IAction<PublisherActionTypes.UPDATE_PUBLISHER_REQUEST>;
+  savePublisher: (publisher: INewPublisherDTO, id: number, link: IHATEOASLink) => IAction<PublisherActionTypes.UPDATE_PUBLISHER_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -89,6 +89,6 @@ export class EditPublisherPage extends React.Component<IProps> {
     const publisher: INewPublisherDTO = {
       name: values.name,
     }
-    this.props.savePublisher(publisher, this.props.currentPublisher._links.update!);
+    this.props.savePublisher(publisher, this.props.currentPublisher.id, this.props.currentPublisher._links.update!);
   }
 }

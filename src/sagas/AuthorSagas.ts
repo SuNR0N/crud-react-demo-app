@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import { push } from 'react-router-redux';
 import {
   all,
@@ -31,7 +32,8 @@ function* deleteAuthor(action: IActionWithPayload<AuthorActionTypes.DELETE_AUTHO
       yield put(push(action.payload.route));
     }
   } catch (error) {
-    yield put(AuthorActions.deleteAuthorFailed());
+    toastr.error('Author Deletion Failed', error.message);
+    yield put(AuthorActions.deleteAuthorFailed(action.payload.data!.id, error.message));
   }
 }
 
@@ -41,7 +43,8 @@ function* createAuthor(action: IActionWithPayload<AuthorActionTypes.CREATE_AUTHO
     yield put(AuthorActions.createAuthorSucceeded(id));
     yield put(push(RouteConfig.authors));
   } catch (error) {
-    yield put(AuthorActions.createAuthorFailed(action.payload));
+    toastr.error('Author Creation Failed', error.message);
+    yield put(AuthorActions.createAuthorFailed(action.payload, error.message));
   }
 }
 
@@ -50,7 +53,8 @@ function* loadAuthor(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHOR_RE
     const author = yield call(AuthorsApi.getAuthor, action.payload);
     yield put(AuthorActions.loadAuthorSucceeded(author));
   } catch (error) {
-    yield put(AuthorActions.loadAuthorFailed(action.payload));
+    toastr.error('Author Load Failed', error.message);
+    yield put(AuthorActions.loadAuthorFailed(action.payload, error.message));
   }
 }
 
@@ -59,7 +63,8 @@ function* loadAuthors(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHORS_
     const authors = yield call(AuthorsApi.getAuthors, action.payload);
     yield put(AuthorActions.loadAuthorsSucceeded(authors));
   } catch (error) {
-    yield put(AuthorActions.loadAuthorsFailed());
+    toastr.error('Authors Load Failed', error.message);
+    yield put(AuthorActions.loadAuthorsFailed(error.message));
   }
 }
 
@@ -69,7 +74,8 @@ function* updateAuthor(action: IActionWithPayload<AuthorActionTypes.UPDATE_AUTHO
     yield put(AuthorActions.updateAuthorSucceeded(author));
     yield put(push(RouteConfig.viewAuthor.replace(':id', String(author.id))));
   } catch (error) {
-    yield put(AuthorActions.updateAuthorFailed(action.payload.data!));
+    toastr.error('Author Update Failed', error.message );
+    yield put(AuthorActions.updateAuthorFailed(action.payload.data!, action.payload.id!, error.message));
   }
 }
 

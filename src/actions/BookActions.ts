@@ -28,19 +28,54 @@ export enum ActionTypes {
 
 export const actions = {
   createBook: (book: INewBookDTO) => createAction(ActionTypes.CREATE_BOOK_REQUEST, book),
-  createBookFailed: (book: INewBookDTO) => createAction(ActionTypes.CREATE_BOOK_FAILURE, book),
+  createBookFailed: (book: INewBookDTO, message: string) => createAction(
+    ActionTypes.CREATE_BOOK_FAILURE,
+    {
+      data: book,
+      message,
+    }
+  ),
   createBookSucceeded: (id: number) => createAction(ActionTypes.CREATE_BOOK_SUCCESS, id),
   deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => createAction(ActionTypes.DELETE_BOOK_REQUEST, { data: book, link, route }),
-  deleteBookFailed: () => createAction(ActionTypes.DELETE_BOOK_FAILURE),
+  deleteBookFailed: (id: number, message: string) => createAction(
+    ActionTypes.DELETE_BOOK_FAILURE,
+    {
+      id,
+      message,
+    }
+  ),
   deleteBookSucceeded: (id: number) => createAction(ActionTypes.DELETE_BOOK_SUCCESS, id),
   loadBook: (id: number) => createAction(ActionTypes.LOAD_BOOK_REQUEST, id),
-  loadBookFailed: (id: number) => createAction(ActionTypes.LOAD_BOOK_FAILURE, id),
+  loadBookFailed: (id: number, message: string) => createAction(
+    ActionTypes.LOAD_BOOK_FAILURE,
+    {
+      id,
+      message,
+    }
+  ),
   loadBookSucceeded: (book: IBookDTO) => createAction(ActionTypes.LOAD_BOOK_SUCCESS, book),
   loadBooks: (query?: string) => createAction(ActionTypes.LOAD_BOOKS_REQUEST, query),
-  loadBooksFailed: () => createAction(ActionTypes.LOAD_BOOKS_FAILURE),
+  loadBooksFailed: (message: string) => createAction(
+    ActionTypes.LOAD_BOOKS_FAILURE,
+    { message }
+  ),
   loadBooksSucceeded: (books: IPageableCollectionDTO<IBookDTO>) => createAction(ActionTypes.LOAD_BOOKS_SUCCESS, books),
-  updateBook: (book: IBookUpdateDTO, link: IHATEOASLink) => createAction(ActionTypes.UPDATE_BOOK_REQUEST, { data: book, link }),
-  updateBookFailed: (book: IBookUpdateDTO) => createAction(ActionTypes.UPDATE_BOOK_FAILURE, book),
+  updateBook: (book: IBookUpdateDTO, id: number, link: IHATEOASLink) => createAction(
+    ActionTypes.UPDATE_BOOK_REQUEST,
+    {
+      data: book,
+      id,
+      link,
+    }
+  ),
+  updateBookFailed: (book: IBookUpdateDTO, id: number, message: string) => createAction(
+    ActionTypes.UPDATE_BOOK_FAILURE,
+    {
+      data: book,
+      id,
+      message,
+    }
+  ),
   updateBookSucceeded: (book: IBookDTO) => createAction(ActionTypes.UPDATE_BOOK_SUCCESS, book),
 }
 

@@ -29,7 +29,7 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadCategory: (id: number) => dispatch(actions.loadCategory(id)),
-  saveCategory: (category: INewCategoryDTO, link: IHATEOASLink) => dispatch(actions.updateCategory(category, link)),
+  saveCategory: (category: INewCategoryDTO, id: number, link: IHATEOASLink) => dispatch(actions.updateCategory(category, id, link)),
   submitForm: () => dispatch(submit(EDIT_CATEGORY_FORM)),
 })
 

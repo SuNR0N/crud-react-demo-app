@@ -31,7 +31,7 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadAuthor: (id: number) => dispatch(actions.loadAuthor(id)),
-  saveAuthor: (author: IAuthorUpdateDTO, link: IHATEOASLink) => dispatch(actions.updateAuthor(author, link)),
+  saveAuthor: (author: IAuthorUpdateDTO, id: number, link: IHATEOASLink) => dispatch(actions.updateAuthor(author, id, link)),
   submitForm: () => dispatch(submit(EDIT_AUTHOR_FORM)),
 })
 

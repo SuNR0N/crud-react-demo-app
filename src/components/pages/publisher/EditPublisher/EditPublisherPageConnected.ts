@@ -29,7 +29,7 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadPublisher: (id: number) => dispatch(actions.loadPublisher(id)),
-  savePublisher: (publisher: INewPublisherDTO, link: IHATEOASLink) => dispatch(actions.updatePublisher(publisher, link)),
+  savePublisher: (publisher: INewPublisherDTO, id: number, link: IHATEOASLink) => dispatch(actions.updatePublisher(publisher, id, link)),
   submitForm: () => dispatch(submit(EDIT_PUBLISHER_FORM)),
 })
 

@@ -13,10 +13,16 @@ export enum ActionTypes {
 
 export const actions = {
   loadProfile: () => createAction(ActionTypes.LOAD_PROFILE_REQUEST),
-  loadProfileFailed: () => createAction(ActionTypes.LOAD_PROFILE_FAILURE),
+  loadProfileFailed: (message: string) => createAction(
+    ActionTypes.LOAD_PROFILE_FAILURE,
+    { message }
+  ),
   loadProfileSucceeded: (profile: IProfileDTO) => createAction(ActionTypes.LOAD_PROFILE_SUCCESS, profile),
   logOut: () => createAction(ActionTypes.LOG_OUT_REQUEST),
-  logOutFailed: () => createAction(ActionTypes.LOG_OUT_FAILURE),
+  logOutFailed: (message: string) => createAction(
+    ActionTypes.LOG_OUT_FAILURE,
+    { message }
+  ),
   logOutSucceeded: () => createAction(ActionTypes.LOG_OUT_SUCCESS),
 }
 

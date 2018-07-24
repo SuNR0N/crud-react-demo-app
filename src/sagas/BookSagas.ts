@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import { push } from 'react-router-redux';
 import {
   all,
@@ -31,7 +32,8 @@ function* deleteBook(action: IActionWithPayload<BookActionTypes.DELETE_BOOK_REQU
       yield put(push(action.payload.route));
     }
   } catch (error) {
-    yield put(BookActions.deleteBookFailed());
+    toastr.error('Book Deletion Failed', error.message);
+    yield put(BookActions.deleteBookFailed(action.payload.data!.id, error.message));
   }
 }
 
@@ -41,7 +43,8 @@ function* createBook(action: IActionWithPayload<BookActionTypes.CREATE_BOOK_REQU
     yield put(BookActions.createBookSucceeded(id));
     yield put(push(RouteConfig.books));
   } catch (error) {
-    yield put(BookActions.createBookFailed(action.payload));
+    toastr.error('Book Creation Failed', error.message);
+    yield put(BookActions.createBookFailed(action.payload, error.message));
   }
 }
 
@@ -50,7 +53,8 @@ function* loadBook(action: IActionWithPayload<BookActionTypes.LOAD_BOOK_REQUEST,
     const book = yield call(BooksApi.getBook, action.payload);
     yield put(BookActions.loadBookSucceeded(book));
   } catch (error) {
-    yield put(BookActions.loadBookFailed(action.payload));
+    toastr.error('Book Load Failed', error.message);
+    yield put(BookActions.loadBookFailed(action.payload, error.message));
   }
 }
 
@@ -59,7 +63,8 @@ function* loadBooks(action: IActionWithPayload<BookActionTypes.LOAD_BOOKS_REQUES
     const books = yield call(BooksApi.getBooks, action.payload);
     yield put(BookActions.loadBooksSucceeded(books));
   } catch (error) {
-    yield put(BookActions.loadBooksFailed());
+    toastr.error('Books Load Failed', error.message);
+    yield put(BookActions.loadBooksFailed(error.message));
   }
 }
 
@@ -69,7 +74,8 @@ function* updateBook(action: IActionWithPayload<BookActionTypes.UPDATE_BOOK_REQU
     yield put(BookActions.updateBookSucceeded(book));
     yield put(push(RouteConfig.viewBook.replace(':id', String(book.id))));
   } catch (error) {
-    yield put(BookActions.updateBookFailed(action.payload.data!));
+    toastr.error('Book Update Failed', error.message);
+    yield put(BookActions.updateBookFailed(action.payload.data!, action.payload.id!, error.message));
   }
 }
 

@@ -55,7 +55,7 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadBook: (id: number) => dispatch(BookActions.loadBook(id)),
   loadCategories: () => dispatch(CategoryActions.loadCategories()),
   loadPublishers: () => dispatch(PublisherActions.loadPublishers()),
-  saveBook: (book: IBookUpdateDTO, link: IHATEOASLink) => dispatch(BookActions.updateBook(book, link)),
+  saveBook: (book: IBookUpdateDTO, id: number, link: IHATEOASLink) => dispatch(BookActions.updateBook(book, id, link)),
   submitForm: () => dispatch(submit(EDIT_BOOK_FORM)),
 })
 

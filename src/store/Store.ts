@@ -11,6 +11,7 @@ import {
   initialAuthorState,
   initialBookState,
   initialCategoryState,
+  initialErrorState,
   initialPublisherState,
   IRootState,
   rootReducer,
@@ -30,6 +31,9 @@ const initialStoreState: IRootState = {
   category: {
     ...initialCategoryState,
   },
+  error: {
+    ...initialErrorState,
+  },
   form: {
   },
   publisher: {
@@ -37,6 +41,9 @@ const initialStoreState: IRootState = {
   },
   router: {
     location: null,
+  },
+  toastr: {
+    toastrs: [],
   },
 }
 

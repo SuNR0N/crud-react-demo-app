@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import { push } from 'react-router-redux';
 import {
   all,
@@ -30,7 +31,8 @@ function* deletePublisher(action: IActionWithPayload<PublisherActionTypes.DELETE
       yield put(push(action.payload.route));
     }
   } catch (error) {
-    yield put(PublisherActions.deletePublisherFailed());
+    toastr.error('Publisher Deletion Failed', error.message);
+    yield put(PublisherActions.deletePublisherFailed(action.payload.data!.id, error.message));
   }
 }
 
@@ -40,7 +42,8 @@ function* createPublisher(action: IActionWithPayload<PublisherActionTypes.CREATE
     yield put(PublisherActions.createPublisherSucceeded(id));
     yield put(push(RouteConfig.publishers));
   } catch (error) {
-    yield put(PublisherActions.createPublisherFailed(action.payload));
+    toastr.error('Publisher Creation Failed', error.message);
+    yield put(PublisherActions.createPublisherFailed(action.payload, error.message));
   }
 }
 
@@ -49,7 +52,8 @@ function* loadPublisher(action: IActionWithPayload<PublisherActionTypes.LOAD_PUB
     const publisher = yield call(PublishersApi.getPublisher, action.payload);
     yield put(PublisherActions.loadPublisherSucceeded(publisher));
   } catch (error) {
-    yield put(PublisherActions.loadPublisherFailed(action.payload));
+    toastr.error('Publisher Load Failed', error.message);
+    yield put(PublisherActions.loadPublisherFailed(action.payload, error.message));
   }
 }
 
@@ -58,7 +62,8 @@ function* loadPublishers(action: IActionWithPayload<PublisherActionTypes.LOAD_PU
     const publishers = yield call(PublishersApi.getPublishers, action.payload);
     yield put(PublisherActions.loadPublishersSucceeded(publishers));
   } catch (error) {
-    yield put(PublisherActions.loadPublishersFailed());
+    toastr.error('Publishers Load Failed', error.message);
+    yield put(PublisherActions.loadPublishersFailed(error.message));
   }
 }
 
@@ -68,7 +73,8 @@ function* updatePublisher(action: IActionWithPayload<PublisherActionTypes.UPDATE
     yield put(PublisherActions.updatePublisherSucceeded(publisher));
     yield put(push(RouteConfig.viewPublisher.replace(':id', String(publisher.id))));
   } catch (error) {
-    yield put(PublisherActions.updatePublisherFailed(action.payload.data!));
+    toastr.error('Publisher Update Failed', error.message);
+    yield put(PublisherActions.updatePublisherFailed(action.payload.data!, action.payload.id!, error.message));
   }
 }
 

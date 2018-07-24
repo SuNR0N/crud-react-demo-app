@@ -29,7 +29,7 @@ export interface IDispatchProps {
   loadBook: (id: number) => IAction<BookActionTypes.LOAD_BOOK_REQUEST>;
   loadCategories: () => IAction<CategoryActionTypes.LOAD_CATEGORIES_REQUEST>;
   loadPublishers: () => IAction<PublisherActionTypes.LOAD_PUBLISHERS_REQUEST>;
-  saveBook: (book: IBookUpdateDTO, link: IHATEOASLink) => IAction<BookActionTypes.UPDATE_BOOK_REQUEST>;
+  saveBook: (book: IBookUpdateDTO, id: number, link: IHATEOASLink) => IAction<BookActionTypes.UPDATE_BOOK_REQUEST>;
   submitForm: () => FormAction;
 }
 
@@ -144,6 +144,6 @@ export class EditBookPage extends React.Component<IProps> {
         {}
       ),
     }
-    this.props.saveBook(book, this.props.currentBook._links.update!);
+    this.props.saveBook(book, this.props.currentBook.id, this.props.currentBook._links.update!);
   }
 }

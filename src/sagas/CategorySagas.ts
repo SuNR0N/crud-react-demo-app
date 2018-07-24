@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import { push } from 'react-router-redux';
 import {
   all,
@@ -30,7 +31,8 @@ function* deleteCategory(action: IActionWithPayload<CategoryActionTypes.DELETE_C
       yield put(push(action.payload.route));
     }
   } catch (error) {
-    yield put(CategoryActions.deleteCategoryFailed());
+    toastr.error('Category Deletion Failed', error.message);
+    yield put(CategoryActions.deleteCategoryFailed(action.payload.data!.id, error.message));
   }
 }
 
@@ -40,7 +42,8 @@ function* createCategory(action: IActionWithPayload<CategoryActionTypes.CREATE_C
     yield put(CategoryActions.createCategorySucceeded(id));
     yield put(push(RouteConfig.categories));
   } catch (error) {
-    yield put(CategoryActions.createCategoryFailed(action.payload));
+    toastr.error('Category Creation Failed', error.message);
+    yield put(CategoryActions.createCategoryFailed(action.payload, error.message));
   }
 }
 
@@ -49,7 +52,8 @@ function* loadCategory(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEG
     const category = yield call(CategoriesApi.getCategory, action.payload);
     yield put(CategoryActions.loadCategorySucceeded(category));
   } catch (error) {
-    yield put(CategoryActions.loadCategoryFailed(action.payload));
+    toastr.error('Category Load Failed', error.message);
+    yield put(CategoryActions.loadCategoryFailed(action.payload, error.message));
   }
 }
 
@@ -58,7 +62,8 @@ function* loadCategories(action: IActionWithPayload<CategoryActionTypes.LOAD_CAT
     const categories = yield call(CategoriesApi.getCategories, action.payload);
     yield put(CategoryActions.loadCategoriesSucceeded(categories));
   } catch (error) {
-    yield put(CategoryActions.loadCategoriesFailed());
+    toastr.error('Categories Load Failed', error.message);
+    yield put(CategoryActions.loadCategoriesFailed(error.message));
   }
 }
 
@@ -68,7 +73,8 @@ function* updateCategory(action: IActionWithPayload<CategoryActionTypes.UPDATE_C
     yield put(CategoryActions.updateCategorySucceeded(category));
     yield put(push(RouteConfig.viewCategory.replace(':id', String(category.id))));
   } catch (error) {
-    yield put(CategoryActions.updateCategoryFailed(action.payload.data!));
+    toastr.error('Category Update Failed', error.message);
+    yield put(CategoryActions.updateCategoryFailed(action.payload.data!, action.payload.id!, error.message));
   }
 }
 

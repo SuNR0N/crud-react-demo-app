@@ -1,4 +1,5 @@
 export * from './ActionHelpers';
+export * from './types';
 export {
   actions as AuthActions,
   ActionTypes as AuthActionTypes,
