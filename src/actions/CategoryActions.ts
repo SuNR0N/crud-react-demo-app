@@ -34,7 +34,14 @@ export const actions = {
     }
   ),
   createCategorySucceeded: (id: number) => createAction(ActionTypes.CREATE_CATEGORY_SUCCESS, id),
-  deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => createAction(ActionTypes.DELETE_CATEGORY_REQUEST, { data: category, link, route }),
+  deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => createAction(
+    ActionTypes.DELETE_CATEGORY_REQUEST,
+    {
+      data: category,
+      link,
+      route,
+    }
+  ),
   deleteCategoryFailed: (id: number, message: string) => createAction(
     ActionTypes.DELETE_CATEGORY_FAILURE,
     {

@@ -6,20 +6,22 @@ import {
   IAction,
 } from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
-import { IHATEOASLink } from '../../../../interfaces';
 import {
   IBookDTO,
+  IHATEOASLink,
   IPageableCollectionDTO,
-} from '../../../../interfaces/dtos';
+} from '../../../../interfaces';
 import { BookRowRenderer } from '../../../book/BookRowRenderer';
 import {
   ConfirmationModal,
+  Pagination,
   RoutedButton,
   SearchField,
 } from '../../../common';
 
 export interface IDispatchProps {
   deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => IAction<BookActionTypes.DELETE_BOOK_REQUEST>;
+  paginateBooks: (link: IHATEOASLink) => IAction<BookActionTypes.PAGINATE_BOOKS_REQUEST>;
   searchBooks: (query?: string) => IAction<BookActionTypes.LOAD_BOOKS_REQUEST>;
 }
 
@@ -50,6 +52,7 @@ export class ListBooksPage extends React.Component<IProps, IState> {
       bookRowRenderer,
       closeModal,
       deleteBook,
+      onPaginate,
       onSearchTextChange,
       props: {
         booksCollection,
@@ -98,6 +101,10 @@ export class ListBooksPage extends React.Component<IProps, IState> {
             {booksCollection.content.map(bookRowRenderer)}
           </tbody>
         </Table>
+        <Pagination
+          onPaginate={onPaginate}
+          pageableCollection={booksCollection}
+        />
         <ConfirmationModal
           htmlContent={
             this.state.selectedBook ?
@@ -132,6 +139,10 @@ export class ListBooksPage extends React.Component<IProps, IState> {
       this.props.deleteBook(this.state.selectedBook, this.state.selectedBook._links.delete);
     }
     this.closeModal();
+  }
+
+  private onPaginate = (link: IHATEOASLink) => {
+    this.props.paginateBooks(link);
   }
 
   private onSearchTextChange = (text: string) => {

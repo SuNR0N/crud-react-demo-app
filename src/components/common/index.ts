@@ -5,6 +5,7 @@ export { Dropdown } from './Dropdown';
 export { Icon } from './Icon';
 export { IconButton } from './IconButton';
 export { NavigationBarConnected } from './NavigationBar';
+export { Pagination } from './Pagination';
 export { ProfileConnected } from './Profile';
 export { ReadOnlyField } from './ReadOnlyField';
 export { RoutedButton } from './RoutedButton';

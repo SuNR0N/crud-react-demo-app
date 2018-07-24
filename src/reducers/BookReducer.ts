@@ -30,6 +30,7 @@ export const reducer = (state = initialState, action: Actions): IState => {
         books: {
           ...state.books,
           content: state.books.content.filter((book) => book.id !== action.payload),
+          totalItems: state.books.totalItems - 1,
         }
       }
     case ActionTypes.LOAD_BOOK_SUCCESS:
@@ -38,6 +39,11 @@ export const reducer = (state = initialState, action: Actions): IState => {
         currentBook: action.payload,
       }
     case ActionTypes.LOAD_BOOKS_SUCCESS:
+      return {
+        ...state,
+        books: action.payload,
+      }
+    case ActionTypes.PAGINATE_BOOKS_SUCCESS:
       return {
         ...state,
         books: action.payload,

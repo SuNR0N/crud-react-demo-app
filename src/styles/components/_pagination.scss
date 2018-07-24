@@ -1,0 +1,14 @@
+.pagination {
+  justify-content: center;
+  flex-flow: row wrap;
+
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  &__info {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}

@@ -79,12 +79,23 @@ function* updateBook(action: IActionWithPayload<BookActionTypes.UPDATE_BOOK_REQU
   }
 }
 
+function* paginateBooks(action: IActionWithPayload<BookActionTypes.PAGINATE_BOOKS_REQUEST, IResourceParams>) {
+  try {
+    const books = yield call(ResourceApi.request, action.payload);
+    yield put(BookActions.paginateBooksSucceeded(books));
+  } catch (error) {
+    toastr.error('Books Pagination Failed', error.message);
+    yield put(BookActions.paginateBooksFailed(error.message));
+  }
+}
+
 export function* bookSagas() {
   yield all([
     takeEvery(BookActionTypes.CREATE_BOOK_REQUEST, createBook),
     takeEvery(BookActionTypes.DELETE_BOOK_REQUEST, deleteBook),
     takeEvery(BookActionTypes.LOAD_BOOK_REQUEST, loadBook),
     takeEvery(BookActionTypes.LOAD_BOOKS_REQUEST, loadBooks),
+    takeEvery(BookActionTypes.PAGINATE_BOOKS_REQUEST, paginateBooks),
     takeEvery(BookActionTypes.UPDATE_BOOK_REQUEST, updateBook),
   ]);
 }

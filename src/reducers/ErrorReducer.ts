@@ -41,6 +41,7 @@ export const reducer = (state = initialState, action: Actions): IState => {
     case BookActionTypes.DELETE_BOOK_FAILURE:
     case BookActionTypes.LOAD_BOOK_FAILURE:
     case BookActionTypes.LOAD_BOOKS_FAILURE:
+    case BookActionTypes.PAGINATE_BOOKS_FAILURE:
     case BookActionTypes.UPDATE_BOOK_FAILURE:
     case CategoryActionTypes.CREATE_CATEGORY_FAILURE:
     case CategoryActionTypes.DELETE_CATEGORY_FAILURE:

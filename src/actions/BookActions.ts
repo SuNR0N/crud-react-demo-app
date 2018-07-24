@@ -21,6 +21,9 @@ export enum ActionTypes {
   LOAD_BOOKS_FAILURE = '[Book] Load Books Failure',
   LOAD_BOOKS_REQUEST = '[Book] Load Books Request',
   LOAD_BOOKS_SUCCESS = '[Book] Load Books Success',
+  PAGINATE_BOOKS_FAILURE = '[Book] Paginate Books Failure',
+  PAGINATE_BOOKS_REQUEST = '[Book] Paginate Books Request',
+  PAGINATE_BOOKS_SUCCESS = '[Book] Paginate Books Success',
   UPDATE_BOOK_FAILURE = '[Book] Update Book Failure',
   UPDATE_BOOK_REQUEST = '[Book] Update Book Request',
   UPDATE_BOOK_SUCCESS = '[Book] Update Book Success',
@@ -36,7 +39,14 @@ export const actions = {
     }
   ),
   createBookSucceeded: (id: number) => createAction(ActionTypes.CREATE_BOOK_SUCCESS, id),
-  deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => createAction(ActionTypes.DELETE_BOOK_REQUEST, { data: book, link, route }),
+  deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => createAction(
+    ActionTypes.DELETE_BOOK_REQUEST,
+    {
+      data: book,
+      link,
+      route,
+    }
+  ),
   deleteBookFailed: (id: number, message: string) => createAction(
     ActionTypes.DELETE_BOOK_FAILURE,
     {
@@ -60,6 +70,15 @@ export const actions = {
     { message }
   ),
   loadBooksSucceeded: (books: IPageableCollectionDTO<IBookDTO>) => createAction(ActionTypes.LOAD_BOOKS_SUCCESS, books),
+  paginateBooks: (link: IHATEOASLink) => createAction(
+    ActionTypes.PAGINATE_BOOKS_REQUEST,
+    { link }
+  ),
+  paginateBooksFailed: (message: string) => createAction(
+    ActionTypes.PAGINATE_BOOKS_FAILURE,
+    { message }
+  ),
+  paginateBooksSucceeded: (books: IPageableCollectionDTO<IBookDTO>) => createAction(ActionTypes.PAGINATE_BOOKS_SUCCESS, books),
   updateBook: (book: IBookUpdateDTO, id: number, link: IHATEOASLink) => createAction(
     ActionTypes.UPDATE_BOOK_REQUEST,
     {

@@ -34,7 +34,14 @@ export const actions = {
     }
   ),
   createPublisherSucceeded: (id: number) => createAction(ActionTypes.CREATE_PUBLISHER_SUCCESS, id),
-  deletePublisher: (publisher: IPublisherDTO, link: IHATEOASLink, route?: string) => createAction(ActionTypes.DELETE_PUBLISHER_REQUEST, { data: publisher, link, route }),
+  deletePublisher: (publisher: IPublisherDTO, link: IHATEOASLink, route?: string) => createAction(
+    ActionTypes.DELETE_PUBLISHER_REQUEST,
+    {
+      data: publisher,
+      link,
+      route,
+    }
+  ),
   deletePublisherFailed: (id: number, message: string) => createAction(
     ActionTypes.DELETE_PUBLISHER_FAILURE,
     {

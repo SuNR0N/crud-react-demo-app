@@ -35,7 +35,14 @@ export const actions = {
     }
   ),
   createAuthorSucceeded: (id: number) => createAction(ActionTypes.CREATE_AUTHOR_SUCCESS, id),
-  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => createAction(ActionTypes.DELETE_AUTHOR_REQUEST, { data: author, link, route }),
+  deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => createAction(
+    ActionTypes.DELETE_AUTHOR_REQUEST,
+    {
+      data: author,
+      link,
+      route,
+    }
+  ),
   deleteAuthorFailed: (id: number, message: string) => createAction(
     ActionTypes.DELETE_AUTHOR_FAILURE,
     {
