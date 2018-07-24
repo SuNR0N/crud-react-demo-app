@@ -32,8 +32,9 @@
     "test": "react-scripts-ts test --env=jsdom --watchAll",
     "test:coverage": "react-scripts-ts test --env=jsdom --coverage",
     "eject": "react-scripts-ts eject",
-    "generate:icons": "rm src/assets/icons/sprite.svg && svg-sprite-generate -d src/assets/icons -o src/assets/icons/sprite.svg",
-    "postinstall": "yarn generate:icons"
+    "postinstall": "yarn icons:generate",
+    "icons:generate": "svg-sprite-generate -d src/assets/icons -o src/assets/icons/sprite.svg",
+    "icons:clear": "rm src/assets/icons/sprite.svg" 
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.11",
