@@ -18,7 +18,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

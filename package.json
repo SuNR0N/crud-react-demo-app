@@ -34,7 +34,7 @@
     "eject": "react-scripts-ts eject",
     "postinstall": "yarn icons:generate",
     "icons:generate": "svg-sprite-generate -d src/assets/icons -o src/assets/icons/sprite.svg",
-    "icons:clear": "rm src/assets/icons/sprite.svg" 
+    "icons:clear": "rm src/assets/icons/sprite.svg"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.11",
@@ -55,6 +55,7 @@
     "coveralls": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "jest-fetch-mock": "^1.6.5",
     "react-test-renderer": "^16.4.1",
     "typescript": "^2.9.2"
   },

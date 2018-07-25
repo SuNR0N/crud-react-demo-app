@@ -17,7 +17,14 @@ export class CategoriesApi {
     return response.json();
   }
 
-  public static async createCategory(category: INewCategoryDTO): Promise<void> {
-    await HttpClient.post(`${API_PREFIX}/categories`, category);
+  public static async createCategory(category: INewCategoryDTO): Promise<number> {
+    const locationRegExp = /\/(\d{1,})$/;
+    const response = await HttpClient.post(`${API_PREFIX}/categories`, category);
+    const locationHeaderValue = response.headers.get('Location');
+    const locationRegExpExec = locationRegExp.exec(locationHeaderValue!);
+    if (!locationRegExpExec) {
+      throw new Error('Invalid location header');
+    }
+    return parseInt(locationRegExpExec[1], 10);
   }
 }

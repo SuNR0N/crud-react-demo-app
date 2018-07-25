@@ -9,7 +9,7 @@ export class HttpClient {
     if (typeof requestOptions.body === 'object') {
       const requestOptionsWithBody = HttpClient.prepareRequestWithBody(
         requestOptions.body,
-        requestOptions.method || 'GET',
+        requestOptions.method!,
         requestOptions
       );
       requestOptions = {

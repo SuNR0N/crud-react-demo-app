@@ -17,7 +17,14 @@ export class PublishersApi {
     return response.json();
   }
 
-  public static async createPublisher(category: INewPublisherDTO): Promise<void> {
-    await HttpClient.post(`${API_PREFIX}/publishers`, category);
+  public static async createPublisher(publisher: INewPublisherDTO): Promise<number> {
+    const locationRegExp = /\/(\d{1,})$/;
+    const response = await HttpClient.post(`${API_PREFIX}/publishers`, publisher);
+    const locationHeaderValue = response.headers.get('Location');
+    const locationRegExpExec = locationRegExp.exec(locationHeaderValue!);
+    if (!locationRegExpExec) {
+      throw new Error('Invalid location header');
+    }
+    return parseInt(locationRegExpExec[1], 10);
   }
 }

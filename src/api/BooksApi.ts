@@ -18,7 +18,14 @@ export class BooksApi {
     return response.json();
   }
 
-  public static async createBook(book: INewBookDTO): Promise<void> {
-    await HttpClient.post(`${API_PREFIX}/books`, book);
+  public static async createBook(book: INewBookDTO): Promise<number> {
+    const locationRegExp = /\/(\d{1,})$/;
+    const response = await HttpClient.post(`${API_PREFIX}/books`, book);
+    const locationHeaderValue = response.headers.get('Location');
+    const locationRegExpExec = locationRegExp.exec(locationHeaderValue!);
+    if (!locationRegExpExec) {
+      throw new Error('Invalid location header');
+    }
+    return parseInt(locationRegExpExec[1], 10);
   }
 }
