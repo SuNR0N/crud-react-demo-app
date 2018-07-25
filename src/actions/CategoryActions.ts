@@ -25,7 +25,10 @@ export enum ActionTypes {
 };
 
 export const actions = {
-  createCategory: (category: INewCategoryDTO) => createAction(ActionTypes.CREATE_CATEGORY_REQUEST, category),
+  createCategory: (category: INewCategoryDTO) => createAction(
+    ActionTypes.CREATE_CATEGORY_REQUEST,
+    category
+  ),
   createCategoryFailed: (category: INewCategoryDTO, message: string) => createAction(
     ActionTypes.CREATE_CATEGORY_FAILURE,
     {
@@ -33,7 +36,10 @@ export const actions = {
       message,
     }
   ),
-  createCategorySucceeded: (id: number) => createAction(ActionTypes.CREATE_CATEGORY_SUCCESS, id),
+  createCategorySucceeded: (id: number) => createAction(
+    ActionTypes.CREATE_CATEGORY_SUCCESS,
+    id
+  ),
   deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => createAction(
     ActionTypes.DELETE_CATEGORY_REQUEST,
     {
@@ -49,14 +55,26 @@ export const actions = {
       message,
     }
   ),
-  deleteCategorySucceeded: (id: number) => createAction(ActionTypes.DELETE_CATEGORY_SUCCESS, id),
-  loadCategories: (query?: string) => createAction(ActionTypes.LOAD_CATEGORIES_REQUEST, query),
+  deleteCategorySucceeded: (id: number) => createAction(
+    ActionTypes.DELETE_CATEGORY_SUCCESS,
+    id
+  ),
+  loadCategories: (query?: string) => createAction(
+    ActionTypes.LOAD_CATEGORIES_REQUEST,
+    query
+  ),
   loadCategoriesFailed: (message: string) => createAction(
     ActionTypes.LOAD_CATEGORIES_FAILURE,
    { message }
   ),
-  loadCategoriesSucceeded: (categories: ICategoryDTO[]) => createAction(ActionTypes.LOAD_CATEGORIES_SUCCESS, categories),
-  loadCategory: (id: number) => createAction(ActionTypes.LOAD_CATEGORY_REQUEST, id),
+  loadCategoriesSucceeded: (categories: ICategoryDTO[]) => createAction(
+    ActionTypes.LOAD_CATEGORIES_SUCCESS,
+    categories
+  ),
+  loadCategory: (id: number) => createAction(
+    ActionTypes.LOAD_CATEGORY_REQUEST,
+    id
+  ),
   loadCategoryFailed: (id: number, message: string) => createAction(
     ActionTypes.LOAD_CATEGORY_FAILURE,
     {
@@ -64,7 +82,10 @@ export const actions = {
       message,
     }
   ),
-  loadCategorySucceeded: (category: ICategoryDTO) => createAction(ActionTypes.LOAD_CATEGORY_SUCCESS, category),
+  loadCategorySucceeded: (category: ICategoryDTO) => createAction(
+    ActionTypes.LOAD_CATEGORY_SUCCESS,
+    category
+  ),
   updateCategory: (category: INewCategoryDTO, id: number, link: IHATEOASLink) => createAction(
     ActionTypes.UPDATE_CATEGORY_REQUEST,
     {
@@ -81,7 +102,10 @@ export const actions = {
       message,
     }
   ),
-  updateCategorySucceeded: (category: ICategoryDTO) => createAction(ActionTypes.UPDATE_CATEGORY_SUCCESS, category),
+  updateCategorySucceeded: (category: ICategoryDTO) => createAction(
+    ActionTypes.UPDATE_CATEGORY_SUCCESS,
+    category
+  ),
 }
 
 export type Actions = ActionsUnion<typeof actions>;

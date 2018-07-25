@@ -17,7 +17,10 @@ export const actions = {
     ActionTypes.LOAD_PROFILE_FAILURE,
     { message }
   ),
-  loadProfileSucceeded: (profile: IProfileDTO) => createAction(ActionTypes.LOAD_PROFILE_SUCCESS, profile),
+  loadProfileSucceeded: (profile: IProfileDTO) => createAction(
+    ActionTypes.LOAD_PROFILE_SUCCESS,
+    profile
+  ),
   logOut: () => createAction(ActionTypes.LOG_OUT_REQUEST),
   logOutFailed: (message: string) => createAction(
     ActionTypes.LOG_OUT_FAILURE,

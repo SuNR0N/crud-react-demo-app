@@ -26,7 +26,10 @@ export enum ActionTypes {
 };
 
 export const actions = {
-  createAuthor: (author: INewAuthorDTO) => createAction(ActionTypes.CREATE_AUTHOR_REQUEST, author),
+  createAuthor: (author: INewAuthorDTO) => createAction(
+    ActionTypes.CREATE_AUTHOR_REQUEST,
+    author
+  ),
   createAuthorFailed: (author: INewAuthorDTO, message: string) => createAction(
     ActionTypes.CREATE_AUTHOR_FAILURE,
     {
@@ -34,7 +37,10 @@ export const actions = {
       message,
     }
   ),
-  createAuthorSucceeded: (id: number) => createAction(ActionTypes.CREATE_AUTHOR_SUCCESS, id),
+  createAuthorSucceeded: (id: number) => createAction(
+    ActionTypes.CREATE_AUTHOR_SUCCESS,
+    id
+  ),
   deleteAuthor: (author: IAuthorDTO, link: IHATEOASLink, route?: string) => createAction(
     ActionTypes.DELETE_AUTHOR_REQUEST,
     {
@@ -50,8 +56,14 @@ export const actions = {
       message,
     }
   ),
-  deleteAuthorSucceeded: (id: number) => createAction(ActionTypes.DELETE_AUTHOR_SUCCESS, id),
-  loadAuthor: (id: number) => createAction(ActionTypes.LOAD_AUTHOR_REQUEST, id),
+  deleteAuthorSucceeded: (id: number) => createAction(
+    ActionTypes.DELETE_AUTHOR_SUCCESS,
+    id
+  ),
+  loadAuthor: (id: number) => createAction(
+    ActionTypes.LOAD_AUTHOR_REQUEST,
+    id
+  ),
   loadAuthorFailed: (id: number, message: string) => createAction(
     ActionTypes.LOAD_AUTHOR_FAILURE,
     {
@@ -59,13 +71,22 @@ export const actions = {
       message,
     }
   ),
-  loadAuthorSucceeded: (author: IAuthorDTO) => createAction(ActionTypes.LOAD_AUTHOR_SUCCESS, author),
-  loadAuthors: (query?: string) => createAction(ActionTypes.LOAD_AUTHORS_REQUEST, query),
+  loadAuthorSucceeded: (author: IAuthorDTO) => createAction(
+    ActionTypes.LOAD_AUTHOR_SUCCESS,
+    author
+  ),
+  loadAuthors: (query?: string) => createAction(
+    ActionTypes.LOAD_AUTHORS_REQUEST,
+    query
+  ),
   loadAuthorsFailed: (message: string) => createAction(
     ActionTypes.LOAD_AUTHORS_FAILURE,
     { message }
   ),
-  loadAuthorsSucceeded: (authors: IAuthorDTO[]) => createAction(ActionTypes.LOAD_AUTHORS_SUCCESS, authors),
+  loadAuthorsSucceeded: (authors: IAuthorDTO[]) => createAction(
+    ActionTypes.LOAD_AUTHORS_SUCCESS,
+    authors
+  ),
   updateAuthor: (author: IAuthorUpdateDTO, id: number, link: IHATEOASLink) => createAction(
     ActionTypes.UPDATE_AUTHOR_REQUEST,
     {
@@ -82,7 +103,10 @@ export const actions = {
       message,
     }
   ),
-  updateAuthorSucceeded: (author: IAuthorDTO) => createAction(ActionTypes.UPDATE_AUTHOR_SUCCESS, author),
+  updateAuthorSucceeded: (author: IAuthorDTO) => createAction(
+    ActionTypes.UPDATE_AUTHOR_SUCCESS,
+    author
+  ),
 }
 
 export type Actions = ActionsUnion<typeof actions>;

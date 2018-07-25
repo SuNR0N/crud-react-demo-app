@@ -25,7 +25,10 @@ export enum ActionTypes {
 };
 
 export const actions = {
-  createPublisher: (publisher: INewPublisherDTO) => createAction(ActionTypes.CREATE_PUBLISHER_REQUEST, publisher),
+  createPublisher: (publisher: INewPublisherDTO) => createAction(
+    ActionTypes.CREATE_PUBLISHER_REQUEST,
+    publisher
+  ),
   createPublisherFailed: (publisher: INewPublisherDTO, message: string) => createAction(
     ActionTypes.CREATE_PUBLISHER_FAILURE,
     {
@@ -33,7 +36,10 @@ export const actions = {
       message,
     }
   ),
-  createPublisherSucceeded: (id: number) => createAction(ActionTypes.CREATE_PUBLISHER_SUCCESS, id),
+  createPublisherSucceeded: (id: number) => createAction(
+    ActionTypes.CREATE_PUBLISHER_SUCCESS,
+    id
+  ),
   deletePublisher: (publisher: IPublisherDTO, link: IHATEOASLink, route?: string) => createAction(
     ActionTypes.DELETE_PUBLISHER_REQUEST,
     {
@@ -49,8 +55,14 @@ export const actions = {
       message,
     }
   ),
-  deletePublisherSucceeded: (id: number) => createAction(ActionTypes.DELETE_PUBLISHER_SUCCESS, id),
-  loadPublisher: (id: number) => createAction(ActionTypes.LOAD_PUBLISHER_REQUEST, id),
+  deletePublisherSucceeded: (id: number) => createAction(
+    ActionTypes.DELETE_PUBLISHER_SUCCESS,
+    id
+  ),
+  loadPublisher: (id: number) => createAction(
+    ActionTypes.LOAD_PUBLISHER_REQUEST,
+    id
+  ),
   loadPublisherFailed: (id: number, message: string) => createAction(
     ActionTypes.LOAD_PUBLISHER_FAILURE,
     {
@@ -58,13 +70,22 @@ export const actions = {
       message,
     }
   ),
-  loadPublisherSucceeded: (publisher: IPublisherDTO) => createAction(ActionTypes.LOAD_PUBLISHER_SUCCESS, publisher),
-  loadPublishers: (query?: string) => createAction(ActionTypes.LOAD_PUBLISHERS_REQUEST, query),
+  loadPublisherSucceeded: (publisher: IPublisherDTO) => createAction(
+    ActionTypes.LOAD_PUBLISHER_SUCCESS,
+    publisher
+  ),
+  loadPublishers: (query?: string) => createAction(
+    ActionTypes.LOAD_PUBLISHERS_REQUEST,
+    query
+  ),
   loadPublishersFailed: (message: string) => createAction(
     ActionTypes.LOAD_PUBLISHERS_FAILURE,
     { message }
   ),
-  loadPublishersSucceeded: (publishers: IPublisherDTO[]) => createAction(ActionTypes.LOAD_PUBLISHERS_SUCCESS, publishers),
+  loadPublishersSucceeded: (publishers: IPublisherDTO[]) => createAction(
+    ActionTypes.LOAD_PUBLISHERS_SUCCESS,
+    publishers
+  ),
   updatePublisher: (publisher: INewPublisherDTO, id: number, link: IHATEOASLink) => createAction(
     ActionTypes.UPDATE_PUBLISHER_REQUEST,
     {
@@ -81,7 +102,10 @@ export const actions = {
       message,
     }
   ),
-  updatePublisherSucceeded: (publisher: IPublisherDTO) => createAction(ActionTypes.UPDATE_PUBLISHER_SUCCESS, publisher),
+  updatePublisherSucceeded: (publisher: IPublisherDTO) => createAction(
+    ActionTypes.UPDATE_PUBLISHER_SUCCESS,
+    publisher
+  ),
 }
 
 export type Actions = ActionsUnion<typeof actions>;
