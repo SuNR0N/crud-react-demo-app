@@ -23,7 +23,7 @@ import {
   IResourceParams,
 } from '../interfaces';
 
-function* deleteCategory(action: IActionWithPayload<CategoryActionTypes.DELETE_CATEGORY_REQUEST, IResourceParams<ICategoryDTO>>) {
+export function* deleteCategory(action: IActionWithPayload<CategoryActionTypes.DELETE_CATEGORY_REQUEST, IResourceParams<ICategoryDTO>>) {
   try {
     yield call(ResourceApi.request, action.payload);
     yield put(CategoryActions.deleteCategorySucceeded(action.payload.data!.id));
@@ -36,7 +36,7 @@ function* deleteCategory(action: IActionWithPayload<CategoryActionTypes.DELETE_C
   }
 }
 
-function* createCategory(action: IActionWithPayload<CategoryActionTypes.CREATE_CATEGORY_REQUEST, INewCategoryDTO>) {
+export function* createCategory(action: IActionWithPayload<CategoryActionTypes.CREATE_CATEGORY_REQUEST, INewCategoryDTO>) {
   try {
     const id = yield call(CategoriesApi.createCategory, action.payload);
     yield put(CategoryActions.createCategorySucceeded(id));
@@ -47,7 +47,7 @@ function* createCategory(action: IActionWithPayload<CategoryActionTypes.CREATE_C
   }
 }
 
-function* loadCategory(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEGORY_REQUEST, number>) {
+export function* loadCategory(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEGORY_REQUEST, number>) {
   try {
     const category = yield call(CategoriesApi.getCategory, action.payload);
     yield put(CategoryActions.loadCategorySucceeded(category));
@@ -57,7 +57,7 @@ function* loadCategory(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEG
   }
 }
 
-function* loadCategories(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEGORIES_REQUEST, string | undefined>) {
+export function* loadCategories(action: IActionWithPayload<CategoryActionTypes.LOAD_CATEGORIES_REQUEST, string | undefined>) {
   try {
     const categories = yield call(CategoriesApi.getCategories, action.payload);
     yield put(CategoryActions.loadCategoriesSucceeded(categories));
@@ -67,7 +67,7 @@ function* loadCategories(action: IActionWithPayload<CategoryActionTypes.LOAD_CAT
   }
 }
 
-function* updateCategory(action: IActionWithPayload<CategoryActionTypes.UPDATE_CATEGORY_REQUEST, IResourceParams<INewCategoryDTO>>) {
+export function* updateCategory(action: IActionWithPayload<CategoryActionTypes.UPDATE_CATEGORY_REQUEST, IResourceParams<INewCategoryDTO>>) {
   try {
     const category: ICategoryDTO = yield call(ResourceApi.request, action.payload);
     yield put(CategoryActions.updateCategorySucceeded(category));

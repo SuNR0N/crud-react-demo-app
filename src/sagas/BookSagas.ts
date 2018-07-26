@@ -24,7 +24,7 @@ import {
   IResourceParams,
 } from '../interfaces';
 
-function* deleteBook(action: IActionWithPayload<BookActionTypes.DELETE_BOOK_REQUEST, IResourceParams<IBookDTO>>) {
+export function* deleteBook(action: IActionWithPayload<BookActionTypes.DELETE_BOOK_REQUEST, IResourceParams<IBookDTO>>) {
   try {
     yield call(ResourceApi.request, action.payload);
     yield put(BookActions.deleteBookSucceeded(action.payload.data!.id));
@@ -37,7 +37,7 @@ function* deleteBook(action: IActionWithPayload<BookActionTypes.DELETE_BOOK_REQU
   }
 }
 
-function* createBook(action: IActionWithPayload<BookActionTypes.CREATE_BOOK_REQUEST, INewBookDTO>) {
+export function* createBook(action: IActionWithPayload<BookActionTypes.CREATE_BOOK_REQUEST, INewBookDTO>) {
   try {
     const id = yield call(BooksApi.createBook, action.payload);
     yield put(BookActions.createBookSucceeded(id));
@@ -48,7 +48,7 @@ function* createBook(action: IActionWithPayload<BookActionTypes.CREATE_BOOK_REQU
   }
 }
 
-function* loadBook(action: IActionWithPayload<BookActionTypes.LOAD_BOOK_REQUEST, number>) {
+export function* loadBook(action: IActionWithPayload<BookActionTypes.LOAD_BOOK_REQUEST, number>) {
   try {
     const book = yield call(BooksApi.getBook, action.payload);
     yield put(BookActions.loadBookSucceeded(book));
@@ -58,7 +58,7 @@ function* loadBook(action: IActionWithPayload<BookActionTypes.LOAD_BOOK_REQUEST,
   }
 }
 
-function* loadBooks(action: IActionWithPayload<BookActionTypes.LOAD_BOOKS_REQUEST, string | undefined>) {
+export function* loadBooks(action: IActionWithPayload<BookActionTypes.LOAD_BOOKS_REQUEST, string | undefined>) {
   try {
     const books = yield call(BooksApi.getBooks, action.payload);
     yield put(BookActions.loadBooksSucceeded(books));
@@ -68,7 +68,7 @@ function* loadBooks(action: IActionWithPayload<BookActionTypes.LOAD_BOOKS_REQUES
   }
 }
 
-function* updateBook(action: IActionWithPayload<BookActionTypes.UPDATE_BOOK_REQUEST, IResourceParams<IBookUpdateDTO>>) {
+export function* updateBook(action: IActionWithPayload<BookActionTypes.UPDATE_BOOK_REQUEST, IResourceParams<IBookUpdateDTO>>) {
   try {
     const book: IBookDTO = yield call(ResourceApi.request, action.payload);
     yield put(BookActions.updateBookSucceeded(book));
@@ -79,7 +79,7 @@ function* updateBook(action: IActionWithPayload<BookActionTypes.UPDATE_BOOK_REQU
   }
 }
 
-function* paginateBooks(action: IActionWithPayload<BookActionTypes.PAGINATE_BOOKS_REQUEST, IResourceParams>) {
+export function* paginateBooks(action: IActionWithPayload<BookActionTypes.PAGINATE_BOOKS_REQUEST, IResourceParams>) {
   try {
     const books = yield call(ResourceApi.request, action.payload);
     yield put(BookActions.paginateBooksSucceeded(books));

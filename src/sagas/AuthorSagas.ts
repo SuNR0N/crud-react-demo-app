@@ -24,7 +24,7 @@ import {
   IResourceParams,
 } from '../interfaces';
 
-function* deleteAuthor(action: IActionWithPayload<AuthorActionTypes.DELETE_AUTHOR_REQUEST, IResourceParams<IAuthorDTO>>) {
+export function* deleteAuthor(action: IActionWithPayload<AuthorActionTypes.DELETE_AUTHOR_REQUEST, IResourceParams<IAuthorDTO>>) {
   try {
     yield call(ResourceApi.request, action.payload);
     yield put(AuthorActions.deleteAuthorSucceeded(action.payload.data!.id));
@@ -37,7 +37,7 @@ function* deleteAuthor(action: IActionWithPayload<AuthorActionTypes.DELETE_AUTHO
   }
 }
 
-function* createAuthor(action: IActionWithPayload<AuthorActionTypes.CREATE_AUTHOR_REQUEST, INewAuthorDTO>) {
+export function* createAuthor(action: IActionWithPayload<AuthorActionTypes.CREATE_AUTHOR_REQUEST, INewAuthorDTO>) {
   try {
     const id = yield call(AuthorsApi.createAuthor, action.payload);
     yield put(AuthorActions.createAuthorSucceeded(id));
@@ -48,7 +48,7 @@ function* createAuthor(action: IActionWithPayload<AuthorActionTypes.CREATE_AUTHO
   }
 }
 
-function* loadAuthor(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHOR_REQUEST, number>) {
+export function* loadAuthor(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHOR_REQUEST, number>) {
   try {
     const author = yield call(AuthorsApi.getAuthor, action.payload);
     yield put(AuthorActions.loadAuthorSucceeded(author));
@@ -58,7 +58,7 @@ function* loadAuthor(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHOR_RE
   }
 }
 
-function* loadAuthors(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHORS_REQUEST, string | undefined>) {
+export function* loadAuthors(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHORS_REQUEST, string | undefined>) {
   try {
     const authors = yield call(AuthorsApi.getAuthors, action.payload);
     yield put(AuthorActions.loadAuthorsSucceeded(authors));
@@ -68,7 +68,7 @@ function* loadAuthors(action: IActionWithPayload<AuthorActionTypes.LOAD_AUTHORS_
   }
 }
 
-function* updateAuthor(action: IActionWithPayload<AuthorActionTypes.UPDATE_AUTHOR_REQUEST, IResourceParams<IAuthorUpdateDTO>>) {
+export function* updateAuthor(action: IActionWithPayload<AuthorActionTypes.UPDATE_AUTHOR_REQUEST, IResourceParams<IAuthorUpdateDTO>>) {
   try {
     const author: IAuthorDTO = yield call(ResourceApi.request, action.payload);
     yield put(AuthorActions.updateAuthorSucceeded(author));

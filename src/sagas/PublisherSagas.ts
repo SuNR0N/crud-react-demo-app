@@ -23,7 +23,7 @@ import {
   IResourceParams,
 } from '../interfaces';
 
-function* deletePublisher(action: IActionWithPayload<PublisherActionTypes.DELETE_PUBLISHER_REQUEST, IResourceParams<IPublisherDTO>>) {
+export function* deletePublisher(action: IActionWithPayload<PublisherActionTypes.DELETE_PUBLISHER_REQUEST, IResourceParams<IPublisherDTO>>) {
   try {
     yield call(ResourceApi.request, action.payload);
     yield put(PublisherActions.deletePublisherSucceeded(action.payload.data!.id));
@@ -36,7 +36,7 @@ function* deletePublisher(action: IActionWithPayload<PublisherActionTypes.DELETE
   }
 }
 
-function* createPublisher(action: IActionWithPayload<PublisherActionTypes.CREATE_PUBLISHER_REQUEST, INewPublisherDTO>) {
+export function* createPublisher(action: IActionWithPayload<PublisherActionTypes.CREATE_PUBLISHER_REQUEST, INewPublisherDTO>) {
   try {
     const id = yield call(PublishersApi.createPublisher, action.payload);
     yield put(PublisherActions.createPublisherSucceeded(id));
@@ -47,7 +47,7 @@ function* createPublisher(action: IActionWithPayload<PublisherActionTypes.CREATE
   }
 }
 
-function* loadPublisher(action: IActionWithPayload<PublisherActionTypes.LOAD_PUBLISHER_REQUEST, number>) {
+export function* loadPublisher(action: IActionWithPayload<PublisherActionTypes.LOAD_PUBLISHER_REQUEST, number>) {
   try {
     const publisher = yield call(PublishersApi.getPublisher, action.payload);
     yield put(PublisherActions.loadPublisherSucceeded(publisher));
@@ -57,7 +57,7 @@ function* loadPublisher(action: IActionWithPayload<PublisherActionTypes.LOAD_PUB
   }
 }
 
-function* loadPublishers(action: IActionWithPayload<PublisherActionTypes.LOAD_PUBLISHERS_REQUEST, string | undefined>) {
+export function* loadPublishers(action: IActionWithPayload<PublisherActionTypes.LOAD_PUBLISHERS_REQUEST, string | undefined>) {
   try {
     const publishers = yield call(PublishersApi.getPublishers, action.payload);
     yield put(PublisherActions.loadPublishersSucceeded(publishers));
@@ -67,7 +67,7 @@ function* loadPublishers(action: IActionWithPayload<PublisherActionTypes.LOAD_PU
   }
 }
 
-function* updatePublisher(action: IActionWithPayload<PublisherActionTypes.UPDATE_PUBLISHER_REQUEST, IResourceParams<INewPublisherDTO>>) {
+export function* updatePublisher(action: IActionWithPayload<PublisherActionTypes.UPDATE_PUBLISHER_REQUEST, IResourceParams<INewPublisherDTO>>) {
   try {
     const publisher: IPublisherDTO = yield call(ResourceApi.request, action.payload);
     yield put(PublisherActions.updatePublisherSucceeded(publisher));

@@ -12,7 +12,7 @@ import {
 } from '../actions/AuthActions';
 import { AuthApi } from '../api/AuthApi';
 
-function* loadProfile() {
+export function* loadProfile() {
   try {
     const profile = yield call(AuthApi.getProfile);
     yield put(actions.loadProfileSucceeded(profile));
@@ -22,7 +22,7 @@ function* loadProfile() {
   }
 }
 
-function* logOut() {
+export function* logOut() {
   try {
     yield call(AuthApi.logOut);
     yield put(actions.logOutSucceeded());
