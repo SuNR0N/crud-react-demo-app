@@ -9,9 +9,12 @@ export interface IProps extends WrappedFieldInputProps {
   defaultOptions?: any[];
   getOptionLabel: (option: any) => string;
   getOptionValue: (option: any) => any;
+  id?: string;
   noOptionsMessage?: () => string;
   placeholder?: string;
   promiseOptions: (query?: string) => Promise<any>;
+  touched: boolean;
+  valid: boolean;
   valueProperty?: string;
 }
 
@@ -31,9 +34,12 @@ export class Dropdown extends Component<IProps> {
       defaultOptions = true,
       getOptionLabel,
       getOptionValue,
+      id,
       noOptionsMessage,
       placeholder = 'Please select...',
       promiseOptions,
+      touched,
+      valid,
       valueProperty = 'id',
       ...inputProps
     } = this.props;
@@ -49,10 +55,19 @@ export class Dropdown extends Component<IProps> {
       valueProperty
     );
 
+    const classNamePrefix = 'dropdown';
+    let className = `${classNamePrefix}__wrapper`;
+    if (valid && touched) {
+      className = `${className}--is-valid`;
+    }
+
     return (
       <Async
+        className={className}
+        classNamePrefix={classNamePrefix}
         ref={this.ref}
         {...inputProps}
+        id={id}
         cacheOptions={true}
         defaultOptions={defaultOptions}
         getOptionLabel={getOptionLabel}

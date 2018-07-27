@@ -1,0 +1,44 @@
+.dropdown {
+  $parent: &;
+
+  &__wrapper {
+    &--is-valid {
+      #{$parent}__control {
+        &[class*="css-"] {
+          border-color: $form-feedback-valid-color;
+
+          &:hover {
+            border-color: $form-feedback-valid-color;
+          }
+
+          &#{$parent}__control--is-focused {
+            border-color: $form-feedback-valid-color;
+            box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-valid-color, .25);
+          }
+        }
+      }
+    }
+  }
+
+  &__control {
+    &[class*="css-"] {
+      background-color: $white;
+      border-color: $gray-400;
+    }
+
+    &:hover {
+      &[class*="css-"] {
+        border-color: $gray-400;
+      }
+    }
+
+    &--is-focused#{&} {
+      border-color: $input-focus-border-color;
+      box-shadow: $input-focus-box-shadow;
+      
+      &:hover {
+        border-color: $input-focus-border-color;
+      }
+    }
+  }
+}

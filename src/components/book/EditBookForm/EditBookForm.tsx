@@ -68,7 +68,7 @@ const optionListNormalizer = (options: Array<IAuthorDTO | ICategoryDTO | IPublis
   }) : [];
 };
 
-const renderAuthorsDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+const renderAuthorsDropdown = ({ input, meta, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (author: IAuthorDTO) => author.fullName;
   const getOptionValue = (author: IAuthorDTO) => author.id;
   const noOptionsMessage = () => 'No author found';
@@ -77,6 +77,7 @@ const renderAuthorsDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   return (
     <Dropdown
       {...input}
+      {...meta}
       {...custom}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
@@ -86,7 +87,7 @@ const renderAuthorsDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   );
 }
 
-const renderCategoriesDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+const renderCategoriesDropdown = ({ input, meta, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (category: ICategoryDTO) => category.name;
   const getOptionValue = (category: ICategoryDTO) => category.id;
   const noOptionsMessage = () => 'No category found';
@@ -95,6 +96,7 @@ const renderCategoriesDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   return (
     <Dropdown
       {...input}
+      {...meta}
       {...custom}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
@@ -104,11 +106,15 @@ const renderCategoriesDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   );
 }
 
-const renderDatePicker = ({ input }: WrappedFieldProps) => (
-  <DatePicker {...input}/>
+const renderDatePicker = ({ input, meta, ...custom }: WrappedFieldProps) => (
+  <DatePicker
+    {...input}
+    {...meta}
+    {...custom}
+  />
 );
 
-const renderPublishersDropdown = ({ input, ...custom }: WrappedFieldProps) => {
+const renderPublishersDropdown = ({ input, meta, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (publisher: IPublisherDTO) => publisher.name;
   const getOptionValue = (publisher: IPublisherDTO) => publisher.id;
   const noOptionsMessage = () => 'No publisher found';
@@ -117,6 +123,7 @@ const renderPublishersDropdown = ({ input, ...custom }: WrappedFieldProps) => {
   return (
     <Dropdown
       {...input}
+      {...meta}
       {...custom}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}

@@ -9,14 +9,15 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from 'reactstrap';
+import { WrappedFieldInputProps } from 'redux-form';
 
 import { DATE_FORMAT } from '../../../config';
 import { Icon } from '../Icon';
 
-export interface IProps {
-  onBlur: (value: any) => void;
-  onChange: (value: any) => void;
-  value: any;
+export interface IProps extends WrappedFieldInputProps {
+  id?: string;
+  touched: boolean;
+  valid: boolean;
 }
 
 export class DatePicker extends Component<IProps> {
@@ -28,17 +29,26 @@ export class DatePicker extends Component<IProps> {
       onBlur,
       openDatePicker,
       props: {
-        onChange,
+        id,
+        touched,
+        valid,
         value,
+        ...inputProps
       },
     } = this;
+
+    let className = 'form-control';
+    if (touched && valid) {
+      className = `${className} is-valid`;
+    }
   
     return (
       <InputGroup className="date-picker">
         <ReactDatePicker
-          className="form-control"
+          {...inputProps}
+          id={id}
+          className={className}
           selected={value ? moment(value, DATE_FORMAT) : null}
-          onChange={onChange}
           peekNextMonth={true}
           showMonthDropdown={true}
           showYearDropdown={true}
