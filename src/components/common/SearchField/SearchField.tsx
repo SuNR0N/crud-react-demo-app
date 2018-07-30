@@ -22,7 +22,7 @@ export class SearchField extends Component<IProps, IState> {
     value: this.props.value ? String(this.props.value) : '',
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     this.debouncedChange = debounce(
       this.debouncedChange,
       this.props.debounceInterval || 500

@@ -12,6 +12,7 @@ import { Icon } from '../Icon';
 export const SignIn: SFC = () => {
   return (
     <UncontrolledDropdown
+      className="sign-in"
       nav={true}
       inNavbar={true}
     >

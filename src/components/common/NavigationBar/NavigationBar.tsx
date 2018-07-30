@@ -10,13 +10,11 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import {
-  Icon,
-  ProfileConnected,
-  SignIn,
-} from '..';
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IProfileDTO } from '../../../interfaces/dtos/ProfileDTO';
+import { Icon } from '../Icon';
+import { ProfileConnected } from '../Profile';
+import { SignIn } from '../SignIn';
 
 export interface IDispatchProps {
   loadProfile: () => any;
@@ -54,6 +52,7 @@ export class NavigationBar extends Component<IProps, IState> {
 
     return (
       <Navbar
+        className="navigation-bar"
         color="dark"
         dark={true}
         expand="md"
