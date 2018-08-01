@@ -9,7 +9,10 @@ import {
 } from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import { INewAuthorDTO } from '../../../../interfaces/dtos/NewAuthorDTO';
-import { CreateAuthorForm, IFormData } from '../../../author/CreateAuthorForm';
+import {
+  CreateAuthorForm,
+  IFormData,
+} from '../../../author/CreateAuthorForm';
 import { ActionBar } from '../../../common/ActionBar';
 
 export interface IDispatchProps {

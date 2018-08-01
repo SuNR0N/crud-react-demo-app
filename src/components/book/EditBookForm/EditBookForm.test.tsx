@@ -242,6 +242,27 @@ describe('EditBookForm', () => {
 
       expect(values).toEqual(['Foo', 'Bar']);
     });
+
+    it('should display "No category found" if the search does not return any results', () => {
+      jest.spyOn(CategoriesApi, 'getCategories').mockResolvedValue([]);
+      wrapper = mount(
+        <Provider store={createStore(combineReducers({ form: formReducer }))}>
+          <EditBookForm/>
+        </Provider>
+      );
+      const categoriesDropdownInput = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.categories })
+        .find('input')
+        .first();
+      categoriesDropdownInput.simulate('change', { target: { value: 'Foo' } });
+      const categoriesDropdownMenu = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.categories })
+        .find('.dropdown__menu-list');
+
+      expect(categoriesDropdownMenu.text()).toBe('No category found');
+    });
   });
 
   describe('Authors', () => {
@@ -289,6 +310,27 @@ describe('EditBookForm', () => {
         .map((valueLabel) => valueLabel.text());
 
       expect(values).toEqual(['Jane Doe']);
+    });
+
+    it('should display "No author found" if the search does not return any results', () => {
+      jest.spyOn(AuthorsApi, 'getAuthors').mockResolvedValue([]);
+      wrapper = mount(
+        <Provider store={createStore(combineReducers({ form: formReducer }))}>
+          <EditBookForm/>
+        </Provider>
+      );
+      const authorsDropdownInput = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.authors })
+        .find('input')
+        .first();
+      authorsDropdownInput.simulate('change', { target: { value: 'Foo' } });
+      const authorsDropdownMenu = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.authors })
+        .find('.dropdown__menu-list');
+
+      expect(authorsDropdownMenu.text()).toBe('No author found');
     });
   });
 
@@ -482,6 +524,27 @@ describe('EditBookForm', () => {
         .map((valueLabel) => valueLabel.text());
 
       expect(values).toEqual(['FooBar']);
+    });
+
+    it('should display "No publisher found" if the search does not return any results', () => {
+      jest.spyOn(PublishersApi, 'getPublishers').mockResolvedValue([]);
+      wrapper = mount(
+        <Provider store={createStore(combineReducers({ form: formReducer }))}>
+          <EditBookForm/>
+        </Provider>
+      );
+      const publishersDropdownInput = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.publishers })
+        .find('input')
+        .first();
+        publishersDropdownInput.simulate('change', { target: { value: 'Foo' } });
+      const publishersDropdownMenu = wrapper
+        .find(Dropdown)
+        .find({ id: FormDataNames.publishers })
+        .find('.dropdown__menu-list');
+
+      expect(publishersDropdownMenu.text()).toBe('No publisher found');
     });
   });
 

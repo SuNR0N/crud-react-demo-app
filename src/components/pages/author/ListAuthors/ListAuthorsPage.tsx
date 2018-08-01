@@ -3,7 +3,8 @@ import { Table } from 'reactstrap';
 
 import {
   AuthorActionTypes,
-  IAction } from '../../../../actions';
+  IAction,
+} from '../../../../actions';
 import { RouteConfig } from '../../../../config/RouteConfig';
 import {
   IAuthorDTO,

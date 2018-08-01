@@ -65,5 +65,13 @@
     "/api": {
       "target": "http://localhost:3001"
     }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{ts,tsx}",
+      "!<rootDir>/src/**/index.{ts,tsx}",
+      "!<rootDir>/src/registerServiceWorker.ts",
+      "!<rootDir>/src/setupTests.ts"
+    ]
   }
 }

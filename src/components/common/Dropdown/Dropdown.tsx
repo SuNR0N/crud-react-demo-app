@@ -46,7 +46,10 @@ export class Dropdown extends Component<IProps> {
 
     const options = Array.isArray(defaultOptions) ?
       defaultOptions :
-      (this.ref.current ? this.ref.current!.state.defaultOptions : []);
+      (this.ref.current ? 
+        (Array.isArray(this.ref.current!.state.defaultOptions) ? this.ref.current!.state.defaultOptions : [])
+        : []
+      );
   
     const onBlur = () => inputProps.onBlur(inputProps.value);
     const transformedValue = transformValue(
