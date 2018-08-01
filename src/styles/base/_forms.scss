@@ -4,7 +4,7 @@ form {
       &.required {
         &:after {
           content: ' *';
-          color: red;
+          color: $form-feedback-invalid-color;
         }
       }
     }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink as RRNavLink } from 'react-router-dom';
+import {
+  NavLink as RRNavLink,
+  RouteComponentProps,
+} from 'react-router-dom';
 import {
   Collapse,
   Nav,
@@ -24,7 +27,7 @@ export interface IStateProps {
   profile: IProfileDTO | null;
 }
 
-export interface IProps extends IDispatchProps, IStateProps {}
+export interface IProps extends IDispatchProps, IStateProps, RouteComponentProps<any> {}
 
 export interface IState {
   isOpen: boolean;
@@ -58,7 +61,10 @@ export class NavigationBar extends Component<IProps, IState> {
         expand="md"
       >
         <NavbarBrand href="https://reactjs.org/">
-          <Icon symbol="react-brands"/>
+          <Icon
+            className="icon-spin"
+            symbol="react-brands"
+          />
           CRUD React Demo Application
         </NavbarBrand>
         <hr/>
@@ -122,4 +128,4 @@ export class NavigationBar extends Component<IProps, IState> {
       isOpen: !this.state.isOpen,
     })
   }
-} 
+}

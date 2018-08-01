@@ -79,15 +79,6 @@ describe('AuthSagas', () => {
         mockResponseOnce('Foo', { status: 418 });
       });
 
-      it('should call the error function of toastr', async () => {
-        const errorSpy = jest.spyOn(toastr, 'error');
-        await runSaga({
-          dispatch: (action: any) => dispatched.push(action),
-        }, loadProfile, loadProfileAction).done;
-
-        expect(errorSpy).toHaveBeenCalledWith('Profile Load Failed', 'Foo');
-      });
-
       it('should dispatch a failed action', async () => {
         await runSaga({
           dispatch: (action: any) => dispatched.push(action),

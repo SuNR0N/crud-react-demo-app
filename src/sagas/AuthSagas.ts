@@ -17,7 +17,6 @@ export function* loadProfile() {
     const profile = yield call(AuthApi.getProfile);
     yield put(actions.loadProfileSucceeded(profile));
   } catch (error) {
-    toastr.error('Profile Load Failed', error.message);
     yield put(actions.loadProfileFailed(error.message));
   }
 }
