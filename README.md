@@ -11,6 +11,7 @@ Table of Contents
 * [Run](#run)
 * [Build](#build)
 * [Test](#test)
+* [Lint](#lint)
 * [Debug](#debug)
 * [Resources](#resources)
 
@@ -55,6 +56,8 @@ REDIRECT_URL=/
 NODE_ENV=test
 ```
 
+_Note_: If you're interested in the implementation details of the backend application then you can find it [here](https://github.com/SuNR0N/crud-server-demo-app)
+
 ## Install
 
 ```sh
@@ -82,11 +85,78 @@ yarn test
 yarn test:coverage
 ```
 
+## Lint
+
+```sh
+yarn lint
+
+# With an attempt to fix selected rules
+yarn lint:fix
+```
+
 ## Debug
 
 Instructions for debugging in _VS Code_:
 
-TODO
+```json
+{
+    "name": "Debug React",
+    "type": "chrome",
+    "request": "launch",
+    "url": "http://localhost:3000",
+    "webRoot": "${workspaceRoot}/src"
+},
+{
+    "name": "Debug React Tests",
+    "type": "node",
+    "request": "launch",
+    "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts-ts",
+    "args": [
+        "test",
+        "--runInBand",
+        "--no-cache",
+        "--env=jsdom"
+    ],
+    "cwd": "${workspaceRoot}",
+    "protocol": "inspector",
+    "console": "integratedTerminal",
+    "internalConsoleOptions": "neverOpen"
+},
+{
+    "name": "Debug Current React Test",
+    "type": "node",
+    "request": "launch",
+    "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts-ts",
+    "args": [
+        "test",
+        "--env=jsdom",
+        "${relativeFile}"
+    ],
+    "cwd": "${workspaceRoot}",
+    "protocol": "inspector",
+    "console": "integratedTerminal",
+    "internalConsoleOptions": "neverOpen"
+}
+```
+
+### React
+
+1. Start the application with `yarn start`
+2. Go to _Debug_ panel in VS Code and select `Debug React`
+3. Click on _Start Debugging_
+4. Set a breakpoint
+
+### React Tests
+
+1. Set a breakpoint
+2. Go to _Debug_ panel in VS Code and select `Debug React Tests`
+3. Click on _Start Debugging_
+
+### Current React Test
+
+1. Set a breakpoint in the currently opened test file
+2. Go to _Debug_ panel in VS Code and select `Debug Current React Test`
+3. Click on _Start Debugging_
 
 ## Resources
 
@@ -97,4 +167,9 @@ TODO
 - [Google Fonts](https://fonts.google.com/)
 - [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts)
 - [Jest](https://jestjs.io/docs/en/api)
+- [React Date Picker](https://github.com/Hacker0x01/react-datepicker)
+- [react-redux-toastr](https://github.com/diegoddox/react-redux-toastr)
+- [React-Select](https://github.com/JedWatson/react-select)
 - [reactstrap](https://reactstrap.github.io/)
+- [Redux Form](https://redux-form.com/)
+- [Redux-Saga](https://github.com/redux-saga/redux-saga)

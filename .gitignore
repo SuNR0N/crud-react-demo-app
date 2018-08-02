@@ -27,3 +27,6 @@ yarn-error.log*
 
 # sprite
 /src/assets/icons/sprite.svg
+
+# ide
+.vscode
