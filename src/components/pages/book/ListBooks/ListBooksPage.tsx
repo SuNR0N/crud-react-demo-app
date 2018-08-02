@@ -17,6 +17,7 @@ import {
   Pagination,
   RoutedButton,
   SearchField,
+  Spinner,
 } from '../../../common';
 
 export interface IDispatchProps {
@@ -26,8 +27,9 @@ export interface IDispatchProps {
 }
 
 export interface IStateProps {
-  loggedIn: boolean;
   booksCollection: IPageableCollectionDTO<IBookDTO>; 
+  isLoading: boolean;
+  loggedIn: boolean;
 }
 
 export interface IState {
@@ -56,6 +58,7 @@ export class ListBooksPage extends Component<IProps, IState> {
       onSearchTextChange,
       props: {
         booksCollection,
+        isLoading,
         loggedIn,
       },
       state: {
@@ -81,27 +84,32 @@ export class ListBooksPage extends Component<IProps, IState> {
             Create New Book
           </RoutedButton>
         </div>
-        <Table
-          borderless={true}
-          striped={true}
-          responsive={true}
-        >
-          <thead className="thead-dark">
-            <tr className="d-flex">
-              <th className="col-1">ID</th>
-              <th className="col-3">Title</th>
-              <th className="col-2">Category</th>
-              <th className="col-2">Author</th>
-              <th className="col-1">Publisher</th>
-              <th className="col-1">Publication Date</th>
-              <th className="col-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {booksCollection.content.map(bookRowRenderer)}
-          </tbody>
-        </Table>
+        {
+          isLoading ?
+          <Spinner/> :
+          <Table
+            borderless={true}
+            striped={true}
+            responsive={true}
+          >
+            <thead className="thead-dark">
+              <tr className="d-flex">
+                <th className="col-1">ID</th>
+                <th className="col-3">Title</th>
+                <th className="col-2">Category</th>
+                <th className="col-2">Author</th>
+                <th className="col-1">Publisher</th>
+                <th className="col-1">Publication Date</th>
+                <th className="col-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {booksCollection.content.map(bookRowRenderer)}
+            </tbody>
+          </Table>
+        }
         <Pagination
+          disabled={isLoading}
           onPaginate={onPaginate}
           pageableCollection={booksCollection}
         />

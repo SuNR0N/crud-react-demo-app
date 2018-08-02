@@ -21,6 +21,7 @@ import {
   IconButton,
   Pagination,
   RoutedButton,
+  Spinner,
 } from '../../../common';
 import {
   IProps as ISearchFieldProps,
@@ -107,6 +108,7 @@ describe('ListBooksPage', () => {
   const minProps: IProps = {
     booksCollection: collectionMock,
     deleteBook: jest.fn(),
+    isLoading: false,
     loggedIn: false,
     paginateBooks: jest.fn(),
     searchBooks: jest.fn(),
@@ -198,6 +200,17 @@ describe('ListBooksPage', () => {
   });
 
   describe('Table', () => {
+    it('should not be displayed if the isLoading property is true', () => {
+      const props: IProps = {
+        ...minProps,
+        isLoading: true,
+      };
+      const wrapper = shallow(<ListBooksPage {...props}/>);
+      const table = wrapper.find(Table);
+
+      expect(table.exists()).toBeFalsy();
+    });
+
     it('should display the headers properly', () => {
       const wrapper = shallow(<ListBooksPage {...minProps}/>);
       const headers = wrapper
@@ -232,6 +245,26 @@ describe('ListBooksPage', () => {
         .find('tr');
 
       expect(rows).toHaveLength(2);
+    });
+  });
+
+  describe('Spinner', () => {
+    it('should not be displayed if the isLoading property is false', () => {
+      const wrapper = shallow(<ListBooksPage {...minProps}/>);
+      const spinner = wrapper.find(Spinner);
+
+      expect(spinner.exists()).toBeFalsy();
+    });
+
+    it('should displayed if the isLoading property is true', () => {
+      const props: IProps = {
+        ...minProps,
+        isLoading: true,
+      };
+      const wrapper = shallow(<ListBooksPage {...props}/>);
+      const spinner = wrapper.find(Spinner);
+
+      expect(spinner.exists()).toBeTruthy();
     });
   });
 

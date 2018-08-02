@@ -72,6 +72,9 @@ describe('AuthorRoutes', () => {
       author: {
         authors: [],
       },
+      request: {
+        pendingRequests: {},
+      },
     };
     const wrapper = mount(
       <Provider store={mockStore(state)}>

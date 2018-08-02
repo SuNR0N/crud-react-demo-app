@@ -9,6 +9,7 @@ import {
   ICategoryState,
   IErrorState,
   IPublisherState,
+  IRequestState,
 } from '.';
 
 export interface IRootState {
@@ -19,6 +20,7 @@ export interface IRootState {
   error: IErrorState,
   form: FormStateMap,
   publisher: IPublisherState,
+  request: IRequestState,
   router: RouterState,
   toastr: ToastrState,
 }

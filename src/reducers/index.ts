@@ -24,6 +24,11 @@ export {
   reducer as error,
 } from './ErrorReducer';
 export {
+  initialState as initialRequestState,
+  IState as IRequestState,
+  reducer as request,
+} from './RequestReducer';
+export {
   initialState as initialPublisherState,
   IState as IPublisherState,
   reducer as publisher,

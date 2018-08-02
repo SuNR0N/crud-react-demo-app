@@ -11,6 +11,7 @@ import {
 import { Icon } from '../Icon';
 
 export interface IProps {
+  disabled?: boolean;
   onPaginate: (link: IHATEOASLink) => void;
   pageableCollection: IPageableCollectionDTO<any>;
   pageSize?: number;
@@ -18,6 +19,7 @@ export interface IProps {
 
 export const Pagination: SFC<IProps> = (props) => {
   const {
+    disabled = false,
     onPaginate,
     pageableCollection,
     pageSize = 10,
@@ -26,16 +28,20 @@ export const Pagination: SFC<IProps> = (props) => {
   const firstItemOfCurrentPage: number = (pageableCollection.currentPage - 1) * pageSize + 1;
   const lastItemOfCurrentPage: number = firstItemOfCurrentPage + pageableCollection.content.length - 1;
   const onNavigate = (link?: IHATEOASLink) => () => onPaginate(link!);
+  let className = 'pagination';
+  if (disabled) {
+    className = `${className} pagination--disabled`;
+  }
 
   return (
-    <div className="pagination">
+    <div className={className}>
       <PaginationComponent>
-        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.first)}>
+        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.first) || disabled}>
           <PaginationLink onClick={onNavigate(pageableCollection._links && pageableCollection._links.first!)}>
             <Icon symbol="angle-double-left-solid"/>
           </PaginationLink>
         </PaginationItem>
-        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.previous)}>
+        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.previous) || disabled}>
           <PaginationLink onClick={onNavigate(pageableCollection._links && pageableCollection._links.previous!)}>
             <Icon symbol="angle-left-solid"/>
           </PaginationLink>
@@ -43,12 +49,12 @@ export const Pagination: SFC<IProps> = (props) => {
         <PaginationItem disabled={true}>
           <PaginationLink>Page {pageableCollection.currentPage} of {pageableCollection.totalPages}</PaginationLink>
         </PaginationItem>
-        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.next)}>
+        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.next) || disabled}>
           <PaginationLink onClick={onNavigate(pageableCollection._links && pageableCollection._links.next!)}>
             <Icon symbol="angle-right-solid"/>
           </PaginationLink>
         </PaginationItem>
-        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.last)}>
+        <PaginationItem disabled={!(pageableCollection._links && pageableCollection._links.last) || disabled}>
           <PaginationLink onClick={onNavigate(pageableCollection._links && pageableCollection._links.last!)}>
             <Icon symbol="angle-double-right-solid"/>
           </PaginationLink>

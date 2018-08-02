@@ -13,6 +13,7 @@ describe('RootReducer', () => {
     let errorReducer: Reducer;
     let formReducer: Reducer;
     let publisherReducer: Reducer;
+    let requestReducer: Reducer;
     let routerReducer: Reducer;
     let toastrReducer: Reducer;
 
@@ -29,6 +30,7 @@ describe('RootReducer', () => {
       errorReducer = (await import('./ErrorReducer')).reducer;
       formReducer = (await import('redux-form')).reducer;
       publisherReducer = (await import('./PublisherReducer')).reducer;
+      requestReducer = (await import('./RequestReducer')).reducer;
       routerReducer = (await import('react-router-redux')).routerReducer;
       toastrReducer = (await import('react-redux-toastr')).reducer;
       await import('./RootReducer');
@@ -74,6 +76,12 @@ describe('RootReducer', () => {
     it('should include the PublisherReducer as "publisher"', () => {
       expect(reducersMapObject).toEqual(expect.objectContaining({
         publisher: publisherReducer,
+      }));
+    });
+
+    it('should include the RequestReducer as "request"', () => {
+      expect(reducersMapObject).toEqual(expect.objectContaining({
+        request: requestReducer,
       }));
     });
 

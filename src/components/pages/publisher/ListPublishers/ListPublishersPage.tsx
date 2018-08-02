@@ -14,6 +14,7 @@ import {
   ConfirmationModal,
   RoutedButton,
   SearchField,
+  Spinner,
 } from '../../../common';
 import { PublisherRowRenderer } from '../../../publisher/PublisherRowRenderer';
 
@@ -23,6 +24,7 @@ export interface IDispatchProps {
 }
 
 export interface IStateProps {
+  isLoading: boolean;
   loggedIn: boolean;
   publishers: IPublisherDTO[]; 
 }
@@ -50,6 +52,7 @@ export class ListPublishersPage extends Component<IProps, IState> {
       deletePublisher,
       onSearchTextChange,
       props: {
+        isLoading,
         loggedIn,
         publishers,
       },
@@ -77,22 +80,26 @@ export class ListPublishersPage extends Component<IProps, IState> {
             Create New Publisher
           </RoutedButton>
         </div>
-        <Table
-          borderless={true}
-          striped={true}
-          responsive={true}
-        >
-          <thead className="thead-dark">
-            <tr className="d-flex">
-              <th className="col-1">ID</th>
-              <th className="col-9">Name</th>
-              <th className="col-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {publishers.map(publisherRowRenderer)}
-          </tbody>
-        </Table>
+        {
+          isLoading ?
+          <Spinner/> :
+          <Table
+            borderless={true}
+            striped={true}
+            responsive={true}
+          >
+            <thead className="thead-dark">
+              <tr className="d-flex">
+                <th className="col-1">ID</th>
+                <th className="col-9">Name</th>
+                <th className="col-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {publishers.map(publisherRowRenderer)}
+            </tbody>
+          </Table>
+        }
         <ConfirmationModal
           htmlContent={
             this.state.selectedPublisher ?

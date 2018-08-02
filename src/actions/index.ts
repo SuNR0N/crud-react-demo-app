@@ -20,3 +20,4 @@ export {
   actions as PublisherActions,
   ActionTypes as PublisherActionTypes,
 } from './PublisherActions';
+export * from './RootAction';

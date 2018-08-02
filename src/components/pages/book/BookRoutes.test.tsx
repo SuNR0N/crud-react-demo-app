@@ -83,6 +83,9 @@ describe('BookRoutes', () => {
           content: [],
         },
       },
+      request: {
+        pendingRequests: {},
+      },
     };
     const wrapper = mount(
       <Provider store={mockStore(state)}>

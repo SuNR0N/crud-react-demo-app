@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { actions } from '../../../../actions/AuthorActions';
+import {
+  actions,
+  ActionTypes,
+} from '../../../../actions/AuthorActions';
 import {
   IAuthorDTO,
   IHATEOASLink,
@@ -15,6 +18,7 @@ import {
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
   authors: state.author.authors,
+  isLoading: state.request.pendingRequests[ActionTypes.LOAD_AUTHORS_REQUEST] > 0,
   loggedIn: !!state.auth.profile,
 });
 

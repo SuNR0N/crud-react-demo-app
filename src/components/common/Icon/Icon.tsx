@@ -11,9 +11,10 @@ export type IconSymbol =
   'calendar-alt-regular' |
   'edit-regular' |
   'eye-regular' |
-  'plus-square-regular' |
   'github-brands' |
+  'plus-square-regular' |
   'react-brands' |
+  'spinner-solid' |
   'trash-alt-regular';
 
 export interface IProps {

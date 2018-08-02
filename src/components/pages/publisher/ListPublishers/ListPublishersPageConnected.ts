@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { actions } from '../../../../actions/PublisherActions';
+import {
+  actions,
+  ActionTypes,
+} from '../../../../actions/PublisherActions';
 import {
   IHATEOASLink,
   IPublisherDTO,
@@ -14,6 +17,7 @@ import {
 } from './ListPublishersPage';
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
+  isLoading: state.request.pendingRequests[ActionTypes.LOAD_PUBLISHERS_REQUEST] > 0,
   loggedIn: !!state.auth.profile,
   publishers: state.publisher.publishers,
 });

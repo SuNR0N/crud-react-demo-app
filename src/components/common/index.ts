@@ -11,4 +11,5 @@ export { ReadOnlyField } from './ReadOnlyField';
 export { RoutedButton } from './RoutedButton';
 export { SearchField } from './SearchField';
 export { SignIn } from './SignIn';
+export { Spinner } from './Spinner';
 export { TextField } from './TextField';

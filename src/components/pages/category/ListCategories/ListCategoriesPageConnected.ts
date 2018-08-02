@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { actions } from '../../../../actions/CategoryActions';
+import {
+  actions,
+  ActionTypes,
+} from '../../../../actions/CategoryActions';
 import {
   ICategoryDTO,
   IHATEOASLink,
@@ -15,6 +18,7 @@ import {
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
   categories: state.category.categories,
+  isLoading: state.request.pendingRequests[ActionTypes.LOAD_CATEGORIES_REQUEST] > 0,
   loggedIn: !!state.auth.profile,
 });
 

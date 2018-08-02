@@ -35,6 +35,16 @@ describe('Pagination', () => {
     expect(wrapper.hasClass('pagination')).toBeTruthy();
   });
 
+  it('should apply the "pagination--disabled" class name if it is disabled', () => {
+    const props: IProps = {
+      ...minProps,
+      disabled: true,
+    };
+    const wrapper = shallow(<Pagination {...props}/>);
+
+    expect(wrapper.hasClass('pagination--disabled')).toBeTruthy();
+  });
+
   describe('First', () => {
     const first: IHATEOASLink = {
       href: '/first',
@@ -59,6 +69,23 @@ describe('Pagination', () => {
 
     it('should be disabled if the first link does not exist', () => {
       const wrapper = shallow(<Pagination {...minProps}/>);
+      const firstItem = wrapper.find(PaginationItem).at(0);
+
+      expect(firstItem.prop('disabled')).toBeTruthy();
+    });
+
+    it('should be disabled if the component is disabled', () => {
+      const props: IProps = {
+        ...minProps,
+        disabled: true,
+        pageableCollection: {
+          ...minProps.pageableCollection,
+          _links: {
+            first,
+          },
+        },
+      };
+      const wrapper = shallow(<Pagination {...props}/>);
       const firstItem = wrapper.find(PaginationItem).at(0);
 
       expect(firstItem.prop('disabled')).toBeTruthy();
@@ -122,6 +149,23 @@ describe('Pagination', () => {
       expect(previousItem.prop('disabled')).toBeTruthy();
     });
 
+    it('should be disabled if the component is disabled', () => {
+      const props: IProps = {
+        ...minProps,
+        disabled: true,
+        pageableCollection: {
+          ...minProps.pageableCollection,
+          _links: {
+            previous,
+          },
+        },
+      };
+      const wrapper = shallow(<Pagination {...props}/>);
+      const previousItem = wrapper.find(PaginationItem).at(1);
+
+      expect(previousItem.prop('disabled')).toBeTruthy();
+    });
+
     it('should call the onNavigate function with the previous link when clicked', () => {
       const props: IProps = {
         ...minProps,
@@ -180,6 +224,23 @@ describe('Pagination', () => {
       expect(nextItem.prop('disabled')).toBeTruthy();
     });
 
+    it('should be disabled if the component is disabled', () => {
+      const props: IProps = {
+        ...minProps,
+        disabled: true,
+        pageableCollection: {
+          ...minProps.pageableCollection,
+          _links: {
+            next,
+          },
+        },
+      };
+      const wrapper = shallow(<Pagination {...props}/>);
+      const nextItem = wrapper.find(PaginationItem).at(3);
+
+      expect(nextItem.prop('disabled')).toBeTruthy();
+    });
+
     it('should call the onNavigate function with the next link when clicked', () => {
       const props: IProps = {
         ...minProps,
@@ -233,6 +294,23 @@ describe('Pagination', () => {
 
     it('should be disabled if the last link does not exist', () => {
       const wrapper = shallow(<Pagination {...minProps}/>);
+      const lastItem = wrapper.find(PaginationItem).at(4);
+
+      expect(lastItem.prop('disabled')).toBeTruthy();
+    });
+
+    it('should be disabled if the component is disabled', () => {
+      const props: IProps = {
+        ...minProps,
+        disabled: true,
+        pageableCollection: {
+          ...minProps.pageableCollection,
+          _links: {
+            last,
+          },
+        },
+      };
+      const wrapper = shallow(<Pagination {...props}/>);
       const lastItem = wrapper.find(PaginationItem).at(4);
 
       expect(lastItem.prop('disabled')).toBeTruthy();

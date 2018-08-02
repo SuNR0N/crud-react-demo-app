@@ -1,15 +1,10 @@
 import {
-  ActionsUnion,
-  AuthActions,
   AuthActionTypes,
-  AuthorActions,
   AuthorActionTypes,
-  BookActions,
   BookActionTypes,
-  CategoryActions,
   CategoryActionTypes,
-  PublisherActions,
   PublisherActionTypes,
+  RootAction,
 } from '../actions';
 import { IErrorLogEntry } from '../interfaces/ErrorLogEntry';
 
@@ -21,14 +16,7 @@ export const initialState = {
   errors: [] as IErrorLogEntry[],
 } as IState;
 
-type Actions =
-  ActionsUnion<typeof AuthActions> |
-  ActionsUnion<typeof AuthorActions> |
-  ActionsUnion<typeof BookActions> |
-  ActionsUnion<typeof CategoryActions> |
-  ActionsUnion<typeof PublisherActions>;
-
-export const reducer = (state = initialState, action: Actions): IState => {
+export const reducer = (state = initialState, action: RootAction): IState => {
   switch (action.type) {
     case AuthActionTypes.LOAD_PROFILE_FAILURE:
     case AuthActionTypes.LOG_OUT_FAILURE:

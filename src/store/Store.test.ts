@@ -8,14 +8,17 @@ import { configureStore } from './Store';
 
 describe('Store', () => {
   describe('configureStore', () => {
+    const environmentVariables = process.env;
     let createStoreSpy: jest.SpyInstance;
 
     beforeEach(() => {
+      process.env = { ...environmentVariables };
       createStoreSpy = jest.spyOn(redux, 'createStore');
     });
 
     afterEach(() => {
       jest.clearAllMocks();
+      process.env = environmentVariables;
     });
 
     it('should call the createStore function with the rootReducer', () => {
@@ -61,6 +64,9 @@ describe('Store', () => {
           currentPublisher: {},
           publishers: [],
         },
+        request: {
+          pendingRequests: {},
+        },
         router: {
           location: null,
         },
@@ -72,23 +78,26 @@ describe('Store', () => {
 
     it('should call the createStore function with the provided state if called with an argument', () => {
       configureStore({} as IRootState);
-      const [
-        reducer,
-        initialState,
-      ] = createStoreSpy.mock.calls[0];
+      const initialState = createStoreSpy.mock.calls[0][1];
 
       expect(initialState).toEqual({});
     });
 
-    it('should call the createStore function with the middlewares', () => {
+    it('should call the createStore function with 3 middlewares in non production', () => {
+      const applyMiddlewareSpy = jest.spyOn(redux, 'applyMiddleware');
       configureStore({} as IRootState);
-      const [
-        reducer,
-        initialState,
-        middlewares,
-      ] = createStoreSpy.mock.calls[0];
+      const middlewares = applyMiddlewareSpy.mock.calls[0];
 
-      expect(middlewares).toEqual(expect.any(Function));
+      expect(middlewares).toHaveLength(3);
+    });
+
+    it('should call the createStore function with 2 middlewares in production', () => {
+      process.env.NODE_ENV = 'production';
+      const applyMiddlewareSpy = jest.spyOn(redux, 'applyMiddleware');
+      configureStore({} as IRootState);
+      const middlewares = applyMiddlewareSpy.mock.calls[0];
+
+      expect(middlewares).toHaveLength(2);
     });
   });
 });

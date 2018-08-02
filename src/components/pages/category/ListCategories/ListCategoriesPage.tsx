@@ -15,6 +15,7 @@ import {
   ConfirmationModal,
   RoutedButton,
   SearchField,
+  Spinner,
 } from '../../../common';
 
 export interface IDispatchProps {
@@ -24,6 +25,7 @@ export interface IDispatchProps {
 
 export interface IStateProps {
   categories: ICategoryDTO[];
+  isLoading: boolean;
   loggedIn: boolean;
 }
 
@@ -52,6 +54,7 @@ export class ListCategoriesPage extends Component<IProps, IState> {
       onSearchTextChange,
       props: {
         categories,
+        isLoading,
         loggedIn,
       },
       state: {
@@ -77,22 +80,26 @@ export class ListCategoriesPage extends Component<IProps, IState> {
             Create New Category
           </RoutedButton>
         </div>
-        <Table
-          borderless={true}
-          striped={true}
-          responsive={true}
-        >
-          <thead className="thead-dark">
-            <tr className="d-flex">
-              <th className="col-1">ID</th>
-              <th className="col-9">Name</th>
-              <th className="col-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map(categoryRowRenderer)}
-          </tbody>
-        </Table>
+        {
+          isLoading ?
+          <Spinner/> :
+          <Table
+            borderless={true}
+            striped={true}
+            responsive={true}
+          >
+            <thead className="thead-dark">
+              <tr className="d-flex">
+                <th className="col-1">ID</th>
+                <th className="col-9">Name</th>
+                <th className="col-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categories.map(categoryRowRenderer)}
+            </tbody>
+          </Table>
+        }
         <ConfirmationModal
           htmlContent={
             this.state.selectedCategory ?

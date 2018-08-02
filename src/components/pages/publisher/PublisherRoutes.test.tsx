@@ -72,6 +72,9 @@ describe('PublisherRoutes', () => {
       publisher: {
         publishers: [],
       },
+      request: {
+        pendingRequests: {},
+      },
     };
     const wrapper = mount(
       <Provider store={mockStore(state)}>

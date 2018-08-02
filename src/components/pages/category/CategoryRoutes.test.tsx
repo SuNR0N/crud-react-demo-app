@@ -72,6 +72,9 @@ describe('CategoryRoutes', () => {
       category: {
         categories: [],
       },
+      request: {
+        pendingRequests: {},
+      },
     };
     const wrapper = mount(
       <Provider store={mockStore(state)}>

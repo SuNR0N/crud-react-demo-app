@@ -13,6 +13,7 @@ import {
   initialCategoryState,
   initialErrorState,
   initialPublisherState,
+  initialRequestState,
   IRootState,
   rootReducer,
 } from '../reducers';
@@ -39,6 +40,9 @@ const initialStoreState: IRootState = {
   publisher: {
     ...initialPublisherState,
   },
+  request: {
+    ...initialRequestState,
+  },
   router: {
     location: null,
   },
@@ -49,17 +53,23 @@ const initialStoreState: IRootState = {
 
 export const history = createBrowserHistory();
 
+const immutableStateMiddleware = reduxImmutableStateInvariant();
 const sagaMiddleware = createSagaMiddleware();
 
 export function configureStore(initialState: IRootState = initialStoreState) {
+  const middlewares = [
+    routerMiddleware(history),
+    sagaMiddleware,
+    immutableStateMiddleware,
+  ];
+  if (process.env.NODE_ENV === 'production') {
+    middlewares.splice(middlewares.indexOf(immutableStateMiddleware), 1);
+  }
+
   return createStore(
     rootReducer,
     initialState,
-    applyMiddleware(
-      routerMiddleware(history),
-      sagaMiddleware,
-      reduxImmutableStateInvariant()
-    )
+    applyMiddleware(...middlewares)
   );
 }
 

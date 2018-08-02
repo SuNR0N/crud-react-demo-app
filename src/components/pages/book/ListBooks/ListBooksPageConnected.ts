@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { actions } from '../../../../actions/BookActions';
+import {
+  actions,
+  ActionTypes,
+} from '../../../../actions/BookActions';
 import {
   IBookDTO,
   IHATEOASLink,
@@ -15,6 +18,10 @@ import {
 
 export const mapStateToProps = (state: IRootState): IStateProps => ({
   booksCollection: state.book.books,
+  isLoading: [
+    ActionTypes.LOAD_BOOKS_REQUEST,
+    ActionTypes.PAGINATE_BOOKS_REQUEST,
+  ].some((actionType) => state.request.pendingRequests[actionType] > 0),
   loggedIn: !!state.auth.profile,
 });
 

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import createMockStore from 'redux-mock-store';
 
+import { IRootState } from '../../reducers/RootState';
 import { NavigationBarConnected } from '../common/NavigationBar';
 import { AuthorRoutes } from './author/AuthorRoutes';
 import { BookRoutes } from './book/BookRoutes';
@@ -17,7 +18,10 @@ import { PublisherRoutes } from './publisher/PublisherRoutes';
 describe('MainPage', () => {
   const initialState = {
     auth: {},
-  };
+    request: {
+      pendingRequests: {}
+    },
+  } as IRootState;
   const mockStore = createMockStore();
 
   it('should render the navigation bar', () => {

@@ -10,6 +10,7 @@ import {
   category,
   error,
   publisher,
+  request,
 } from '.';
 import { IRootState } from './RootState';
 
@@ -21,6 +22,7 @@ export const rootReducer = combineReducers<IRootState>({
   error,
   form,
   publisher,
+  request,
   router,
   toastr,
 })

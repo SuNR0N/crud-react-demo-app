@@ -17,6 +17,7 @@ import {
   ConfirmationModal,
   IconButton,
   RoutedButton,
+  Spinner,
 } from '../../../common';
 import {
   IProps as ISearchFieldProps,
@@ -61,6 +62,7 @@ describe('ListCategoriesPage', () => {
   const minProps: IProps = {
     categories: [],
     deleteCategory: jest.fn(),
+    isLoading: false,
     loggedIn: false,
     searchCategories: jest.fn(),
   };
@@ -148,6 +150,17 @@ describe('ListCategoriesPage', () => {
   });
 
   describe('Table', () => {
+    it('should not be displayed if the isLoading property is true', () => {
+      const props: IProps = {
+        ...minProps,
+        isLoading: true,
+      };
+      const wrapper = shallow(<ListCategoriesPage {...props}/>);
+      const table = wrapper.find(Table);
+
+      expect(table.exists()).toBeFalsy();
+    });
+    
     it('should display the headers properly', () => {
       const wrapper = shallow(<ListCategoriesPage {...minProps}/>);
       const headers = wrapper
@@ -178,6 +191,26 @@ describe('ListCategoriesPage', () => {
         .find('tr');
 
       expect(rows).toHaveLength(2);
+    });
+  });
+
+  describe('Spinner', () => {
+    it('should not be displayed if the isLoading property is false', () => {
+      const wrapper = shallow(<ListCategoriesPage {...minProps}/>);
+      const spinner = wrapper.find(Spinner);
+
+      expect(spinner.exists()).toBeFalsy();
+    });
+
+    it('should displayed if the isLoading property is true', () => {
+      const props: IProps = {
+        ...minProps,
+        isLoading: true,
+      };
+      const wrapper = shallow(<ListCategoriesPage {...props}/>);
+      const spinner = wrapper.find(Spinner);
+
+      expect(spinner.exists()).toBeTruthy();
     });
   });
 

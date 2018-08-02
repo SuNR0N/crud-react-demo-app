@@ -1,4 +1,7 @@
-import { actions } from '../../../../actions/BookActions';
+import {
+  actions,
+  ActionTypes,
+} from '../../../../actions/BookActions';
 import { 
   IBookDTO,
   IHATEOASLink,
@@ -48,23 +51,89 @@ describe('ListBooksPageConnected', () => {
       totalItems: 1,
       totalPages: 1,
     };
-    const state = {
+    const initialState = {
       auth: {
         profile: null,
       },
       book: {
         books: collectionMock,
       },
+      request: {
+        pendingRequests: {},
+      },
     } as IRootState;
     
     it('should map booksCollection', () => {
-      const { booksCollection } = mapStateToProps(state);
+      const { booksCollection } = mapStateToProps(initialState);
 
       expect(booksCollection).toBe(collectionMock);
     });
 
+    describe('isLoading', () => {
+      let state: IRootState;
+
+      beforeEach(() => {
+        state = {
+          ...initialState,
+          request: {
+            pendingRequests: {},
+          },
+        };
+      });
+
+      it('should be mapped to true if the request count for LOAD_BOOKS_REQUEST is greater than 0', () => {
+        state.request.pendingRequests[ActionTypes.LOAD_BOOKS_REQUEST] = 3;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(true);
+      });
+
+      it('should be mapped to true if the request count for PAGINATE_BOOKS_REQUEST is greater than 0', () => {
+        state.request.pendingRequests[ActionTypes.PAGINATE_BOOKS_REQUEST] = 3;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(true);
+      });
+
+      it('should be mapped to true if the request count for PAGINATE_BOOKS_REQUEST and LOAD_BOOKS_REQUEST are greater than 0', () => {
+        state.request.pendingRequests[ActionTypes.LOAD_BOOKS_REQUEST] = 3;
+        state.request.pendingRequests[ActionTypes.PAGINATE_BOOKS_REQUEST] = 3;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(true);
+      });
+
+      it('should be mapped to false if the request count for LOAD_BOOKS_REQUEST equals to 0', () => {
+        state.request.pendingRequests[ActionTypes.LOAD_BOOKS_REQUEST] = 0;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(false);
+      });
+
+      it('should be mapped to false if the request count for PAGINATE_BOOKS_REQUEST equals to 0', () => {
+        state.request.pendingRequests[ActionTypes.PAGINATE_BOOKS_REQUEST] = 0;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(false);
+      });
+
+      it('should be mapped to false if the request count for PAGINATE_BOOKS_REQUEST and LOAD_BOOKS_REQUEST are equal to 0', () => {
+        state.request.pendingRequests[ActionTypes.LOAD_BOOKS_REQUEST] = 0;
+        state.request.pendingRequests[ActionTypes.PAGINATE_BOOKS_REQUEST] = 0;
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(false);
+      });
+
+      it('should be mapped to false if there are no keys for LOAD_BOOKS_REQUEST and PAGINATE_BOOKS_REQUEST', () => {
+        const { isLoading } = mapStateToProps(state);
+
+        expect(isLoading).toBe(false);
+      });
+    });
+
     it('should map loggedIn', () => {
-      const { loggedIn } = mapStateToProps(state);
+      const { loggedIn } = mapStateToProps(initialState);
 
       expect(loggedIn).toBe(false);
     });

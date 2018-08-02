@@ -15,6 +15,7 @@ import {
   ConfirmationModal,
   RoutedButton,
   SearchField,
+  Spinner,
 } from '../../../common';
 
 export interface IDispatchProps {
@@ -24,6 +25,7 @@ export interface IDispatchProps {
 
 export interface IStateProps {
   authors: IAuthorDTO[];
+  isLoading: boolean;
   loggedIn: boolean;
 }
 
@@ -52,6 +54,7 @@ export class ListAuthorsPage extends Component<IProps, IState> {
       onSearchTextChange,
       props: {
         authors,
+        isLoading,
         loggedIn,
       },
       state: {
@@ -77,24 +80,28 @@ export class ListAuthorsPage extends Component<IProps, IState> {
             Create New Author
           </RoutedButton>
         </div>
-        <Table
-          borderless={true}
-          striped={true}
-          responsive={true}
-        >
-          <thead className="thead-dark">
-            <tr className="d-flex">
-              <th className="col-1">ID</th>
-              <th className="col-3">First Name</th>
-              <th className="col-3">Middle Name</th>
-              <th className="col-3">Last Name</th>
-              <th className="col-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {authors.map(authorRowRenderer)}
-          </tbody>
-        </Table>
+        {
+          isLoading ?
+          <Spinner/> :
+          <Table
+            borderless={true}
+            striped={true}
+            responsive={true}
+          >
+            <thead className="thead-dark">
+              <tr className="d-flex">
+                <th className="col-1">ID</th>
+                <th className="col-3">First Name</th>
+                <th className="col-3">Middle Name</th>
+                <th className="col-3">Last Name</th>
+                <th className="col-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {authors.map(authorRowRenderer)}
+            </tbody>
+          </Table>
+        }
         <ConfirmationModal
           htmlContent={
             this.state.selectedAuthor ?
