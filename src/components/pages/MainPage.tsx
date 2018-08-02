@@ -39,4 +39,4 @@ export const MainPage: SFC = () => (
       />
     </Switch>
   </main>
-)
+);

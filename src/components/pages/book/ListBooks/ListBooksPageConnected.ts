@@ -29,6 +29,6 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteBook(book, link, route)),
   paginateBooks: (link: IHATEOASLink) => dispatch(actions.paginateBooks(link)),
   searchBooks: (query?: string) => dispatch(actions.loadBooks(query))
-})
+});
 
 export const ListBooksPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListBooksPage);

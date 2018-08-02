@@ -153,7 +153,7 @@ describe('ListBooksPage', () => {
       searchBooksMock.mockClear();
       searchField.prop('onValueChange')('foo');
 
-      expect(searchBooksMock).toHaveBeenCalledWith('foo')
+      expect(searchBooksMock).toHaveBeenCalledWith('foo');
     });
   });
 

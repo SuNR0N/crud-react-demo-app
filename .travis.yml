@@ -8,6 +8,6 @@ cache:
    - node_modules
 
 script:
-  - yarn build-css
+  - yarn css:build
   - yarn test:coverage --maxWorkers=4 --coverageReporters=text-lcov | coveralls
   - yarn build

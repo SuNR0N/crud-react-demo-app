@@ -8,4 +8,4 @@ export const ActionBar: SFC = (props) => {
       {children}
     </div>
   );
-}
+};

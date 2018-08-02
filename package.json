@@ -24,17 +24,23 @@
     "svg-sprite-generator": "^0.0.7"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "yarn build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "start-ts": "react-scripts-ts start",
-    "start": "npm-run-all -p watch-css start-ts",
-    "build": "yarn build-css && react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --watchAll",
-    "test:coverage": "react-scripts-ts test --env=jsdom --coverage",
+    "build": "yarn css:build && react-scripts-ts build",
+    "css:build": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "css:watch": "yarn css:build && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "eject": "react-scripts-ts eject",
-    "postinstall": "yarn icons:generate",
+    "icons:clear": "rm src/assets/icons/sprite.svg",
     "icons:generate": "svg-sprite-generate -d src/assets/icons -o src/assets/icons/sprite.svg",
-    "icons:clear": "rm src/assets/icons/sprite.svg"
+    "lint": "yarn lint:test",
+    "lint:fix": "yarn lint:test:fix",
+    "lint:prod": "tslint -p tsconfig.prod.json",
+    "lint:prod:fix": "tslint --fix -p tsconfig.prod.json",
+    "lint:test": "tslint -p tsconfig.test.json",
+    "lint:test:fix": "tslint --fix -p tsconfig.test.json",
+    "postinstall": "yarn icons:generate",
+    "start:ts": "react-scripts-ts start",
+    "start": "npm-run-all -p css:watch start:ts",
+    "test:coverage": "react-scripts-ts test --env=jsdom --coverage",
+    "test": "react-scripts-ts test --env=jsdom --watchAll"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.11",

@@ -22,6 +22,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   saveCategory: (category: INewCategoryDTO) => dispatch(actions.createCategory(category)),
   submitForm: () => dispatch(submit(CREATE_CATEGORY_FORM)),
-})
+});
 
 export const CreateCategoryPageConnected = connect(mapStateToProps, mapDispatchToProps)(CreateCategoryPage);

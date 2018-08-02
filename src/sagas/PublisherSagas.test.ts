@@ -501,7 +501,7 @@ describe('PublisherSagas', () => {
     beforeEach(() => {
       const iterator = publisherSagas();
       value = iterator.next().value;
-    })
+    });
 
     it('should trigger createPublisher on CREATE_PUBLISHER_REQUEST', async () => {      
       expect(value.ALL).toContainEqual(

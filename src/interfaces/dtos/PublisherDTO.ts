@@ -8,5 +8,5 @@ export interface IPublisherDTO extends IResourceDTO {
     self: IHATEOASLink,
     delete?: IHATEOASLink,
     update?: IHATEOASLink,
-  }
+  };
 }

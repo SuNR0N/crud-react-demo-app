@@ -11,5 +11,5 @@ export interface IAuthorDTO extends IResourceDTO {
     self: IHATEOASLink,
     delete?: IHATEOASLink,
     update?: IHATEOASLink,
-  }
+  };
 }

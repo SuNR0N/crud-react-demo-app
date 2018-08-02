@@ -6,7 +6,7 @@ import {
 } from '../Icon';
 
 export interface IProps {
-  symbol?: IconSymbol,
+  symbol?: IconSymbol;
   text?: string;
 }
 
@@ -28,4 +28,4 @@ export const Spinner: SFC<IProps> = (props) => {
       <span className="spinner__dot">.</span>
     </div>
   );
-}
+};

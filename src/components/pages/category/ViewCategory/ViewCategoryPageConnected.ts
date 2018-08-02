@@ -20,6 +20,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteCategory(category, link, route)),
   loadCategory: (id: number) => dispatch(actions.loadCategory(id))
-})
+});
 
 export const ViewCategoryPageConnected = connect(mapStateToProps, mapDispatchToProps)(ViewCategoryPage);

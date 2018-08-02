@@ -85,7 +85,7 @@ const renderAuthorsDropdown = ({ input, meta, ...custom }: WrappedFieldProps) =>
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const renderCategoriesDropdown = ({ input, meta, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (category: ICategoryDTO) => category.name;
@@ -104,7 +104,7 @@ const renderCategoriesDropdown = ({ input, meta, ...custom }: WrappedFieldProps)
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const renderDatePicker = ({ input, meta, ...custom }: WrappedFieldProps) => (
   <DatePicker
@@ -131,7 +131,7 @@ const renderPublishersDropdown = ({ input, meta, ...custom }: WrappedFieldProps)
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const EditBookFormComponent: SFC<IProps> = (props) => {
   const {
@@ -280,7 +280,7 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const EditBookForm = reduxForm<IFormData, IOwnProps>({
   enableReinitialize: true,

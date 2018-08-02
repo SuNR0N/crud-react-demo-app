@@ -33,7 +33,7 @@ describe('EditAuthorForm', () => {
     id: 1,
     lastName: 'Doe',
     middleName: 'X',
-  }
+  };
   const initialState = {
     form: {
       editAuthorForm: {

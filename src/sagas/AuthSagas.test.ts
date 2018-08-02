@@ -180,7 +180,7 @@ describe('AuthSagas', () => {
     beforeEach(() => {
       const iterator = authSagas();
       value = iterator.next().value;
-    })
+    });
 
     it('should trigger loadProfile on LOAD_PROFILE_REQUEST', async () => {      
       expect(value.ALL).toContainEqual(

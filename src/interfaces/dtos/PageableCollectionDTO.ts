@@ -11,5 +11,5 @@ export interface IPageableCollectionDTO<T> extends IResourceDTO {
     previous?: IHATEOASLink,
     next?: IHATEOASLink,
     last?: IHATEOASLink, 
-  }
+  };
 }

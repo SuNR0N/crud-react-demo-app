@@ -8,5 +8,5 @@ export interface ICategoryDTO extends IResourceDTO {
     self: IHATEOASLink,
     delete?: IHATEOASLink,
     update?: IHATEOASLink,
-  }
+  };
 }

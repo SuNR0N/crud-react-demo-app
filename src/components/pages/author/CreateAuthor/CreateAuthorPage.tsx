@@ -69,7 +69,7 @@ export class CreateAuthorPage extends Component<IProps> {
       firstName: values.firstName,
       lastName: values.lastName,
       middleName: values.middleName,
-    }
+    };
     this.props.saveAuthor(author);
   }
 }

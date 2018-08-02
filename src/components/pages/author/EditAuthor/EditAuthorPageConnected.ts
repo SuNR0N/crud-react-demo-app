@@ -33,6 +33,6 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadAuthor: (id: number) => dispatch(actions.loadAuthor(id)),
   saveAuthor: (author: IAuthorUpdateDTO, id: number, link: IHATEOASLink) => dispatch(actions.updateAuthor(author, id, link)),
   submitForm: () => dispatch(submit(EDIT_AUTHOR_FORM)),
-})
+});
 
 export const EditAuthorPageConnected = connect(mapStateToProps, mapDispatchToProps)(EditAuthorPage);

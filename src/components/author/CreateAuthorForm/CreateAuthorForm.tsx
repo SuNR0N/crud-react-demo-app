@@ -83,7 +83,7 @@ const CreateAuthorFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const CreateAuthorForm = reduxForm<IFormData>({
   form: CREATE_AUTHOR_FORM,

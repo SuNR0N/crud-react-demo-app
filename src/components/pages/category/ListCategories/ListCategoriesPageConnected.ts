@@ -25,6 +25,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deleteCategory: (category: ICategoryDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteCategory(category, link, route)),
   searchCategories: (query?: string) => dispatch(actions.loadCategories(query))
-})
+});
 
 export const ListCategoriesPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListCategoriesPage);

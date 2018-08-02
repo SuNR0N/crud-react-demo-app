@@ -27,7 +27,7 @@ export enum ActionTypes {
   UPDATE_BOOK_FAILURE = '[Book] Update Book Failure',
   UPDATE_BOOK_REQUEST = '[Book] Update Book Request',
   UPDATE_BOOK_SUCCESS = '[Book] Update Book Success',
-};
+}
 
 export const actions = {
   createBook: (book: INewBookDTO) => createAction(
@@ -123,6 +123,6 @@ export const actions = {
     ActionTypes.UPDATE_BOOK_SUCCESS,
     book
   ),
-}
+};
 
 export type Actions = ActionsUnion<typeof actions>;

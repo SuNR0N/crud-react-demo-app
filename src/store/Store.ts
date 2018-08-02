@@ -49,7 +49,7 @@ const initialStoreState: IRootState = {
   toastr: {
     toastrs: [],
   },
-}
+};
 
 export const history = createBrowserHistory();
 

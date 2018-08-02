@@ -30,7 +30,7 @@ export interface IDispatchProps {
 }
 
 export interface IRouteProps {
-  id: number
+  id: number;
 }
 
 export interface IStateProps {
@@ -167,7 +167,7 @@ export class ViewAuthorPage extends Component<IProps, IState> {
           toggle={closeModal}
         />
       </div>
-    )
+    );
   }
 
   private closeModal = () => {

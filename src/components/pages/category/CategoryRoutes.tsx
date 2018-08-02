@@ -29,4 +29,4 @@ export const CategoryRoutes: SFC = () => (
       component={ListCategoriesPageConnected}
     />
   </Switch>
-)
+);

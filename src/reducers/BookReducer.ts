@@ -8,8 +8,8 @@ import {
 } from "../interfaces";
 
 export interface IState {
-  books: IPageableCollectionDTO<IBookDTO>,
-  currentBook: IBookDTO,
+  books: IPageableCollectionDTO<IBookDTO>;
+  currentBook: IBookDTO;
 }
 
 export const initialState = {
@@ -32,28 +32,28 @@ export const reducer = (state = initialState, action: Actions): IState => {
           content: state.books.content.filter((book) => book.id !== action.payload),
           totalItems: state.books.totalItems - 1,
         }
-      }
+      };
     case ActionTypes.LOAD_BOOK_SUCCESS:
       return {
         ...state,
         currentBook: action.payload,
-      }
+      };
     case ActionTypes.LOAD_BOOKS_SUCCESS:
       return {
         ...state,
         books: action.payload,
-      }
+      };
     case ActionTypes.PAGINATE_BOOKS_SUCCESS:
       return {
         ...state,
         books: action.payload,
-      }
+      };
     case ActionTypes.UPDATE_BOOK_SUCCESS:
       return {
         ...state,
         currentBook: action.payload,
-      }
+      };
     default:
       return state;
   }
-}
+};

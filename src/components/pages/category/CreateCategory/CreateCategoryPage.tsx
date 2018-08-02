@@ -67,7 +67,7 @@ export class CreateCategoryPage extends Component<IProps> {
   private saveCategory = (values: IFormData) => {
     const category: INewCategoryDTO = {
       name: values.name,
-    }
+    };
     this.props.saveCategory(category);
   }
 }

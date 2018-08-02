@@ -36,4 +36,4 @@ export const RouteConfig: IRouteConfig = {
   viewBook: '/books/:id',
   viewCategory: '/categories/:id',
   viewPublisher: '/publishers/:id',
-}
+};

@@ -22,6 +22,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   saveBook: (book: INewBookDTO) => dispatch(actions.createBook(book)),
   submitForm: () => dispatch(submit(CREATE_BOOK_FORM)),
-})
+});
 
 export const CreateBookPageConnected = connect(mapStateToProps, mapDispatchToProps)(CreateBookPage);

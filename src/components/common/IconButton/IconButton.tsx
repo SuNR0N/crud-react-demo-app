@@ -37,5 +37,5 @@ export const IconButton: SFC<IProps> = (props) => {
         <span>{buttonProps.children}</span>
       }
     </Button>
-  )
+  );
 };

@@ -48,7 +48,7 @@ const CreatePublisherFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const CreatePublisherForm = reduxForm<IFormData>({
   form: CREATE_PUBLISHER_FORM,

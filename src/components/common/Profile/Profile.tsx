@@ -47,4 +47,4 @@ export const Profile: SFC<IProps> = (props) => {
       </DropdownMenu>
     </UncontrolledDropdown>
   );
-}
+};

@@ -5,8 +5,8 @@ import {
 import { IPublisherDTO } from '../interfaces/dtos/PublisherDTO';
 
 export interface IState {
-  publishers: IPublisherDTO[],
-  currentPublisher: IPublisherDTO,
+  publishers: IPublisherDTO[];
+  currentPublisher: IPublisherDTO;
 }
 
 export const initialState = {
@@ -20,23 +20,23 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         publishers: state.publishers.filter((publisher) => publisher.id !== action.payload),
-      }
+      };
     case ActionTypes.LOAD_PUBLISHER_SUCCESS:
       return {
         ...state,
         currentPublisher: action.payload,
-      }
+      };
     case ActionTypes.LOAD_PUBLISHERS_SUCCESS:
       return {
         ...state,
         publishers: action.payload,
-      }
+      };
     case ActionTypes.UPDATE_PUBLISHER_SUCCESS:
       return {
         ...state,
         currentPublisher: action.payload,
-      }
+      };
     default:
       return state;
   }
-}
+};

@@ -29,4 +29,4 @@ export const PublisherRoutes: SFC = () => (
       component={ListPublishersPageConnected}
     />
   </Switch>
-)
+);

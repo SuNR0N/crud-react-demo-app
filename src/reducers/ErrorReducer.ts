@@ -9,7 +9,7 @@ import {
 import { IErrorLogEntry } from '../interfaces/ErrorLogEntry';
 
 export interface IState {
-  errors: IErrorLogEntry[],
+  errors: IErrorLogEntry[];
 }
 
 export const initialState = {
@@ -55,4 +55,4 @@ export const reducer = (state = initialState, action: RootAction): IState => {
     default:
       return state;
   }
-}
+};

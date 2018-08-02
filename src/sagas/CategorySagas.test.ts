@@ -501,7 +501,7 @@ describe('CategorySagas', () => {
     beforeEach(() => {
       const iterator = categorySagas();
       value = iterator.next().value;
-    })
+    });
 
     it('should trigger createCategory on CREATE_CATEGORY_REQUEST', async () => {      
       expect(value.ALL).toContainEqual(

@@ -106,7 +106,7 @@ describe('ListPublishersPage', () => {
       searchPublishersMock.mockClear();
       searchField.prop('onValueChange')('foo');
 
-      expect(searchPublishersMock).toHaveBeenCalledWith('foo')
+      expect(searchPublishersMock).toHaveBeenCalledWith('foo');
     });
   });
 

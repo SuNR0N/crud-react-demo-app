@@ -111,7 +111,7 @@ describe('ListAuthorsPage', () => {
       searchAuthorsMock.mockClear();
       searchField.prop('onValueChange')('foo');
 
-      expect(searchAuthorsMock).toHaveBeenCalledWith('foo')
+      expect(searchAuthorsMock).toHaveBeenCalledWith('foo');
     });
   });
 

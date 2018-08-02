@@ -36,7 +36,7 @@ describe('ViewAuthorPage', () => {
     id: 1,
     lastName: 'Doe',
     middleName: 'X',
-  }
+  };
   const minProps: IProps = {
     author: authorMock,
     deleteAuthor: jest.fn(),

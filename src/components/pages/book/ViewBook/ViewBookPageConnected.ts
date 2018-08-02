@@ -20,6 +20,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deleteBook: (book: IBookDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deleteBook(book, link, route)),
   loadBook: (id: number) => dispatch(actions.loadBook(id))
-})
+});
 
 export const ViewBookPageConnected = connect(mapStateToProps, mapDispatchToProps)(ViewBookPage);

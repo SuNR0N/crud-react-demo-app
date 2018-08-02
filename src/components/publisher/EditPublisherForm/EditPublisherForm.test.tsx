@@ -31,7 +31,7 @@ describe('EditPublisherForm', () => {
   const initialValues: IFormData = {
     id: 1,
     name: 'Foo'
-  }
+  };
   const initialState = {
     form: {
       editPublisherForm: {

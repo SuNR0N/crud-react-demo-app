@@ -75,7 +75,7 @@ const renderAuthorsDropdown = ({ input, meta, ...custom }: WrappedFieldProps) =>
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const renderCategoriesDropdown = ({ input, meta, ...custom }: WrappedFieldProps) => {
   const getOptionLabel = (category: ICategoryDTO) => category.name;
@@ -94,7 +94,7 @@ const renderCategoriesDropdown = ({ input, meta, ...custom }: WrappedFieldProps)
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const renderDatePicker = ({ input, meta, ...custom }: WrappedFieldProps) => (
   <DatePicker
@@ -121,7 +121,7 @@ const renderPublishersDropdown = ({ input, meta, ...custom }: WrappedFieldProps)
       promiseOptions={promiseOptions}
     />
   );
-}
+};
 
 const CreateBookFormComponent: SFC<IProps> = (props) => {
   const { handleSubmit } = props;
@@ -240,7 +240,7 @@ const CreateBookFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const CreateBookForm = reduxForm<IFormData>({
   form: CREATE_BOOK_FORM,

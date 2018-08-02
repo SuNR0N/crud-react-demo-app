@@ -48,7 +48,7 @@ const CreateCategoryFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const CreateCategoryForm = reduxForm<IFormData>({
   form: CREATE_CATEGORY_FORM,

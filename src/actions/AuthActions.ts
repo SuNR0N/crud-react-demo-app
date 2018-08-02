@@ -9,7 +9,7 @@ export enum ActionTypes {
   LOG_OUT_FAILURE = '[Auth] Log Out Failure',
   LOG_OUT_REQUEST = '[Auth] Log Out Request',
   LOG_OUT_SUCCESS = '[Auth] Log Out Success',
-};
+}
 
 export const actions = {
   loadProfile: () => createAction(ActionTypes.LOAD_PROFILE_REQUEST),
@@ -27,6 +27,6 @@ export const actions = {
     { message }
   ),
   logOutSucceeded: () => createAction(ActionTypes.LOG_OUT_SUCCESS),
-}
+};
 
 export type Actions = ActionsUnion<typeof actions>;

@@ -28,5 +28,5 @@ export const SignIn: SFC = () => {
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>
-  )
-}
+  );
+};

@@ -65,7 +65,7 @@ export class DatePicker extends Component<IProps> {
           </InputGroupText>
         </InputGroupAddon>
       </InputGroup>
-    )
+    );
   }
 
   private onBlur = () => this.props.onBlur(this.props.value);

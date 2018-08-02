@@ -20,7 +20,7 @@ export interface IState {
 export class SearchField extends Component<IProps, IState> {
   public state: IState = {
     value: this.props.value ? String(this.props.value) : '',
-  }
+  };
 
   public componentDidMount() {
     this.debouncedChange = debounce(
@@ -49,7 +49,7 @@ export class SearchField extends Component<IProps, IState> {
 
   private debouncedChange = (value: string) => {
     this.props.onValueChange(value);
-  };
+  }
 
   private handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { debouncedChange } = this;

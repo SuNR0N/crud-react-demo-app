@@ -106,7 +106,7 @@ describe('ListCategoriesPage', () => {
       searchCategoriesMock.mockClear();
       searchField.prop('onValueChange')('foo');
 
-      expect(searchCategoriesMock).toHaveBeenCalledWith('foo')
+      expect(searchCategoriesMock).toHaveBeenCalledWith('foo');
     });
   });
 

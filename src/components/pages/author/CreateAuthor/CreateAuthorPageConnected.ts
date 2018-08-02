@@ -22,6 +22,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   saveAuthor: (author: INewAuthorDTO) => dispatch(actions.createAuthor(author)),
   submitForm: () => dispatch(submit(CREATE_AUTHOR_FORM)),
-})
+});
 
 export const CreateAuthorPageConnected = connect(mapStateToProps, mapDispatchToProps)(CreateAuthorPage);

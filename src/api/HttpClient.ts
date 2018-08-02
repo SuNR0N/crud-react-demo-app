@@ -19,7 +19,7 @@ export class HttpClient {
     }
     const request = new Request(url, requestOptions);
     try {
-      const response = await fetch(request, requestOptions)
+      const response = await fetch(request, requestOptions);
       if (!response.ok) {
         const message = await response.text();
         throw new HttpError(response.status, response.statusText, message);

@@ -26,7 +26,7 @@ describe('RequestReducer', () => {
       state = {
         pendingRequests: {},
       };
-    })
+    });
     
     describe('given it receives a REQUEST', () => {
       it('should set the request count for the given request to 1 if it does not exist', () => {

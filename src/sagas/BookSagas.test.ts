@@ -612,7 +612,7 @@ describe('BookSagas', () => {
     beforeEach(() => {
       const iterator = bookSagas();
       value = iterator.next().value;
-    })
+    });
 
     it('should trigger createBook on CREATE_BOOK_REQUEST', async () => {      
       expect(value.ALL).toContainEqual(

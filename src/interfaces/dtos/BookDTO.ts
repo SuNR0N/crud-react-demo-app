@@ -14,5 +14,5 @@ export interface IBookDTO extends IResourceDTO {
     self: IHATEOASLink,
     delete?: IHATEOASLink,
     update?: IHATEOASLink,
-  }
+  };
 }

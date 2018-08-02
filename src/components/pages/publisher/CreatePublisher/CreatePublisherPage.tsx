@@ -67,7 +67,7 @@ export class CreatePublisherPage extends Component<IProps> {
   private savePublisher = (values: IFormData) => {
     const publisher: INewPublisherDTO = {
       name: values.name,
-    }
+    };
     this.props.savePublisher(publisher);
   }
 }

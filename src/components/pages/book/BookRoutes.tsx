@@ -29,4 +29,4 @@ export const BookRoutes: SFC = () => (
       component={ListBooksPageConnected}
     />
   </Switch>
-)
+);

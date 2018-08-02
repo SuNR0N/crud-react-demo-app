@@ -22,7 +22,7 @@ export enum ActionTypes {
   UPDATE_CATEGORY_FAILURE = '[Category] Update Category Failure',
   UPDATE_CATEGORY_REQUEST = '[Category] Update Category Request',
   UPDATE_CATEGORY_SUCCESS = '[Category] Update Category Success',
-};
+}
 
 export const actions = {
   createCategory: (category: INewCategoryDTO) => createAction(
@@ -106,6 +106,6 @@ export const actions = {
     ActionTypes.UPDATE_CATEGORY_SUCCESS,
     category
   ),
-}
+};
 
 export type Actions = ActionsUnion<typeof actions>;

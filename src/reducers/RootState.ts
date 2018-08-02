@@ -13,14 +13,14 @@ import {
 } from '.';
 
 export interface IRootState {
-  auth: IAuthState,
-  author: IAuthorState,
-  book: IBookState,
-  category: ICategoryState,
-  error: IErrorState,
-  form: FormStateMap,
-  publisher: IPublisherState,
-  request: IRequestState,
-  router: RouterState,
-  toastr: ToastrState,
+  auth: IAuthState;
+  author: IAuthorState;
+  book: IBookState;
+  category: ICategoryState;
+  error: IErrorState;
+  form: FormStateMap;
+  publisher: IPublisherState;
+  request: IRequestState;
+  router: RouterState;
+  toastr: ToastrState;
 }

@@ -57,6 +57,6 @@ export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   loadPublishers: () => dispatch(PublisherActions.loadPublishers()),
   saveBook: (book: IBookUpdateDTO, id: number, link: IHATEOASLink) => dispatch(BookActions.updateBook(book, id, link)),
   submitForm: () => dispatch(submit(EDIT_BOOK_FORM)),
-})
+});
 
 export const EditBookPageConnected = connect(mapStateToProps, mapDispatchToProps)(EditBookPage);

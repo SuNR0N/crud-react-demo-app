@@ -68,7 +68,7 @@ const EditCategoryFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const EditCategoryForm = reduxForm<IFormData>({
   enableReinitialize: true,

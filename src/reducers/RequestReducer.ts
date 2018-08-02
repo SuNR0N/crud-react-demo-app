@@ -1,7 +1,7 @@
 import { RootAction } from '../actions';
 
 export interface IState {
-  pendingRequests: { [key: string]: number },
+  pendingRequests: { [key: string]: number };
 }
 
 export const initialState = {
@@ -35,4 +35,4 @@ export const reducer = (state = initialState, action: RootAction): IState => {
   } else {
     return state;
   }
-}
+};

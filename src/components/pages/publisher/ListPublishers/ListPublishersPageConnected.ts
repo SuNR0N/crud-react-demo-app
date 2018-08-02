@@ -25,6 +25,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deletePublisher: (publisher: IPublisherDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deletePublisher(publisher, link, route)),
   searchPublishers: (query?: string) => dispatch(actions.loadPublishers(query)),
-})
+});
 
 export const ListPublishersPageConnected = connect(mapStateToProps, mapDispatchToProps)(ListPublishersPage);

@@ -25,4 +25,4 @@ export const rootReducer = combineReducers<IRootState>({
   request,
   router,
   toastr,
-})
+});

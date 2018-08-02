@@ -102,7 +102,7 @@ export class EditAuthorPage extends Component<IProps> {
         { middleName: values.middleName } :
         {}
       ),
-    }
+    };
     this.props.saveAuthor(author, this.props.currentAuthor.id, this.props.currentAuthor._links.update!);
   }
 }

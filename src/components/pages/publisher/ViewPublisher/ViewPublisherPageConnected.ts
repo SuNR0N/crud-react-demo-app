@@ -20,6 +20,6 @@ export const mapStateToProps = (state: IRootState): IStateProps => ({
 export const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
   deletePublisher: (publisher: IPublisherDTO, link: IHATEOASLink, route?: string) => dispatch(actions.deletePublisher(publisher, link, route)),
   loadPublisher: (id: number) => dispatch(actions.loadPublisher(id))
-})
+});
 
 export const ViewPublisherPageConnected = connect(mapStateToProps, mapDispatchToProps)(ViewPublisherPage);

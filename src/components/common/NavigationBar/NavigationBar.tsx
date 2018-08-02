@@ -126,6 +126,6 @@ export class NavigationBar extends Component<IProps, IState> {
   private toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen,
-    })
+    });
   }
 }

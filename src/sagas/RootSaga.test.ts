@@ -17,7 +17,7 @@ describe('RootSaga', () => {
     beforeEach(() => {
       const iterator = rootSaga();
       value = iterator.next().value;
-    })
+    });
 
     it('should contain the fork of AuthSagas', async () => {      
       expect(value.ALL).toContainEqual(

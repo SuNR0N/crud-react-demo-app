@@ -88,7 +88,7 @@ export class EditPublisherPage extends Component<IProps> {
   private savePublisher = (values: IFormData) => {
     const publisher: INewPublisherDTO = {
       name: values.name,
-    }
+    };
     this.props.savePublisher(publisher, this.props.currentPublisher.id, this.props.currentPublisher._links.update!);
   }
 }

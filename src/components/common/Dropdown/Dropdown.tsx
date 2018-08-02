@@ -24,7 +24,7 @@ const transformValue = (values: any[], options: any[], valueProperty: string) =>
     [];
   return options
     .filter((option) => selectedValues.indexOf(option[valueProperty]) !== -1);
-}
+};
 
 export class Dropdown extends Component<IProps> {
   private ref = createRef<{ state: { defaultOptions: any[] } }>();

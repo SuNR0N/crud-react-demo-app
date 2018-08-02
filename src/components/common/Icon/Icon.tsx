@@ -33,4 +33,4 @@ export const Icon: SFC<IProps> = (props) => {
       <use xlinkHref={`${SpritePath}#${symbol}`} />
     </svg>
   );
-}
+};

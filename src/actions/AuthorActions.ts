@@ -23,7 +23,7 @@ export enum ActionTypes {
   UPDATE_AUTHOR_FAILURE = '[Author] Update Author Failure',
   UPDATE_AUTHOR_REQUEST = '[Author] Update Author Request',
   UPDATE_AUTHOR_SUCCESS = '[Author] Update Author Success',
-};
+}
 
 export const actions = {
   createAuthor: (author: INewAuthorDTO) => createAction(
@@ -107,6 +107,6 @@ export const actions = {
     ActionTypes.UPDATE_AUTHOR_SUCCESS,
     author
   ),
-}
+};
 
 export type Actions = ActionsUnion<typeof actions>;

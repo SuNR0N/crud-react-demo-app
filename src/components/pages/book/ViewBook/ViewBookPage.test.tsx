@@ -47,7 +47,7 @@ describe('ViewBookPage', () => {
       'FooBar',
     ],
     title: 'Foo',
-  }
+  };
   const minProps: IProps = {
     book: bookMock,
     deleteBook: jest.fn(),

@@ -22,7 +22,7 @@ describe('TextField', () => {
 
     it('should set the "valid" property to "true" if no error exists', () => {
       const wrapper = shallow(<TextField {...minProps}/>);
-      const input = wrapper.find(Input)
+      const input = wrapper.find(Input);
 
       expect(input.prop('valid')).toBe(true);
     });
@@ -36,7 +36,7 @@ describe('TextField', () => {
         },
       };
       const wrapper = shallow(<TextField {...props}/>);
-      const input = wrapper.find(Input)
+      const input = wrapper.find(Input);
 
       expect(input.prop('valid')).toBe(false);
     });
@@ -50,14 +50,14 @@ describe('TextField', () => {
         },
       };
       const wrapper = shallow(<TextField {...props}/>);
-      const input = wrapper.find(Input)
+      const input = wrapper.find(Input);
 
       expect(input.prop('invalid')).toBe(true);
     });
 
     it('should set the "invalid" property to "false" if no error exists', () => {
       const wrapper = shallow(<TextField {...minProps}/>);
-      const input = wrapper.find(Input)
+      const input = wrapper.find(Input);
 
       expect(input.prop('invalid')).toBe(false);
     });
@@ -73,8 +73,8 @@ describe('TextField', () => {
 
     beforeEach(() => {
       const wrapper = shallow(<TextField {...minProps}/>);
-      input = wrapper.find(Input)
-    })
+      input = wrapper.find(Input);
+    });
 
     it('should not set the valid property', () => {
       expect(input.prop('valid')).toBeUndefined();

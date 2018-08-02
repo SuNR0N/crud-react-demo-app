@@ -5,7 +5,7 @@ import {
 import { IProfileDTO } from '../interfaces/dtos/ProfileDTO';
 
 export interface IState {
-  profile: IProfileDTO | null,
+  profile: IProfileDTO | null;
 }
 
 export const initialState = {
@@ -18,8 +18,8 @@ export const reducer = (state = initialState, action: Actions): IState => {
       return {
         ...state,
         profile: action.payload,
-      }
+      };
     default:
       return state;
   }
-}
+};

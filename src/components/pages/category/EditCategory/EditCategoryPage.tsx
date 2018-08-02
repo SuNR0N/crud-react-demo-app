@@ -88,7 +88,7 @@ export class EditCategoryPage extends Component<IProps> {
   private saveCategory = (values: IFormData) => {
     const category: INewCategoryDTO = {
       name: values.name,
-    }
+    };
     this.props.saveCategory(category, this.props.currentCategory.id, this.props.currentCategory._links.update!);
   }
 }

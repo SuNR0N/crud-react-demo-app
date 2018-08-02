@@ -143,7 +143,7 @@ export class EditBookPage extends Component<IProps> {
         { title: values.title } :
         {}
       ),
-    }
+    };
     this.props.saveBook(book, this.props.currentBook.id, this.props.currentBook._links.update!);
   }
 }

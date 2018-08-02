@@ -22,7 +22,7 @@ export enum ActionTypes {
   UPDATE_PUBLISHER_FAILURE = '[Publisher] Update Publisher Failure',
   UPDATE_PUBLISHER_REQUEST = '[Publisher] Update Publisher Request',
   UPDATE_PUBLISHER_SUCCESS = '[Publisher] Update Publisher Success',
-};
+}
 
 export const actions = {
   createPublisher: (publisher: INewPublisherDTO) => createAction(
@@ -106,6 +106,6 @@ export const actions = {
     ActionTypes.UPDATE_PUBLISHER_SUCCESS,
     publisher
   ),
-}
+};
 
 export type Actions = ActionsUnion<typeof actions>;

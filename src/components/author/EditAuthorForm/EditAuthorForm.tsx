@@ -101,7 +101,7 @@ const EditAuthorFormComponent: SFC<IProps> = (props) => {
       </FormGroup>
     </Form>
   );
-}
+};
 
 export const EditAuthorForm = reduxForm<IFormData>({
   enableReinitialize: true,

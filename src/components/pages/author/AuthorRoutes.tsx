@@ -29,4 +29,4 @@ export const AuthorRoutes: SFC = () => (
       component={ListAuthorsPageConnected}
     />
   </Switch>
-)
+);

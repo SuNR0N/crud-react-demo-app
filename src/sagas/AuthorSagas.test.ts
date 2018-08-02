@@ -511,7 +511,7 @@ describe('AuthorSagas', () => {
     beforeEach(() => {
       const iterator = authorSagas();
       value = iterator.next().value;
-    })
+    });
 
     it('should trigger createAuthor on CREATE_AUTHOR_REQUEST', async () => {      
       expect(value.ALL).toContainEqual(
