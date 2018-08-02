@@ -175,6 +175,7 @@ describe('ListAuthorsPage', () => {
 
       expect(headers).toEqual([
         'ID',
+        'Name',
         'First Name',
         'Middle Name',
         'Last Name',

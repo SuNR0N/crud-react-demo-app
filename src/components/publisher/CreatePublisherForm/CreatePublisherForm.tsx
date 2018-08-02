@@ -34,11 +34,15 @@ const CreatePublisherFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.name}
+          md={1}
           sm={2}
         >
           Name
         </Label>
-        <Col sm={10}>
+        <Col
+          md={11}
+          sm={10}
+        >
           <Field
             id={FormDataNames.name}
             name={FormDataNames.name}

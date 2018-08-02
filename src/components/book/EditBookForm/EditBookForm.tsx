@@ -146,11 +146,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.id}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           ID
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.id}
             name={FormDataNames.id}
@@ -162,11 +168,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.title}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           Title
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.title}
             name={FormDataNames.title}
@@ -177,11 +189,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.categories}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           Categories
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.categories}
             name={FormDataNames.categories}
@@ -196,11 +214,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.authors}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           Authors
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.authors}
             name={FormDataNames.authors}
@@ -215,11 +239,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.isbn10}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           ISBN-10
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.isbn10}
             name={FormDataNames.isbn10}
@@ -231,11 +261,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.isbn13}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           ISBN-13
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.isbn13}
             name={FormDataNames.isbn13}
@@ -246,11 +282,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.publicationDate}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           Publication Date
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.publicationDate}
             name={FormDataNames.publicationDate}
@@ -262,11 +304,17 @@ const EditBookFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.publishers}
-          sm={2}
+          lg={2}
+          md={3}
+          sm={4}
         >
           Publishers
         </Label>
-        <Col sm={10}>
+        <Col
+          lg={10}
+          md={9}
+          sm={8}
+        >
           <Field
             id={FormDataNames.publishers}
             name={FormDataNames.publishers}

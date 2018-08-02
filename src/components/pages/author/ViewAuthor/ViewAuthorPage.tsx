@@ -73,11 +73,15 @@ export class ViewAuthorPage extends Component<IProps, IState> {
             <Label
               id="labelId"
               for="id"
-              sm={2}
+              md={2}
+              sm={3}
             >
               ID
             </Label>
-            <Col sm={10}>
+            <Col
+              md={10}
+              sm={9}
+            >
               <Input
                 aria-labelledby="labelId"
                 id="id"
@@ -91,11 +95,15 @@ export class ViewAuthorPage extends Component<IProps, IState> {
             <Label
               id="labelFirstName"
               for="firstName"
-              sm={2}
+              md={2}
+              sm={3}
             >
               First Name
             </Label>
-            <Col sm={10}>
+            <Col
+              md={10}
+              sm={9}
+            >
               <Input
                 aria-labelledby="labelFirstName"
                 id="firstName"
@@ -109,11 +117,15 @@ export class ViewAuthorPage extends Component<IProps, IState> {
             <Label
               id="labelMiddleName"
               for="middleName"
-              sm={2}
+              md={2}
+              sm={3}
             >
               Middle Name
             </Label>
-            <Col sm={10}>
+            <Col
+              md={10}
+              sm={9}
+            >
               <Input
                 aria-labelledby="labelMiddleName"
                 id="middleName"
@@ -127,11 +139,15 @@ export class ViewAuthorPage extends Component<IProps, IState> {
             <Label
               id="labelLastName"
               for="lastName"
-              sm={2}
+              md={2}
+              sm={3}
             >
               Last Name
             </Label>
-            <Col sm={10}>
+            <Col
+              md={10}
+              sm={9}
+            >
               <Input
                 aria-labelledby="labelLastName"
                 id="lastName"

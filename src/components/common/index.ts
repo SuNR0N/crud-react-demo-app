@@ -1,4 +1,5 @@
 export { ActionBar } from './ActionBar';
+export { ActionCell } from './ActionCell';
 export { ConfirmationModal } from './ConfirmationModal';
 export { DatePicker } from './DatePicker';
 export { Dropdown } from './Dropdown';

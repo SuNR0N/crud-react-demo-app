@@ -68,21 +68,23 @@ export class ListBooksPage extends Component<IProps, IState> {
 
     return (
       <div className="container-fluid">
-        <div className="row no-gutters my-3 d-flex justify-content-between align-items-center">
+        <div className="row flex-column-reverse flex-sm-row no-gutters my-3 d-flex align-items-center">
           <div className="col-sm-6">
             <SearchField
               onValueChange={onSearchTextChange}
               placeholder="Search books..."
             />
           </div>
-          <RoutedButton
-            color="primary"
-            disabled={!loggedIn}
-            route={RouteConfig.createBook}
-            symbol="plus-square-regular"
-          >
-            Create New Book
-          </RoutedButton>
+          <div className="col-sm-6 d-flex justify-content-sm-end justify-content-center mb-3 mb-sm-0">
+            <RoutedButton
+              color="primary"
+              disabled={!loggedIn}
+              route={RouteConfig.createBook}
+              symbol="plus-square-regular"
+            >
+              Create New Book
+            </RoutedButton>
+          </div>
         </div>
         {
           isLoading ?
@@ -95,12 +97,12 @@ export class ListBooksPage extends Component<IProps, IState> {
             <thead className="thead-dark">
               <tr className="d-flex">
                 <th className="col-1">ID</th>
-                <th className="col-3">Title</th>
-                <th className="col-2">Category</th>
-                <th className="col-2">Author</th>
-                <th className="col-1">Publisher</th>
-                <th className="col-1">Publication Date</th>
-                <th className="col-2">Actions</th>
+                <th className="col-lg-3 col-md-5 col-sm-8 col-7">Title</th>
+                <th className="col-lg-2 col-md-3 d-none d-md-block">Category</th>
+                <th className="col-lg-2 d-none d-lg-block">Author</th>
+                <th className="col-xl-1 col-lg-2 d-none d-lg-block">Publisher</th>
+                <th className="col-xl-1 d-none d-xl-block">Publication Date</th>
+                <th className="col-lg-2 col-sm-3 col-4">Actions</th>
               </tr>
             </thead>
             <tbody>

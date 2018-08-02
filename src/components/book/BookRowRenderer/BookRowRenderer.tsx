@@ -7,6 +7,7 @@ import {
 } from '../../../config';
 import { IBookDTO } from '../../../interfaces/dtos/BookDTO';
 import {
+  ActionCell,
   IconButton,
   RoutedButton,
 } from '../../common';
@@ -25,12 +26,12 @@ export const BookRowRenderer: SFC<IProps> = (props) => {
   return (
     <tr className="d-flex align-items-center">
       <td className="col-1">{book.id}</td>
-      <td className="col-3">{book.title}</td>
-      <td className="col-2">{book.categories.join(', ')}</td>
-      <td className="col-2">{book.authors.join(', ')}</td>
-      <td className="col-1">{book.publishers.join(', ')}</td>
-      <td className="col-1">{moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT)}</td>
-      <td className="col-2 d-flex justify-content-around">
+      <td className="col-lg-3 col-md-5 col-sm-8 col-7">{book.title}</td>
+      <td className="col-lg-2 col-md-3 d-none d-md-block">{book.categories.join(', ')}</td>
+      <td className="col-lg-2 d-none d-lg-block">{book.authors.join(', ')}</td>
+      <td className="col-xl-1 col-lg-2 d-none d-lg-block">{book.publishers.join(', ')}</td>
+      <td className="col-xl-1 d-none d-xl-block text-nowrap">{moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT)}</td>
+      <ActionCell className="col-lg-2 col-sm-3 col-4">
         {book._links.self &&
           <RoutedButton
             className="btn-sm"
@@ -55,7 +56,7 @@ export const BookRowRenderer: SFC<IProps> = (props) => {
             symbol="trash-alt-regular"
           />
         }
-      </td>
+      </ActionCell>
     </tr>
   );
 };

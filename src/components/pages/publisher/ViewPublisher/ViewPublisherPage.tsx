@@ -73,11 +73,15 @@ export class ViewPublisherPage extends Component<IProps, IState> {
             <Label
               id="labelId"
               for="id"
+              md={1}
               sm={2}
             >
               ID
             </Label>
-            <Col sm={10}>
+            <Col
+              md={11}
+              sm={10}
+            >
               <Input
                 aria-labelledby="labelId"
                 id="id"
@@ -91,11 +95,15 @@ export class ViewPublisherPage extends Component<IProps, IState> {
             <Label
               id="labelName"
               for="name"
+              md={1}
               sm={2}
             >
               Name
             </Label>
-            <Col sm={10}>
+            <Col
+              md={11}
+              sm={10}
+            >
               <Input
                 aria-labelledby="labelName"
                 id="name"

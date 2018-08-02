@@ -64,21 +64,23 @@ export class ListPublishersPage extends Component<IProps, IState> {
 
     return (
       <div className="container-fluid">
-        <div className="row no-gutters my-3 d-flex justify-content-between align-items-center">
+        <div className="row flex-column-reverse flex-sm-row no-gutters my-3 d-flex align-items-center">
           <div className="col-sm-6">
             <SearchField
               onValueChange={onSearchTextChange}
               placeholder="Search publishers..."
             />
           </div>
-          <RoutedButton
-            color="primary"
-            disabled={!loggedIn}
-            route={RouteConfig.createPublisher}
-            symbol="plus-square-regular"
-          >
-            Create New Publisher
-          </RoutedButton>
+          <div className="col-sm-6 d-flex justify-content-sm-end justify-content-center mb-3 mb-sm-0">
+            <RoutedButton
+              color="primary"
+              disabled={!loggedIn}
+              route={RouteConfig.createPublisher}
+              symbol="plus-square-regular"
+            >
+              Create New Publisher
+            </RoutedButton>
+          </div>
         </div>
         {
           isLoading ?
@@ -91,8 +93,8 @@ export class ListPublishersPage extends Component<IProps, IState> {
             <thead className="thead-dark">
               <tr className="d-flex">
                 <th className="col-1">ID</th>
-                <th className="col-9">Name</th>
-                <th className="col-2">Actions</th>
+                <th className="col-lg-9 col-md-8 col-sm-7 col-6">Name</th>
+                <th className="col-lg-2 col-md-3 col-sm-4 col-5">Actions</th>
               </tr>
             </thead>
             <tbody>

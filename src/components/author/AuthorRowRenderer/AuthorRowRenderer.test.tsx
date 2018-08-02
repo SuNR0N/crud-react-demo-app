@@ -7,6 +7,7 @@ import { MemoryRouter } from 'react-router';
 
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
 import {
+  ActionCell,
   IconButton,
   RoutedButton,
 } from '../../common';
@@ -37,23 +38,30 @@ describe('AuthorRowRenderer', () => {
     expect(idCell.text()).toBe('1');
   });
 
+  it('should display the name of the author', () => {
+    const wrapper = shallow<IProps>(<AuthorRowRenderer author={author} />);
+    const nameCell = wrapper.find('td').at(1);
+
+    expect(nameCell.text()).toBe('John Doe');
+  });
+
   it('should display the first name of the author', () => {
     const wrapper = shallow<IProps>(<AuthorRowRenderer author={author} />);
-    const firstNameCell = wrapper.find('td').at(1);
+    const firstNameCell = wrapper.find('td').at(2);
 
     expect(firstNameCell.text()).toBe('John');
   });
 
   it('should display the middle name of the author', () => {
     const wrapper = shallow<IProps>(<AuthorRowRenderer author={author} />);
-    const middleNameCell = wrapper.find('td').at(2);
+    const middleNameCell = wrapper.find('td').at(3);
 
     expect(middleNameCell.text()).toBe('X');
   });
 
   it('should display the last name of the author', () => {
     const wrapper = shallow<IProps>(<AuthorRowRenderer author={author} />);
-    const lastNameCell = wrapper.find('td').at(3);
+    const lastNameCell = wrapper.find('td').at(4);
 
     expect(lastNameCell.text()).toBe('Doe');
   });
@@ -69,7 +77,7 @@ describe('AuthorRowRenderer', () => {
       </MemoryRouter>
     );
     const eyeButton = wrapper
-      .find('td').at(4)
+      .find(ActionCell)
       .find(RoutedButton)
       .find({ symbol: 'eye-regular' })
       .first();
@@ -120,7 +128,7 @@ describe('AuthorRowRenderer', () => {
       </MemoryRouter>
     );
     const editButton = wrapper
-      .find('td').at(4)
+      .find(ActionCell)
       .find(RoutedButton)
       .find({ symbol: 'edit-regular' })
       .first();
@@ -167,7 +175,7 @@ describe('AuthorRowRenderer', () => {
       </MemoryRouter>
     );
     const deleteButton = wrapper
-      .find('td').at(4)
+      .find(ActionCell)
       .find(IconButton)
       .find({ symbol: 'trash-alt-regular' })
       .first();
@@ -215,7 +223,7 @@ describe('AuthorRowRenderer', () => {
       </MemoryRouter>
     );
     const deleteButton = wrapper
-      .find('td').at(4)
+      .find(ActionCell)
       .find(IconButton)
       .find({ symbol: 'trash-alt-regular' })
       .first();

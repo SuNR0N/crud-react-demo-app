@@ -64,21 +64,23 @@ export class ListAuthorsPage extends Component<IProps, IState> {
 
     return (
       <div className="container-fluid">
-        <div className="row no-gutters my-3 d-flex justify-content-between align-items-center">
+        <div className="row flex-column-reverse flex-sm-row no-gutters my-3 d-flex align-items-center">
           <div className="col-sm-6">
             <SearchField
               onValueChange={onSearchTextChange}
               placeholder="Search authors..."
             />
           </div>
-          <RoutedButton
-            color="primary"
-            disabled={!loggedIn}
-            route={RouteConfig.createAuthor}
-            symbol="plus-square-regular"
-          >
-            Create New Author
-          </RoutedButton>
+          <div className="col-sm-6 d-flex justify-content-sm-end justify-content-center mb-3 mb-sm-0">
+            <RoutedButton
+              color="primary"
+              disabled={!loggedIn}
+              route={RouteConfig.createAuthor}
+              symbol="plus-square-regular"
+            >
+              Create New Author
+            </RoutedButton>
+          </div>
         </div>
         {
           isLoading ?
@@ -91,10 +93,11 @@ export class ListAuthorsPage extends Component<IProps, IState> {
             <thead className="thead-dark">
               <tr className="d-flex">
                 <th className="col-1">ID</th>
-                <th className="col-3">First Name</th>
-                <th className="col-3">Middle Name</th>
-                <th className="col-3">Last Name</th>
-                <th className="col-2">Actions</th>
+                <th className="col-sm-7 col-6 d-block d-md-none">Name</th>
+                <th className="col-md-3 d-none d-md-block">First Name</th>
+                <th className="col-lg-3 col-md-2 d-none d-md-block">Middle Name</th>
+                <th className="col-md-3 d-none d-md-block">Last Name</th>
+                <th className="col-lg-2 col-md-3 col-sm-4 col-5">Actions</th>
               </tr>
             </thead>
             <tbody>

@@ -38,11 +38,15 @@ const EditCategoryFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.id}
+          md={1}
           sm={2}
         >
           ID
         </Label>
-        <Col sm={10}>
+        <Col
+          md={11}
+          sm={10}
+        >
           <Field
             id={FormDataNames.id}
             name={FormDataNames.id}
@@ -54,11 +58,15 @@ const EditCategoryFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.name}
+          md={1}
           sm={2}
         >
           Name
         </Label>
-        <Col sm={10}>
+        <Col
+          md={11}
+          sm={10}
+        >
           <Field
             id={FormDataNames.name}
             name={FormDataNames.name}

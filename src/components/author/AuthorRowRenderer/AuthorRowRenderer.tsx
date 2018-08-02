@@ -3,6 +3,7 @@ import React, { SFC } from 'react';
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IAuthorDTO } from '../../../interfaces/dtos/AuthorDTO';
 import {
+  ActionCell,
   IconButton,
   RoutedButton,
 } from '../../common';
@@ -21,10 +22,11 @@ export const AuthorRowRenderer: SFC<IProps> = (props) => {
   return (
     <tr className="d-flex align-items-center">
       <td className="col-1">{author.id}</td>
-      <td className="col-3">{author.firstName}</td>
-      <td className="col-3">{author.middleName}</td>
-      <td className="col-3">{author.lastName}</td>
-      <td className="col-2 d-flex justify-content-around">
+      <td className="col-sm-7 col-6 d-block d-md-none">{author.fullName}</td>
+      <td className="col-md-3 d-none d-md-block">{author.firstName}</td>
+      <td className="col-lg-3 col-md-2 d-none d-md-block">{author.middleName}</td>
+      <td className="col-md-3 d-none d-md-block">{author.lastName}</td>
+      <ActionCell className="col-lg-2 col-md-3 col-sm-4 col-5">
         {author._links.self &&
           <RoutedButton
             className="btn-sm"
@@ -49,7 +51,7 @@ export const AuthorRowRenderer: SFC<IProps> = (props) => {
             symbol="trash-alt-regular"
           />
         }
-      </td>
+      </ActionCell>
     </tr>
   );
 };

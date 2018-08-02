@@ -3,6 +3,7 @@ import React, { SFC } from 'react';
 import { RouteConfig } from '../../../config/RouteConfig';
 import { IPublisherDTO } from '../../../interfaces/dtos/PublisherDTO';
 import {
+  ActionCell,
   IconButton,
   RoutedButton,
 } from '../../common';
@@ -21,8 +22,8 @@ export const PublisherRowRenderer: SFC<IProps> = (props) => {
   return (
     <tr className="d-flex align-items-center">
       <td className="col-1">{publisher.id}</td>
-      <td className="col-9">{publisher.name}</td>
-      <td className="col-2 d-flex justify-content-around">
+      <td className="col-lg-9 col-md-8 col-sm-7 col-6">{publisher.name}</td>
+      <ActionCell className="col-lg-2 col-md-3 col-sm-4 col-5">
         {publisher._links.self &&
           <RoutedButton
             className="btn-sm"
@@ -47,7 +48,7 @@ export const PublisherRowRenderer: SFC<IProps> = (props) => {
             symbol="trash-alt-regular"
           />
         }
-      </td>
+      </ActionCell>
     </tr>
   );
 };

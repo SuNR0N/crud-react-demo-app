@@ -38,11 +38,15 @@ const CreateAuthorFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.firstName}
-          sm={2}
+          md={2}
+          sm={3}
         >
           First Name
         </Label>
-        <Col sm={10}>
+        <Col
+          md={10}
+          sm={9}
+        >
           <Field
             id={FormDataNames.firstName}
             name={FormDataNames.firstName}
@@ -53,11 +57,15 @@ const CreateAuthorFormComponent: SFC<IProps> = (props) => {
       <FormGroup row={true}>
         <Label
           for={FormDataNames.middleName}
-          sm={2}
+          md={2}
+          sm={3}
         >
           Middle Name
         </Label>
-        <Col sm={10}>
+        <Col
+          md={10}
+          sm={9}
+        >
           <Field
             id={FormDataNames.middleName}
             name={FormDataNames.middleName}
@@ -69,11 +77,15 @@ const CreateAuthorFormComponent: SFC<IProps> = (props) => {
         <Label
           className="required"
           for={FormDataNames.lastName}
-          sm={2}
+          md={2}
+          sm={3}
         >
           Last Name
         </Label>
-        <Col sm={10}>
+        <Col
+          md={10}
+          sm={9}
+        >
           <Field
             id={FormDataNames.lastName}
             name={FormDataNames.lastName}

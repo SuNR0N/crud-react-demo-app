@@ -78,11 +78,17 @@ export class ViewBookPage extends Component<IProps, IState> {
             <Label
               id="labelId"
               for="id"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               ID
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               <Input
                 aria-labelledby="labelId"
                 id="id"
@@ -96,11 +102,17 @@ export class ViewBookPage extends Component<IProps, IState> {
             <Label
               id="labelTitle"
               for="title"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               Title
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               <Input
                 aria-labelledby="labelTitle"
                 id="title"
@@ -113,11 +125,17 @@ export class ViewBookPage extends Component<IProps, IState> {
           <FormGroup row={true}>
             <Label
               id="labelCategories"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               Categories
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               {
                 Array.isArray(book.categories) &&
                 book.categories.map(inputRowRenderer('labelCategories'))
@@ -127,11 +145,17 @@ export class ViewBookPage extends Component<IProps, IState> {
           <FormGroup row={true}>
             <Label
               id="labelAuthors"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               Authors
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               {
                 Array.isArray(book.authors) &&
                 book.authors.map(inputRowRenderer('labelAuthors'))
@@ -142,11 +166,17 @@ export class ViewBookPage extends Component<IProps, IState> {
             <Label
               id="labelIsbn10"
               for="isbn10"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               ISBN-10
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               <Input
                 aria-labelledby="labelIsbn10"
                 id="isbn10"
@@ -160,11 +190,17 @@ export class ViewBookPage extends Component<IProps, IState> {
             <Label
               id="labelIsbn13"
               for="isbn13"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               ISBN-13
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               <Input
                 aria-labelledby="labelIsbn13"
                 id="isbn13"
@@ -178,11 +214,17 @@ export class ViewBookPage extends Component<IProps, IState> {
             <Label
               id="labelPublicationDate"
               for="publicationDate"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               Publication Date
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               <Input
                 aria-labelledby="labelPublicationDate"
                 id="publicationDate"
@@ -195,11 +237,17 @@ export class ViewBookPage extends Component<IProps, IState> {
           <FormGroup row={true}>
             <Label
               id="labelPublishers"
-              sm={2}
+              lg={2}
+              md={3}
+              sm={4}
             >
               Publishers
             </Label>
-            <Col sm={10}>
+            <Col
+              lg={10}
+              md={9}
+              sm={8}
+            >
               {
                 Array.isArray(book.publishers) &&
                 book.publishers.map(inputRowRenderer('labelPublishers'))
