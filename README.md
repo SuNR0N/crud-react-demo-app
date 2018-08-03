@@ -13,6 +13,7 @@ Table of Contents
 * [Test](#test)
 * [Lint](#lint)
 * [Debug](#debug)
+* [TODO](#todo)
 * [Resources](#resources)
 
 ## Prerequisites
@@ -157,6 +158,10 @@ Instructions for debugging in _VS Code_:
 1. Set a breakpoint in the currently opened test file
 2. Go to _Debug_ panel in VS Code and select `Debug Current React Test`
 3. Click on _Start Debugging_
+
+## TODO
+
+- [ ] Accessbility
 
 ## Resources
 
