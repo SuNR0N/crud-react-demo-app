@@ -230,7 +230,7 @@ export class ViewBookPage extends Component<IProps, IState> {
                 id="publicationDate"
                 plaintext={true}
               >
-                {moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT)}
+                {book.publicationDate ? moment(book.publicationDate, 'YYYY-MM-DD').format(DATE_FORMAT) : ''}
               </Input>
             </Col>
           </FormGroup>
